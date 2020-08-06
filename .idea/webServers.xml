@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="14aaeda1-8085-4afa-9037-3f0ffdbda3bb" name="QSIT" url="http://165.22.221.210">
+        <fileTransfer host="165.22.221.210" port="22" privateKey="C:\Users\Ashish\Documents\QSIT_Keys\ssh_private.ppk" rootFolder="/home/school.queensherainfotech.com/public_html" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
