@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Admin;
 
 use App\CasteCategoryList;
 use App\ClassLists;
+use App\OtherSchoolLists;
 use App\StudentDetails;
 use App\StudentOtherDetails;
 use App\User;
@@ -40,7 +41,14 @@ class StudentInformationController extends Controller
         $studentDetails['registerfor']=$request->registerfor;
         $studentDetails['faculty']=$request->faculty;
         $studentDetails['classname']=$request->classname;
-        $studentDetails['division']=$request->division;
+        if($request->division)
+        {
+            $studentDetails['division']=$request->division;
+        }
+        else
+        {
+            $studentDetails['division']='NA';
+        }
         $studentDetails['registerno']=$request->registerno;
         $studentDetails['admission_date']=$request->admission_date;
         $studentDetails['admission_class']=$request->classname;
@@ -62,7 +70,15 @@ class StudentInformationController extends Controller
         $studentDetails['mothertongue']=$request->mothertongue;
         $studentDetails['bloodgroup']=$request->bloodgroup;
         $studentDetails['pwd']=$request->pwd;
-        $studentDetails['schoolname']=$request->schoolname;
+        if($request->schoolname == 'Other')
+        {
+            $school['schoolname'] = $request->lastschool;
+            $school = OtherSchoolLists::create($school);
+            $studentDetails['schoolname'] = $school->id;
+        }
+        else{
+            $studentDetails['schoolname'] = $request->schoolname;
+        }
         $studentDetails['lastschool']=$request->lastschool;
         $studentDetails['lastclass']=$request->lastclass;
         $studentDetails['admissiontype']=$request->admissiontype;
@@ -250,8 +266,14 @@ class StudentInformationController extends Controller
 
         $classdivision = ClassLists::where('classname',$studentdetails->classname)->first();
         $divisionlist = explode(',',$classdivision->division);
-        $castelist = CasteCategoryList::where('religion',$studentdetails->religion)->select('castename')->distinct()->get();
-        $subcastelist = CasteCategoryList::where('religion',$studentdetails->religion)->where('castename',$studentdetails->castename)->orderBy('subcaste','asc')->get();
+
+        $castecategory = \App\CasteCategoryList::where('id',$studentdetails->subcaste)->first();
+        $castelist = CasteCategoryList::where('religion',$castecategory->religion)->select('castename')->distinct()->get();
+        $subcastelist = CasteCategoryList::where('religion',$castecategory->religion)->where('castename',$castecategory->castename)->orderBy('subcaste','asc')->get();
+        $studentdetails->religion = $castecategory->religion;
+        $studentdetails->category = $castecategory->category;
+        $studentdetails->castename = $castecategory->castename;
+        $studentdetails->subcaste = $castecategory->id;
 
         return view(auth()->user()->role.'/student_editadmission')->with('studentdetails',$studentdetails)
             ->with('divisionlist',$divisionlist)->with('castelist',$castelist)->with('subcastelist',$subcastelist);
@@ -444,11 +466,16 @@ class StudentInformationController extends Controller
             ->join('student_other_details','student_details.userid','=','student_other_details.userid')
             ->where('student_details.userid',$userid)
             ->first();
-
         $classdivision = ClassLists::where('classname',$studentdetails->classname)->first();
         $divisionlist = explode(',',$classdivision->division);
-        $castelist = CasteCategoryList::where('religion',$studentdetails->religion)->select('castename')->distinct()->get();
-        $subcastelist = CasteCategoryList::where('religion',$studentdetails->religion)->where('castename',$studentdetails->castename)->orderBy('subcaste','asc')->get();
+
+        $castecategory = \App\CasteCategoryList::where('id',$studentdetails->subcaste)->first();
+        $castelist = CasteCategoryList::where('religion',$castecategory->religion)->select('castename')->distinct()->get();
+        $subcastelist = CasteCategoryList::where('religion',$castecategory->religion)->where('castename',$castecategory->castename)->orderBy('subcaste','asc')->get();
+        $studentdetails->religion = $castecategory->religion;
+        $studentdetails->category = $castecategory->category;
+        $studentdetails->castename = $castecategory->castename;
+        $studentdetails->subcaste = $castecategory->id;
 
         return view(auth()->user()->role.'/student_editsearch')->with('studentdetails',$studentdetails)
             ->with('divisionlist',$divisionlist)->with('castelist',$castelist)->with('subcastelist',$subcastelist);

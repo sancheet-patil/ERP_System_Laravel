@@ -67,13 +67,34 @@ class CertificatesController extends Controller
                 'student_details.mname','student_details.lname','student_details.placeob','student_other_details.mothername',
                 'student_details.mothertongue','student_details.classname','religion_lists.religion','caste_category_lists.castename',
                 'caste_category_lists.subcaste','student_details.division','bonafide_details.issuedate','student_details.studentphoto',
-                'bonafide_details.academicyear')
+                'bonafide_details.academicyear','student_details.faculty')
             ->first();
 
-        BonafideDetails::find(decrypt($id))->increment('printcount');
+//        BonafideDetails::find(decrypt($id))->increment('printcount');
 
         $data['dob'] = Carbon::parse($bonafide->dob)->format('d-M-Y');
-        $data['dobinwords'] = strtoupper($format->format(substr($data['dob'],0,2)).' '.Carbon::parse(substr($data['dob'],3,3))->format('F').' '.$format->format(substr($data['dob'],7,4)));
+
+        $dob = $bonafide->dob;
+
+        $newdob = Carbon::parse($dob)->format('d-M-Y');
+        $dates = AppHelper::instance()->dates();
+        $worddate = $dates[substr($dob,0,2)];
+
+        if(substr($dob,6,4) < '2000')
+        {
+            $mainyear =  substr($dob,6,2);
+            $subyear =  substr($dob,8,2);
+
+            $dobinwords = $worddate.strtoupper(' '.Carbon::parse(substr($newdob,3,3))->format('F').' '.$format->format($mainyear).' '.$format->format($subyear));
+        }
+        else
+        {
+            $dobinwords = $worddate.strtoupper(' '.Carbon::parse(substr($newdob,3,3))->format('F').' '.$format->format(substr($newdob,7,4)));
+        }
+
+//        return $dobinwords;
+
+        $data['dobinwords'] = $dobinwords;
         $data['bonafide'] = $bonafide;
 
         $pdf = PDF::loadView('prints/bonafide_view',$data)->setPaper('A4','portrait');
@@ -305,16 +326,19 @@ class CertificatesController extends Controller
         $dob = StudentDetails::where('userid',$studentid)->value('dob');
         $newdob = Carbon::parse($dob)->format('d-M-Y');
 
+        $dates = AppHelper::instance()->dates();
+        $worddate = $dates[substr($dob,0,2)];
+
         if(substr($dob,6,4) < '2000')
         {
             $mainyear =  substr($dob,6,2);
             $subyear =  substr($dob,8,2);
 
-            $dobinwords = strtoupper($format->format(substr($newdob,0,2)).' '.Carbon::parse(substr($newdob,3,3))->format('F').' '.$format->format($mainyear).' '.$format->format($subyear));
+            $dobinwords = $worddate.strtoupper(' '.Carbon::parse(substr($newdob,3,3))->format('F').' '.$format->format($mainyear).' '.$format->format($subyear));
         }
         else
         {
-            $dobinwords = strtoupper($format->format(substr($newdob,0,2)).' '.Carbon::parse(substr($newdob,3,3))->format('F').' '.$format->format(substr($newdob,7,4)));
+            $dobinwords = $worddate.strtoupper(' '.Carbon::parse(substr($newdob,3,3))->format('F').' '.$format->format(substr($newdob,7,4)));
         }
 
         $arr[] = [

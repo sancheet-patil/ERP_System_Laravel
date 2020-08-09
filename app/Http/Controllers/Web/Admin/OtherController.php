@@ -7,6 +7,7 @@ use App\CategoryLists;
 use App\ClassLists;
 use App\ClassSubjectDetails;
 use App\LeavingCertificateDetails;
+use App\OtherSchoolLists;
 use App\Rules\MatchOldPassword;
 use App\StudentDetails;
 use App\User;
@@ -208,9 +209,37 @@ class OtherController extends Controller
 
     public function migrate()
     {
-        $userslist = StudentDetails::where('academicyear','2019-2020')->where('registerfor','School Form 17')->get()->count();
+        $userslist = StudentDetails::where('schoolname','Other')->where('id','>','8000')->limit(5000)->get();
+//        $userslist = StudentDetails::where('schoolname','Other')->select('lastschool')->distinct()->get()->count();
+//        return $userslist;
+//        OtherSchoolLists::where('id','>','819')->delete();
+        foreach ($userslist as $user)
+        {
+            if($user->schoolname == 'Other')
+            {
+                $check = OtherSchoolLists::where('schoolname',$user->lastschool)->first();
+                if($check)
+                {
+                    $update['schoolname'] = $check->id;
+                    $update['lastschool'] = $check->id;
+                }
+                else
+                {
+//                    $school['schoolname'] = $user->lastschool;
+                    $school = [
+                        'schoolname' => $user->lastschool,
+                    ];
+                    $school = OtherSchoolLists::create($school);
+                    echo 'school created -> ';
+//                    $update['schoolname'] = $school['schoolname'];
+                    $update['schoolname'] = $school->id;
+                    $update['lastschool'] = $school->id;
+                }
+                echo $update['schoolname'].'<br>';
+                StudentDetails::where('id',$user->id)->update($update);
+            }
+        }
 
-
-        return $userslist;
+        return $userslist->count();
     }
 }

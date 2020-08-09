@@ -241,8 +241,14 @@ class HumanResourceController extends Controller
             ->where('staff_details.userid',$userid)
             ->first();
 
-        $castelist = CasteCategoryList::where('religion',$staffdetails->religion)->select('castename')->distinct()->get();
-        $subcastelist = CasteCategoryList::where('religion',$staffdetails->religion)->where('castename',$staffdetails->castename)->orderBy('subcaste','asc')->get();
+
+        $castecategory = \App\CasteCategoryList::where('id',$staffdetails->subcaste)->first();
+        $castelist = CasteCategoryList::where('religion',$castecategory->religion)->select('castename')->distinct()->get();
+        $subcastelist = CasteCategoryList::where('religion',$castecategory->religion)->where('castename',$castecategory->castename)->orderBy('subcaste','asc')->get();
+        $staffdetails->religion = $castecategory->religion;
+        $staffdetails->category = $castecategory->category;
+        $staffdetails->castename = $castecategory->castename;
+        $staffdetails->subcaste = $castecategory->id;
 
         return view(auth()->user()->role.'/staff_editjoining')->with('staffdetails',$staffdetails)
             ->with('castelist',$castelist)->with('subcastelist',$subcastelist);
@@ -411,8 +417,13 @@ class HumanResourceController extends Controller
             ->where('staff_details.userid',$userid)
             ->first();
 
-        $castelist = CasteCategoryList::where('religion',$staffdetails->religion)->select('castename')->distinct()->get();
-        $subcastelist = CasteCategoryList::where('religion',$staffdetails->religion)->where('castename',$staffdetails->castename)->orderBy('subcaste','asc')->get();
+        $castecategory = \App\CasteCategoryList::where('id',$staffdetails->subcaste)->first();
+        $castelist = CasteCategoryList::where('religion',$castecategory->religion)->select('castename')->distinct()->get();
+        $subcastelist = CasteCategoryList::where('religion',$castecategory->religion)->where('castename',$castecategory->castename)->orderBy('subcaste','asc')->get();
+        $staffdetails->religion = $castecategory->religion;
+        $staffdetails->category = $castecategory->category;
+        $staffdetails->castename = $castecategory->castename;
+        $staffdetails->subcaste = $castecategory->id;
 
         return view(auth()->user()->role.'/staff_editsearch')->with('staffdetails',$staffdetails)
             ->with('castelist',$castelist)->with('subcastelist',$subcastelist);

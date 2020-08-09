@@ -103,7 +103,12 @@
         <td>
             <p style="line-height: 1.3;">
                 This is to certify that,<br> Kumar / Kumari <b>{{strtoupper($bonafide->lname.' '.$bonafide->fname.' '.$bonafide->mname)}}</b> is / was a bonafide student of this school / college,
-                studying in <b>{{strtoupper($bonafide->classname)}}, {{$bonafide->academicyear}}</b>.
+                studying in <b>{{strtoupper($bonafide->classname)}}
+                    @if($bonafide->classname == '01') <sup>st</sup>
+                    @elseif($bonafide->classname == '02') <sup>nd</sup>
+                    @elseif($bonafide->classname == '03') <sup>rd</sup>
+                    @else <sup>th</sup> @endif
+                {{strtoupper($bonafide->faculty)}}, year {{$bonafide->academicyear}}</b>.
                 His / Her birth date on the General Register is <b>{{$bonafide->dob}}</b> <b>({{strtoupper($dobinwords)}})</b>.
                 His / Her place of birth is <b>{{strtoupper($bonafide->placeob)}}</b> and he / she belong to caste
                 <b>{{$bonafide->religion}} @if(strtolower($bonafide->castename)=='na') @else - {{$bonafide->castename}} @endif

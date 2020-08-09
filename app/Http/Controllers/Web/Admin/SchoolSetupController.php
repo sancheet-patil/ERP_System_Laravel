@@ -171,7 +171,8 @@ class SchoolSetupController extends Controller
 
     public function castecategory_add(Request $request)
     {
-        if(CasteCategoryList::where('castename',$request->castename)->where('subcaste',$request->subcaste)->exists())
+        if(CasteCategoryList::where('religion',$request->religion)->where('category',$request->category)
+            ->where('castename',$request->castename)->where('subcaste',$request->subcaste)->exists())
         {
             return back()->with('success','Caste exists already');
         }

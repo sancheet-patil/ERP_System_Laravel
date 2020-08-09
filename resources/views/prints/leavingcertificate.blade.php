@@ -71,7 +71,11 @@
             </div>
             <div class="row">
                 <div class="col-xs-12" style="position: relative;padding: 15px 0 0 310px;">
-                    {{$lc->religion}} @if(strtolower($lc->castename)=='na') @else - {{$lc->castename}} @endif @if(strtolower($lc->subcaste)=='na') @else - {{$lc->subcaste}} @endif
+                    @if(strtolower($lc->religion)!='na') {{strtoupper($lc->religion)}} @endif
+                    @if(strtolower($lc->religion)!='na' && strtolower($lc->castename)!='na') - @endif
+                    @if(strtolower($lc->castename)!='na') {{strtoupper($lc->castename)}} @endif
+                    @if(strtolower($lc->castename)!='na' && strtolower($lc->subcaste)!='na') - @endif
+                    @if(strtolower($lc->subcaste)!='na') {{strtoupper($lc->subcaste)}} @endif
                 </div>
             </div>
             <div class="row">

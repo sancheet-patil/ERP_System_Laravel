@@ -155,7 +155,13 @@
             <table border="0" width="100%" class="mrgnhor">
                 <tr>
                     <td>
-                        7) Religion/Caste/SubCaste: <b>{{strtoupper($lc->religion)}} @if(strtolower($lc->castename)=='na') @else - {{strtoupper($lc->castename)}} @endif @if(strtolower($lc->subcaste)=='na') @else - {{strtoupper($lc->subcaste)}} @endif</b>
+                        7) Religion/Caste/SubCaste: <b>
+                            @if(strtolower($lc->religion)!='na') {{strtoupper($lc->religion)}} @endif
+                            @if(strtolower($lc->religion)!='na' && strtolower($lc->castename)!='na') - @endif
+                            @if(strtolower($lc->castename)!='na') {{strtoupper($lc->castename)}} @endif
+                            @if(strtolower($lc->castename)!='na' && strtolower($lc->subcaste)!='na') - @endif
+                            @if(strtolower($lc->subcaste)!='na') {{strtoupper($lc->subcaste)}} @endif
+                        </b>
                     </td>
                 </tr>
             </table>
