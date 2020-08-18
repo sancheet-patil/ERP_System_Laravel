@@ -42,6 +42,8 @@ class CreateStudentDetailsTable extends Migration
             $table->string('mothertongue')->nullable();
             $table->string('bloodgroup')->nullable();
             $table->string('pwd')->nullable();
+            $table->string('familyincome')->nullable();
+            $table->string('isminor')->nullable();
             $table->string('schoolname')->nullable();
             $table->string('lastschool')->nullable();
             $table->string('lastclass')->nullable();

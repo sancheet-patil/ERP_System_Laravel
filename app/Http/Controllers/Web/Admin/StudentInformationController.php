@@ -70,6 +70,8 @@ class StudentInformationController extends Controller
         $studentDetails['mothertongue']=$request->mothertongue;
         $studentDetails['bloodgroup']=$request->bloodgroup;
         $studentDetails['pwd']=$request->pwd;
+        $studentDetails['familyincome']=$request->familyincome;
+        $studentDetails['isminor']=$request->isminor;
         if($request->schoolname == 'Other')
         {
             $school['schoolname'] = $request->lastschool;
@@ -308,6 +310,8 @@ class StudentInformationController extends Controller
         $studentDetails['mothertongue']=$request->mothertongue;
         $studentDetails['bloodgroup']=$request->bloodgroup;
         $studentDetails['pwd']=$request->pwd;
+        $studentDetails['familyincome']=$request->familyincome;
+        $studentDetails['isminor']=$request->isminor;
         $studentDetails['schoolname']=$request->schoolname;
         $studentDetails['lastschool']=$request->lastschool;
         $studentDetails['lastclass']=$request->lastclass;
@@ -510,6 +514,8 @@ class StudentInformationController extends Controller
         $studentDetails['mothertongue']=$request->mothertongue;
         $studentDetails['bloodgroup']=$request->bloodgroup;
         $studentDetails['pwd']=$request->pwd;
+        $studentDetails['familyincome']=$request->familyincome;
+        $studentDetails['isminor']=$request->isminor;
         $studentDetails['schoolname']=$request->schoolname;
         $studentDetails['lastschool']=$request->lastschool;
         $studentDetails['lastclass']=$request->lastclass;
@@ -711,10 +717,18 @@ class StudentInformationController extends Controller
     {
         foreach($request->to as $userid)
         {
-            $updateData = [
-                'academicyear' => (substr(Session::get('academicyear'),0,4)+1).'-'.(substr(Session::get('academicyear'),5,4)+1),
-                'classname' => $request->classtopromote,
-            ];
+            if(strlen(strlen($request->classtopromote) == 1)) {
+                $updateData = [
+                    'academicyear' => (substr(Session::get('academicyear'), 0, 4) + 1) . '-' . (substr(Session::get('academicyear'), 5, 4) + 1),
+                    'classname' => '0'.$request->classtopromote,
+                ];
+            }
+            else{
+                $updateData = [
+                    'academicyear' => (substr(Session::get('academicyear'), 0, 4) + 1) . '-' . (substr(Session::get('academicyear'), 5, 4) + 1),
+                    'classname' => $request->classtopromote,
+                ];
+            }
             StudentDetails::where('userid',$userid)->update($updateData);
         }
         return back()->with('success','Students promoted successfully');

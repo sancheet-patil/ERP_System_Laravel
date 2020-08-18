@@ -76,6 +76,7 @@
                     @if(strtolower($lc->castename)!='na') {{strtoupper($lc->castename)}} @endif
                     @if(strtolower($lc->castename)!='na' && strtolower($lc->subcaste)!='na') - @endif
                     @if(strtolower($lc->subcaste)!='na') {{strtoupper($lc->subcaste)}} @endif
+                    @if(strtolower($lc->religion)=='na' && strtolower($lc->castename)=='na' && strtolower($lc->subcaste)=='na') &nbsp;--- @endif
                 </div>
             </div>
             <div class="row">
@@ -111,10 +112,11 @@
                     {{$lc->admission_date}}
                 </div>
                 <div class="col-xs-3" style="position: relative;padding: 17px 0 0 15px;">
+                    <?php $student = \App\StudentDetails::where('userid',$lc->userid)->first() ?>
                     @if($lc->admission_class > '10')
-                        {{$lc->admission_class}}<sup>th</sup> {{$lc->faculty}}
+                        {{(int)$lc->admission_class}}<sup>th</sup> {{$lc->faculty}} ({{$student->division}})
                     @else
-                        {{$lc->admission_class}}<sup>th</sup>
+                        {{(int)$lc->admission_class}}<sup>th</sup> ({{$student->division}})
                     @endif
                 </div>
             </div>

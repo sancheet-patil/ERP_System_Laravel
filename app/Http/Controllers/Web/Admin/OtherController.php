@@ -6,6 +6,7 @@ use App\CasteCategoryList;
 use App\CategoryLists;
 use App\ClassLists;
 use App\ClassSubjectDetails;
+use App\Http\Middleware\Student;
 use App\LeavingCertificateDetails;
 use App\OtherSchoolLists;
 use App\Rules\MatchOldPassword;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OtherController extends Controller
 {
@@ -209,37 +211,12 @@ class OtherController extends Controller
 
     public function migrate()
     {
-        $userslist = StudentDetails::where('schoolname','Other')->where('id','>','8000')->limit(5000)->get();
-//        $userslist = StudentDetails::where('schoolname','Other')->select('lastschool')->distinct()->get()->count();
-//        return $userslist;
-//        OtherSchoolLists::where('id','>','819')->delete();
-        foreach ($userslist as $user)
+        $users = LeavingCertificateDetails::get();
+        foreach ($users as $user)
         {
-            if($user->schoolname == 'Other')
-            {
-                $check = OtherSchoolLists::where('schoolname',$user->lastschool)->first();
-                if($check)
-                {
-                    $update['schoolname'] = $check->id;
-                    $update['lastschool'] = $check->id;
-                }
-                else
-                {
-//                    $school['schoolname'] = $user->lastschool;
-                    $school = [
-                        'schoolname' => $user->lastschool,
-                    ];
-                    $school = OtherSchoolLists::create($school);
-                    echo 'school created -> ';
-//                    $update['schoolname'] = $school['schoolname'];
-                    $update['schoolname'] = $school->id;
-                    $update['lastschool'] = $school->id;
-                }
-                echo $update['schoolname'].'<br>';
-                StudentDetails::where('id',$user->id)->update($update);
-            }
+            LeavingCertificateDetails::where('id',$user->id)->update(['printcount' => '1']);
         }
 
-        return $userslist->count();
+        return $users->count();
     }
 }

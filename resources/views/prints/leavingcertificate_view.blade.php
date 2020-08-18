@@ -161,6 +161,7 @@
                             @if(strtolower($lc->castename)!='na') {{strtoupper($lc->castename)}} @endif
                             @if(strtolower($lc->castename)!='na' && strtolower($lc->subcaste)!='na') - @endif
                             @if(strtolower($lc->subcaste)!='na') {{strtoupper($lc->subcaste)}} @endif
+                            @if(strtolower($lc->religion)=='na' && strtolower($lc->castename)=='na' && strtolower($lc->subcaste)=='na') &nbsp;--- @endif
                         </b>
                     </td>
                 </tr>
@@ -221,10 +222,11 @@
                         ?>
                         12) Standard:
                             <b>
+                                <?php $student = \App\StudentDetails::where('userid',$lc->userid)->first() ?>
                                 @if($admissionclass > '10')
-                                    {{$admissionclass}}<sup>th</sup>  {{$lc->faculty}}
+                                    {{(int)$admissionclass}}<sup>th</sup> {{$lc->faculty}} ({{$student->division}})
                                 @else
-                                    {{$admissionclass}}<sup>th</sup>
+                                    {{(int)$admissionclass}}<sup>th</sup> ({{$student->division}})
                                 @endif
                             </b>
                     </td>

@@ -298,6 +298,18 @@
                                                 <option value="Urban" @if('Urban' == $studentdetails->citytype) selected @endif>Urban</option>
                                             </select>
                                         </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="familyincome">Family income (Annual)</label>
+                                            <input type="number" id="familyincome" name="familyincome" min="1" placeholder="" class="form-control" value="{{$familyincome}}"/>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="isminor">Minority</label> <small class="req"> *</small>
+                                            <select id="isminor" name="isminor" class="form-control select2" required>
+                                                <option value="">Select</option>
+                                                <option value="Yes" @if('Yes' == $studentdetails->isminor) selected @endif>Yes</option>
+                                                <option value="No" @if('No' == $studentdetails->isminor) selected @endif>No</option>
+                                            </select>
+                                        </div>
                                         <div class="form-group col-md-3" id="imagephoto" @if(!$studentdetails->studentphoto) hidden @endif>
                                             <label for="studentphoto">Student Photo</label><br>
                                             <img id="studentphotopreview" src="{{$studentdetails->studentphoto}}" height="120px" width="100px" alt="Student Photo" onclick="studentphotomodify()"/><br>
