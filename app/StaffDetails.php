@@ -11,6 +11,6 @@ class StaffDetails extends Model
     protected $fillable = [
         'userid','staffid','staffrole','designation','fname','mname','lname','mothername','gender','dob', 'email','mobile','bloodgroup',
         'maritalstatus','religion','category','castename','subcaste','aadhar','mothertongue','placeob','joiningdate','shalarthid',
-        'staffphoto','qualificationdetails','experiencedetails','currentaddress','permanentaddress',
+        'pannumber','retirementdate','staffphoto','qualificationdetails','experiencedetails','currentaddress','permanentaddress',
     ];
 }

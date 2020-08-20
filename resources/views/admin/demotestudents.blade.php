@@ -23,7 +23,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="{{route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Bonafide</li>
+                <li class="active">Demote students</li>
             </ol>
         </section>
         <section class="content">
@@ -31,9 +31,9 @@
                 <div class="col-md-12">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Bulk Issue Bonafide</h3>
+                            <h3 class="box-title"><i class="fa fa-search"></i> Demote students</h3>
                         </div>
-                        <form method="post">
+                        <form action="{{route('demotestudents.add')}}" method="post">
                             <div class="box-body">
                                 @if($message = Session::get('success'))
                                     <span id="result"><div class="alert alert-success">{{$message}}</div></span>
@@ -47,7 +47,7 @@
                                         $classlist = \App\ClassLists::orderBy('classname','asc')->get();
                                         ?>
                                         @foreach($classlist as $class)
-                                            <option value="{{$class->classname}}" @if($class->classname == old('classname')) selected @endif>{{$class->classname}}</option>
+                                            <option value="{{$class->classname}}">{{$class->classname}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -58,7 +58,7 @@
                                 </div>
                                 @if(\Illuminate\Support\Facades\Session::get('registerfor') == 'College')
                                     <div class="form-group col-md-4" id="facultydiv">
-                                        <label for="faculty">Faculty</label>
+                                        <label for="faculty">Faculty</label> <small class="req"> *</small>
                                         <select id="faculty" name="faculty" class="form-control">
                                             <option value="">Select</option>
                                             <option value="Arts">Arts</option>
@@ -67,8 +67,12 @@
                                         </select>
                                     </div>
                                 @endif
+                                <div class="form-group col-md-4">
+                                    <label for="classtopromote">Class to demote</label><small class="req"> *</small>
+                                    <input type="text" id="classtopromote" name="classtopromote" class="form-control" required readonly/>
+                                </div>
                                 <div class="container col-md-12">
-                                    <h3 style="margin: 0 0 10px 0; text-align: center;">Select students to issue Bonafide</h3>
+                                    <h3 style="margin: 0 0 10px 0; text-align: center;">Select students to demote</h3>
                                     <div class="row">
                                         <div class="col-md-5">
                                             <select name="from[]" id="undo_redo" class="form-control" size="10" multiple="multiple"></select>
@@ -90,62 +94,42 @@
                                 </div>
                             </div>
                             <div class="box-footer">
-                                <span class="pull-right">
-                                    @csrf
-                                    <button type="submit" formaction="{{route('bonafide.issue')}}" class="btn btn-primary" onclick="selectall()">Save</button>
-                                    <span style="margin: 5px"></span>
-{{--                                    <button type="submit" formaction="{{route('bonafide.issue.print')}}" class="btn btn-primary" onclick="selectall()">Save and print</button>--}}
-                                </span>
+                                @csrf
+                                <span id="studentcount"></span>
+                                <button type="submit" id="submitbtn" class="btn btn-primary pull-right" onclick="selectall()">Save</button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-12" id="student_division_div" style="display: none;">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Issued Bonafide List</h3>
+                            <h3 class="box-title"><i class="fa fa-search"></i> Student list </h3>
                         </div>
                         <div class="box-body">
-                            <table id="bonafide_table" class="table table-striped table-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Sr. No.</th>
-                                    <th>Reg. No.</th>
-                                    <th>Student name</th>
-                                    <th>Date of issue</th>
-                                    <th>Class (Division)</th>
-                                    <th>Total prints</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php $srno=1;?>
-                                @if(isset($bonafidelist))
-                                    @foreach($bonafidelist as $bonafide)
-                                        <tr>
-                                            <td>{{$srno}}</td>
-                                            <td>{{$bonafide->registerno}}</td>
-                                            <td>{{$bonafide->fname.' '.$bonafide->mname.' '.$bonafide->lname}}</td>
-                                            <td>{{$bonafide->issuedate}}</td>
-                                            <td>{{$bonafide->classname.' ('.$bonafide->division.')'}}</td>
-                                            <td>{{$bonafide->printcount}}</td>
-                                            <td>
-                                                <a href="{{url('/bonafide/view/'.encrypt($bonafide->id))}}" target="_blank"><button class=" btn btn-primary" title="View"><i class="fa fa-eye"></i></button></a>
-{{--                                                <a href="{{url('/bonafide/print/'.encrypt($bonafide->id))}}"><button class=" btn btn-success" title="Print"><i class="fa fa-print"></i></button></a>--}}
-                                                <a href="{{url('/bonafide/delete/'.encrypt($bonafide->id))}}"><button class=" btn btn-danger" title="Delete" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button></a>
-                                            </td>
-                                        </tr>
-                                        <?php $srno++;?>
-                                    @endforeach
-                                @endif
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped" id="student_division_table">
+                                    <thead>
+                                    <tr>
+                                        <th>Register for</th>
+                                        <th>Register no.</th>
+                                        <th>Name</th>
+                                        <th>Gender</th>
+                                        <th>DoB</th>
+                                        <th>AADHAR</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+
     @include('admin.footer')
     <div class="control-sidebar-bg"></div>
 </div>
@@ -154,6 +138,22 @@
 
 <script>
     $('#classname').change(function(){
+        var classname = $('#classname').val();
+        /*if(classname > 1){
+            $('#classtopromote').val(parseInt(classname)-1);
+            $('#sectionname').prop('disabled',false);
+            $('#submitbtn').prop('disabled',false);
+        }*/
+        if(classname == '01' || classname.substr(0,2) == '11'){
+            alert('Can not demote students');
+            $('#sectionname').prop('disabled',true);
+            $('#submitbtn').prop('disabled',true);
+        }
+        else{
+            $('#classtopromote').val((parseInt(classname.substr(0,2))-1));
+            $('#sectionname').prop('disabled',false);
+            $('#submitbtn').prop('disabled',false);
+        }
         $.ajax({
             type:"get",
             url:"{{url('divisionlist')}}?classname=" + $('#classname').val(),
@@ -175,7 +175,7 @@
         }
         $.ajax({
             type:"get",
-            url:"{{url('bonafidestudents')}}?classname=" + $('#classname').val()+'&division='+$('#division').val(),
+            url:"{{url('unissuedlc')}}?classname=" + $('#classname').val()+'&division='+$('#division').val(),
             beforeSend:function(){
                 $("#undo_redo").empty();
                 $("#undo_redo_to").empty();
@@ -187,7 +187,7 @@
                     }
                 }
                 if (data.length === 0){
-                    alert('Student not present');
+                    alert('Student not present or LC already issued');
                 }
             }
         });
@@ -195,7 +195,7 @@
     $('#faculty').change(function(){
         $.ajax({
             type:"get",
-            url:"{{url('collegebonafidestudents')}}?classname=" + $('#classname').val()+'&division='+$('#division').val()+'&faculty='+$('#faculty').val(),
+            url:"{{url('collegeunissuedlc')}}?classname=" + $('#classname').val()+'&division='+$('#division').val()+'&faculty='+$('#faculty').val(),
             beforeSend:function(){
                 $("#undo_redo").empty();
                 $("#undo_redo_to").empty();
@@ -207,33 +207,18 @@
                     }
                 }
                 if (data.length === 0){
-                    alert('Student not present');
+                    alert('Student not present or LC already issued');
                 }
             }
         });
     });
-    $(document).ready(function(){
-        $('#bonafide_table').DataTable({
-            "scrollX"		: true,
-            'paging'		: true,
-            "processing"	: true,
-            'searching'   : true,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false,
-            'aaSorting'     : [],
-        });
-    });
-    $(function () {
-        $('.select2').select2()
-    });
-    function confirmDelete(){
-        return confirm('Are you sure you want to delete?');
-    }
     $(document).ready(function() {
         $('#undo_redo').multiselect();
     });
     function selectall() {
+        if($('#undo_redo_to option').length < 1){
+            return false;
+        }
         $('#undo_redo option').prop('selected', true);
         $('#undo_redo_to option').prop('selected', true);
     }
@@ -273,6 +258,10 @@
     window.setInterval(function(){
         getboxdetails();
     }, 1000);
+
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
 </script>
 </body>
 </html>

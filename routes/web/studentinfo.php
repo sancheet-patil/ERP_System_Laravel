@@ -14,6 +14,7 @@
 Route::group(['middleware' => ['auth','disablemoveback']], function() {
     Route::get('/student/admission', 'Web\Admin\StudentInformationController@student_admission')->name('student.admission');
     Route::post('/student/admission/add', 'Web\Admin\StudentInformationController@student_admission_add')->name('student.admission.add');
+    Route::get('/student/report/{id}', 'Web\Admin\StudentInformationController@student_report')->name('student.report');
     Route::get('/student/view/{id}', 'Web\Admin\StudentInformationController@student_view')->name('student.view');
     Route::get('/student/editadmission/{id}', 'Web\Admin\StudentInformationController@student_editadmission')->name('student.editadmission');
     Route::post('/student/editadmission/edit', 'Web\Admin\StudentInformationController@student_editadmission_edit')->name('student.editadmission.edit');
@@ -30,7 +31,4 @@ Route::group(['middleware' => ['auth','disablemoveback']], function() {
     Route::get('/studentidgenerate/bulk', 'Web\Admin\StudentInformationController@studentidgenerate_bulk')->name('studentidgenerate.bulk');
     Route::post('/studentidgenerate/bulk/post', 'Web\Admin\StudentInformationController@studentidgenerate_bulk_post')->name('studentidgenerate.bulk.post');
     Route::get('/studentid/bulk/print', 'Web\Admin\StudentInformationController@studentid_bulk_print')->name('studentid.bulk.print');
-
-    Route::get('/promotestudents', 'Web\Admin\StudentInformationController@promotestudents')->name('promotestudents');
-    Route::post('/promotestudents/add', 'Web\Admin\StudentInformationController@promotestudents_add')->name('promotestudents.add');
 });

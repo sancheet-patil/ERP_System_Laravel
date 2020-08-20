@@ -16,4 +16,9 @@ Route::group(['middleware' => ['auth','disablemoveback']], function() {
     Route::post('/examination', 'Web\Admin\ExaminationController@examination_post')->name('examination.post');
     Route::get('/examinationmark', 'Web\Admin\ExaminationController@examinationmark')->name('examinationmark');
     Route::post('/examinationmark/submit', 'Web\Admin\ExaminationController@examinationmark_submit')->name('examinationmark.submit');
+
+    Route::get('/promotestudents', 'Web\Admin\ExaminationController@promotestudents')->name('promotestudents');
+    Route::post('/promotestudents/add', 'Web\Admin\ExaminationController@promotestudents_add')->name('promotestudents.add');
+    Route::get('/demotestudents', 'Web\Admin\ExaminationController@demotestudents')->name('demotestudents');
+    Route::post('/demotestudents/add', 'Web\Admin\ExaminationController@demotestudents_add')->name('demotestudents.add');
 });

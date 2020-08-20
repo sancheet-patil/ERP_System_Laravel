@@ -54,10 +54,10 @@
                                             <label for="staffrole">User Role</label><small class="req"> *</small>
                                             <select id="staffrole" name="staffrole" class="form-control select2" required>
                                                 <option value="">Select</option>
-                                                <option value="Admin" @if('Admin' == $staffdetails->staffrole) selected @endif>Admin</option>
-                                                <option value="Operator" @if('Operator' == $staffdetails->staffrole) selected @endif>Operator</option>
-                                                <option value="Teacher" @if('Teacher' == $staffdetails->staffrole) selected @endif>Teacher</option>
-                                                <option value="Other" @if('Other' == $staffdetails->staffrole) selected @endif>Other</option>
+                                                <option value="Admin" @if('Admin' == ucfirst(strtolower($staffdetails->staffrole))) selected @endif>Admin</option>
+                                                <option value="Operator" @if('Operator' == ucfirst(strtolower($staffdetails->staffrole))) selected @endif>Operator</option>
+                                                <option value="Teacher" @if('Teacher' == ucfirst(strtolower($staffdetails->staffrole))) selected @endif>Teacher</option>
+                                                <option value="Other" @if('Other' == ucfirst(strtolower($staffdetails->staffrole))) selected @endif>Other</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-3">
@@ -188,6 +188,14 @@
                                             <label for="shalarthid">Shalarth ID</label>
                                             <input type="text" id="shalarthid" name="shalarthid" class="form-control" value="{{$staffdetails->shalarthid}}"/>
                                         </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="pannumber">Pan number</label> <small class="req"> *</small>
+                                            <input type="text" id="pannumber" name="pannumber" class="form-control" required value="{{$staffdetails->pannumber}}"/>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="retirementdate">Date of Retirement</label>
+                                            <input type="text" id="retirementdate" name="retirementdate" class="form-control" value="{{$staffdetails->retirementdate}}" />
+                                        </div>
                                         <div class="form-group col-md-6">
                                             <label for="qualificationdetails">Qualification details</label>
                                             <textarea name="qualificationdetails" class="form-control">{{$staffdetails->qualificationdetails}} </textarea>
@@ -253,6 +261,14 @@
                                                 <option value="Probation" @if('Probation' == $staffdetails->contracttype) selected @endif>Probation</option>
                                             </select>
                                         </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="seniorscale">Senior scale</label>
+                                            <input type="text" id="seniorscale" name="seniorscale" class="form-control" value="{{$staffdetails->seniorscale}}" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="mostseniorscale">Most senior scale</label>
+                                            <input type="text" id="mostseniorscale" name="mostseniorscale" class="form-control" value="{{$staffdetails->mostseniorscale}}"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -288,6 +304,60 @@
                                         <div class="form-group col-md-4">
                                             <label for="bankmicrcode">Bank MICR code</label>
                                             <input type="text" id="bankmicrcode" name="bankmicrcode" class="form-control" value="{{$staffdetails->bankmicrcode}}"/>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <hr style="border: 1px solid grey;">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="salarytitle">Salary Account Title</label>
+                                            <input type="text" id="salarytitle" name="salarytitle" class="form-control" value="{{$staffdetails->salarytitle}}"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="salaryaccountno">Salary Account No.</label>
+                                            <input type="text" id="salaryaccountno" name="salaryaccountno" class="form-control" value="{{$staffdetails->salaryaccountno}}"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="salaryifsc">Salary IFSC code</label>
+                                            <input type="text" id="salaryifsc" name="salaryifsc" class="form-control" value="{{$staffdetails->salaryifsc}}"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="salarybank">Salary Bank Name</label>
+                                            <input type="text" id="salarybank" name="salarybank" class="form-control" value="{{$staffdetails->salarybank}}"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="salarybranch">Salary Branch Name</label>
+                                            <input type="text" id="salarybranch" name="salarybranch" class="form-control" value="{{$staffdetails->salarybranch}}"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="salarymicr">Salary Bank MICR</label>
+                                            <input type="text" id="salarymicr" name="salarymicr" class="form-control" value="{{$staffdetails->salarymicr}}"/>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <hr style="border: 1px solid grey;">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="pensiontitle">Pension Account Title</label>
+                                            <input type="text" id="pensiontitle" name="pensiontitle" class="form-control" value="{{$staffdetails->pensiontitle}}"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="pensionaccountno">Pension Account No.</label>
+                                            <input type="text" id="pensionaccountno" name="pensionaccountno" class="form-control" value="{{$staffdetails->pensionaccountno}}"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="pensionifsc">Pension IFSC code</label>
+                                            <input type="text" id="pensionifsc" name="pensionifsc" class="form-control" value="{{$staffdetails->pensionifsc}}"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="pensionbank">Pension Bank Name</label>
+                                            <input type="text" id="pensionbank" name="pensionbank" class="form-control" value="{{$staffdetails->pensionbank}}"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="pensionbranch">Pension Branch Name</label>
+                                            <input type="text" id="pensionbranch" name="pensionbranch" class="form-control" value="{{$staffdetails->pensionbranch}}"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="pensionmicr">Pension Bank MICR</label>
+                                            <input type="text" id="pensionmicr" name="pensionmicr" class="form-control" value="{{$staffdetails->pensionmicr}}"/>
                                         </div>
                                     </div>
                                 </div>

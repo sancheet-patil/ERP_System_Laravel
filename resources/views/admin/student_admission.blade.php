@@ -88,7 +88,7 @@
                                             <input type="text" id="registerno" name="registerno" class="form-control" value="{{old('registerno')}}" required />
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label for="classname">Class</label><small class="req"> *</small>
+                                            <label for="classname">Admission Class</label><small class="req"> *</small>
                                             <select id="classname" name="classname" class="form-control select2" required>
                                                 <option value="">Select</option>
                                                 <?php
@@ -134,8 +134,8 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label for="mothertongue">Mother tongue</label>
-                                            <input type="text" id="mothertongue" name="mothertongue" class="form-control" value="{{old('mothertongue')}}"/>
+                                            <label for="mothertongue">Mother tongue</label> <small class="req"> *</small>
+                                            <input type="text" id="mothertongue" name="mothertongue" class="form-control" value="{{old('mothertongue')}}" required/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="religion">Religion</label><small class="req"> *</small>
@@ -293,8 +293,8 @@
                                             <span>Note: Upload only jpg,png files. Max photo size 20kb</span>
                                         </div>
                                         <div class="form-group col-md-3" id="inputphotofile">
-                                            <label for="studentphoto">Student Photo</label>
-                                            <input type="file" id="studentphoto" name="studentphoto" class="form-control no-border" accept="image/*"/>
+                                            <label for="studentphoto">Student Photo</label> <small class="req"> *</small>
+                                            <input type="file" id="studentphoto" name="studentphoto" class="form-control no-border" accept="image/*" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -594,7 +594,12 @@
                                             <td>{{$student->placeob}}</td>
                                             <td>{{$student->mothertongue}}</td>
                                             <td>{{$student->bloodgroup}}</td>
-                                            <td>{{$student->lastschool}}</td>
+                                            <td>
+                                                <?php
+                                                    $lastschool = \App\OtherSchoolLists::where('id',$student->lastschool)->value('schoolname');
+                                                ?>
+                                                {{$lastschool}}
+                                            </td>
                                             <td>{{$student->previouslcno}}</td>
                                             <td>{{$student->previousgrno}}</td>
                                             <td>{{$student->currentaddress}}</td>
@@ -602,6 +607,7 @@
                                             <td>{{$student->bankname}}</td>
                                             <td>{{$student->bankifsccode}}</td>
                                             <td>
+                                                <a href="{{route('student.report',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Print form"><i class="fa fa-print"></i></a>
                                                 <a href="{{route('student.view',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Show"><i class="fa fa-eye"></i></a>
                                                 <a href="{{route('student.editadmission',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></a>
                                                 <a href="{{route('student.delete',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" onclick="return confirmDelete()" title="Delete"><i class="fa fa-trash"></i></a>

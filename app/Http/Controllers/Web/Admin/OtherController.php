@@ -209,6 +209,25 @@ class OtherController extends Controller
         return response()->json($data);
     }
 
+    public function bonafidestudents(Request $request)
+    {
+        $studentlist = StudentDetails::where('academicyear',Session::get('academicyear'))
+            ->where('registerfor',Session::get('registerfor'))->where('classname',$request->classname)
+            ->where('division',$request->division)->orderBy('lname','asc')->get();
+
+        return $studentlist;
+    }
+
+    public function collegebonafidestudents(Request $request)
+    {
+        $studentlist = StudentDetails::where('academicyear',Session::get('academicyear'))
+            ->where('registerfor',Session::get('registerfor'))->where('classname',$request->classname)
+            ->where('division',$request->division)->where('faculty',$request->faculty)
+            ->orderBy('lname','asc')->get();
+
+        return $studentlist;
+    }
+
     public function migrate()
     {
         $users = LeavingCertificateDetails::get();

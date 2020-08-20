@@ -257,6 +257,13 @@ class StudentInformationController extends Controller
         return view(auth()->user()->role.'/student_view')->with('studentdetails',$studentdetails);
     }
 
+    public function student_report($id)
+    {
+        $userid = decrypt($id);
+
+        return $userid;
+    }
+
     public function student_editadmission($id)
     {
         $userid = decrypt($id);
@@ -270,12 +277,22 @@ class StudentInformationController extends Controller
         $divisionlist = explode(',',$classdivision->division);
 
         $castecategory = \App\CasteCategoryList::where('id',$studentdetails->subcaste)->first();
-        $castelist = CasteCategoryList::where('religion',$castecategory->religion)->select('castename')->distinct()->get();
-        $subcastelist = CasteCategoryList::where('religion',$castecategory->religion)->where('castename',$castecategory->castename)->orderBy('subcaste','asc')->get();
-        $studentdetails->religion = $castecategory->religion;
-        $studentdetails->category = $castecategory->category;
-        $studentdetails->castename = $castecategory->castename;
-        $studentdetails->subcaste = $castecategory->id;
+        if($castecategory){
+            $castelist = CasteCategoryList::where('religion',$castecategory->religion)->select('castename')->distinct()->get();
+            $subcastelist = CasteCategoryList::where('religion',$castecategory->religion)->where('castename',$castecategory->castename)->orderBy('subcaste','asc')->get();
+            $studentdetails->religion = $castecategory->religion;
+            $studentdetails->category = $castecategory->category;
+            $studentdetails->castename = $castecategory->castename;
+            $studentdetails->subcaste = $castecategory->id;
+        }
+        else{
+            $castelist = [];
+            $subcastelist = [];
+            $studentdetails->religion = '';
+            $studentdetails->category = '';
+            $studentdetails->castename = '';
+            $studentdetails->subcaste = '';
+        }
 
         return view(auth()->user()->role.'/student_editadmission')->with('studentdetails',$studentdetails)
             ->with('divisionlist',$divisionlist)->with('castelist',$castelist)->with('subcastelist',$subcastelist);
@@ -474,12 +491,22 @@ class StudentInformationController extends Controller
         $divisionlist = explode(',',$classdivision->division);
 
         $castecategory = \App\CasteCategoryList::where('id',$studentdetails->subcaste)->first();
-        $castelist = CasteCategoryList::where('religion',$castecategory->religion)->select('castename')->distinct()->get();
-        $subcastelist = CasteCategoryList::where('religion',$castecategory->religion)->where('castename',$castecategory->castename)->orderBy('subcaste','asc')->get();
-        $studentdetails->religion = $castecategory->religion;
-        $studentdetails->category = $castecategory->category;
-        $studentdetails->castename = $castecategory->castename;
-        $studentdetails->subcaste = $castecategory->id;
+        if($castecategory){
+            $castelist = CasteCategoryList::where('religion',$castecategory->religion)->select('castename')->distinct()->get();
+            $subcastelist = CasteCategoryList::where('religion',$castecategory->religion)->where('castename',$castecategory->castename)->orderBy('subcaste','asc')->get();
+            $studentdetails->religion = $castecategory->religion;
+            $studentdetails->category = $castecategory->category;
+            $studentdetails->castename = $castecategory->castename;
+            $studentdetails->subcaste = $castecategory->id;
+        }
+        else{
+            $castelist = [];
+            $subcastelist = [];
+            $studentdetails->religion = '';
+            $studentdetails->category = '';
+            $studentdetails->castename = '';
+            $studentdetails->subcaste = '';
+        }
 
         return view(auth()->user()->role.'/student_editsearch')->with('studentdetails',$studentdetails)
             ->with('divisionlist',$divisionlist)->with('castelist',$castelist)->with('subcastelist',$subcastelist);
@@ -706,32 +733,6 @@ class StudentInformationController extends Controller
     {
         $data = unserialize($request->cookie('details'));
         return view('prints/studentid')->with('data',$data);
-    }
-
-    public function promotestudents()
-    {
-        return view(auth()->user()->role.'/promotestudents');
-    }
-
-    public function promotestudents_add(Request $request)
-    {
-        foreach($request->to as $userid)
-        {
-            if(strlen(strlen($request->classtopromote) == 1)) {
-                $updateData = [
-                    'academicyear' => (substr(Session::get('academicyear'), 0, 4) + 1) . '-' . (substr(Session::get('academicyear'), 5, 4) + 1),
-                    'classname' => '0'.$request->classtopromote,
-                ];
-            }
-            else{
-                $updateData = [
-                    'academicyear' => (substr(Session::get('academicyear'), 0, 4) + 1) . '-' . (substr(Session::get('academicyear'), 5, 4) + 1),
-                    'classname' => $request->classtopromote,
-                ];
-            }
-            StudentDetails::where('userid',$userid)->update($updateData);
-        }
-        return back()->with('success','Students promoted successfully');
     }
 
 }

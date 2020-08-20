@@ -63,7 +63,6 @@
                     <li><a href="{{route('bulkdivisionassign')}}"><i class="fa fa-angle-double-right"></i>Bulk Division Assign</a></li>
                     <li><a href="{{route('studentidgenerate')}}"><i class="fa fa-angle-double-right"></i>Student ID Generate</a></li>
 {{--                    <li><a href="{{route('studentscholarshipapply')}}"><i class="fa fa-angle-double-right"></i>Student Scholarship Apply</a></li>--}}
-                    <li><a href="{{route('promotestudents')}}"><i class="fa fa-angle-double-right"></i>Promote Students</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -100,6 +99,8 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('examination')}}"><i class="fa fa-angle-double-right"></i>Examination marks</a></li>
+                    <li><a href="{{route('promotestudents')}}"><i class="fa fa-angle-double-right"></i>Promote Students</a></li>
+                    <li><a href="{{route('demotestudents')}}"><i class="fa fa-angle-double-right"></i>Demote Students</a></li>
                 </ul>
             </li>
             <li class="treeview">

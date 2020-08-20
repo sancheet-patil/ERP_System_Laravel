@@ -79,7 +79,12 @@
                                             <td>{{$srno}}</td>
                                             <td>{{$staff->staffid}}</td>
                                             <td>{{$staff->staffrole}}</td>
-                                            <td>{{$staff->designation}}</td>
+                                            <td>
+                                                <?php
+                                                    $designation = \App\DesignationLists::where('id',$staff->designation)->value('designation');
+                                                ?>
+                                                {{$designation}}
+                                            </td>
                                             <td>{{$staff->fname.' '.$staff->mname.' '.$staff->lname}}</td>
                                             <td>{{$staff->mname}}</td>
                                             <td>{{$staff->mothername}}</td>

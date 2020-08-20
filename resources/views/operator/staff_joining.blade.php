@@ -172,6 +172,14 @@
                                             <label for="shalarthid">Shalarth ID</label>
                                             <input type="text" id="shalarthid" name="shalarthid" class="form-control" />
                                         </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="pannumber">Pan number</label> <small class="req"> *</small>
+                                            <input type="text" id="pannumber" name="pannumber" class="form-control" required />
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="retirementdate">Date of Retirement</label>
+                                            <input type="text" id="retirementdate" name="retirementdate" class="form-control" />
+                                        </div>
                                         <div class="form-group col-md-6">
                                             <label for="qualificationdetails">Qualification details</label>
                                             <textarea name="qualificationdetails" class="form-control"></textarea>
@@ -186,8 +194,8 @@
                                             <span>Note: Upload only jpg,png files. Max photo size 20kb</span>
                                         </div>
                                         <div class="form-group col-md-3" id="inputphotofile">
-                                            <label for="staffphoto">Staff Photo</label>
-                                            <input type="file" id="staffphoto" name="staffphoto" class="form-control no-border" accept="image/*"/>
+                                            <label for="staffphoto">Staff Photo</label> <small class="req"> *</small>
+                                            <input type="file" id="staffphoto" name="staffphoto" class="form-control no-border" accept="image/*" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -237,6 +245,14 @@
                                                 <option value="Probation">Probation</option>
                                             </select>
                                         </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="seniorscale">Senior scale</label>
+                                            <input type="text" id="seniorscale" name="seniorscale" class="form-control"  />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="mostseniorscale">Most senior scale</label>
+                                            <input type="text" id="mostseniorscale" name="mostseniorscale" class="form-control" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -272,6 +288,60 @@
                                         <div class="form-group col-md-4">
                                             <label for="bankmicrcode">Bank MICR code</label>
                                             <input type="text" id="bankmicrcode" name="bankmicrcode" class="form-control" />
+                                        </div>
+                                        <div class="col-md-12">
+                                            <hr style="border: 1px solid grey;">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="salarytitle">Salary Account Title</label>
+                                            <input type="text" id="salarytitle" name="salarytitle" class="form-control" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="salaryaccountno">Salary Account No.</label>
+                                            <input type="text" id="salaryaccountno" name="salaryaccountno" class="form-control" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="salaryifsc">Salary IFSC code</label>
+                                            <input type="text" id="salaryifsc" name="salaryifsc" class="form-control" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="salarybank">Salary Bank Name</label>
+                                            <input type="text" id="salarybank" name="salarybank" class="form-control" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="salarybranch">Salary Branch Name</label>
+                                            <input type="text" id="salarybranch" name="salarybranch" class="form-control" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="salarymicr">Salary Bank MICR</label>
+                                            <input type="text" id="salarymicr" name="salarymicr" class="form-control" />
+                                        </div>
+                                        <div class="col-md-12">
+                                            <hr style="border: 1px solid grey;">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="pensiontitle">Pension Account Title</label>
+                                            <input type="text" id="pensiontitle" name="pensiontitle" class="form-control" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="pensionaccountno">Pension Account No.</label>
+                                            <input type="text" id="pensionaccountno" name="pensionaccountno" class="form-control" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="pensionifsc">Pension IFSC code</label>
+                                            <input type="text" id="pensionifsc" name="pensionifsc" class="form-control" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="pensionbank">Pension Bank Name</label>
+                                            <input type="text" id="pensionbank" name="pensionbank" class="form-control" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="pensionbranch">Pension Branch Name</label>
+                                            <input type="text" id="pensionbranch" name="pensionbranch" class="form-control" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="pensionmicr">Pension Bank MICR</label>
+                                            <input type="text" id="pensionmicr" name="pensionmicr" class="form-control" />
                                         </div>
                                     </div>
                                 </div>
@@ -409,7 +479,12 @@
                                             <td>{{$srno}}</td>
                                             <td>{{$staff->staffid}}</td>
                                             <td>{{$staff->staffrole}}</td>
-                                            <td>{{$staff->designation}}</td>
+                                            <td>
+                                                <?php
+                                                $designation = \App\DesignationLists::where('id',$staff->designation)->value('designation');
+                                                ?>
+                                                {{$designation}}
+                                            </td>
                                             <td>{{$staff->fname.' '.$staff->mname.' '.$staff->lname}}</td>
                                             <td>{{$staff->mname}}</td>
                                             <td>{{$staff->mothername}}</td>

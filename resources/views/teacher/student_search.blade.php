@@ -107,7 +107,12 @@
                                             <td>{{$student->placeob}}</td>
                                             <td>{{$student->mothertongue}}</td>
                                             <td>{{$student->bloodgroup}}</td>
-                                            <td>{{$student->lastschool}}</td>
+                                            <td>
+                                                <?php
+                                                $lastschool = \App\OtherSchoolLists::where('id',$student->lastschool)->value('schoolname');
+                                                ?>
+                                                {{$lastschool}}
+                                            </td>
                                             <td>{{$student->previouslcno}}</td>
                                             <td>{{$student->previousgrno}}</td>
                                             <td>{{$student->currentaddress}}</td>

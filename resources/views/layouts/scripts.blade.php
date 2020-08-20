@@ -29,6 +29,7 @@
         $('#date').inputmask('dd-mm-yyyy', { 'placeholder': 'dd-mm-yyyy' })
         $('#leavingdate').inputmask('dd-mm-yyyy', { 'placeholder': 'dd-mm-yyyy' })
         $('#dateofpassing').inputmask('dd-mm-yyyy', { 'placeholder': 'dd-mm-yyyy' })
+        $('#retirementdate').inputmask('dd-mm-yyyy', { 'placeholder': 'dd-mm-yyyy' })
     });
     $('#mobile').keypress(function (e) {
         var length = jQuery(this).val().length;

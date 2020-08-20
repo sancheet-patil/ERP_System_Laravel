@@ -38,6 +38,8 @@ class CreateStaffDetailsTable extends Migration
             $table->string('placeob')->nullable();
             $table->string('joiningdate')->nullable();
             $table->string('shalarthid')->nullable();
+            $table->string('pannumber')->nullable();
+            $table->string('retirementdate')->nullable();
             $table->string('staffphoto')->nullable();
             $table->string('qualificationdetails')->nullable();
             $table->string('experiencedetails')->nullable();

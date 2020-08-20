@@ -111,21 +111,26 @@
                                                             <td>Email</td>
                                                             <td>{{$studentdetails->email}}</td>
                                                         </tr>
+                                                        <?php
+                                                        $castecategory = \App\CasteCategoryList::where('id',$studentdetails->subcaste)->first();
+                                                        $religion = \App\ReligionLists::where('id',$castecategory['religion'])->value('religion');
+                                                        $category = \App\CategoryLists::where('id',$castecategory['category'])->value('category');
+                                                        ?>
                                                         <tr>
                                                             <td>Category</td>
-                                                            <td>{{$studentdetails->category}}</td>
+                                                            <td>{{$category}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Religion</td>
-                                                            <td>{{$studentdetails->religion}}</td>
+                                                            <td>{{$religion}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Caste</td>
-                                                            <td>{{$studentdetails->castename}}</td>
+                                                            <td>{{$castecategory['castename']}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Subcaste</td>
-                                                            <td>{{$studentdetails->subcaste}}</td>
+                                                            <td>{{$castecategory['subcaste']}}</td>
                                                         </tr>
                                                     </table>
                                                 </div>

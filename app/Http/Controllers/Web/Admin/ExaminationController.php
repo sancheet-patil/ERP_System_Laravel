@@ -80,4 +80,55 @@ class ExaminationController extends Controller
             ->with('divisionlist',$divisionlist)->with('semester',$request->semester[0])->with('success','Mark assigned to student');
     }
 
+    public function promotestudents()
+    {
+        return view(auth()->user()->role.'/promotestudents');
+    }
+
+    public function promotestudents_add(Request $request)
+    {
+        foreach($request->to as $userid)
+        {
+            if(strlen(strlen($request->classtopromote) == 1)) {
+                $updateData = [
+                    'academicyear' => (substr(Session::get('academicyear'), 0, 4) + 1) . '-' . (substr(Session::get('academicyear'), 5, 4) + 1),
+                    'classname' => '0'.$request->classtopromote,
+                ];
+            }
+            else{
+                $updateData = [
+                    'academicyear' => (substr(Session::get('academicyear'), 0, 4) + 1) . '-' . (substr(Session::get('academicyear'), 5, 4) + 1),
+                    'classname' => $request->classtopromote,
+                ];
+            }
+            StudentDetails::where('userid',$userid)->update($updateData);
+        }
+        return back()->with('success','Students promoted successfully');
+    }
+
+    public function demotestudents()
+    {
+        return view(auth()->user()->role.'/demotestudents');
+    }
+
+    public function demotestudents_add(Request $request)
+    {
+        foreach($request->to as $userid)
+        {
+            if(strlen(strlen($request->classtopromote) == 1)) {
+                $updateData = [
+                    'academicyear' => (substr(Session::get('academicyear'), 0, 4) - 1) . '-' . (substr(Session::get('academicyear'), 5, 4) - 1),
+                    'classname' => '0'.$request->classtopromote,
+                ];
+            }
+            else{
+                $updateData = [
+                    'academicyear' => (substr(Session::get('academicyear'), 0, 4) - 1) . '-' . (substr(Session::get('academicyear'), 5, 4) - 1),
+                    'classname' => $request->classtopromote,
+                ];
+            }
+            StudentDetails::where('userid',$userid)->update($updateData);
+        }
+        return back()->with('success','Students demoted successfully');
+    }
 }

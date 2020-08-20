@@ -19,9 +19,9 @@ class HumanResourceController extends Controller
     {
         $stafflist = DB::table('staff_details')
             ->join('staff_other_details','staff_details.userid','=','staff_other_details.userid')
-            ->join('caste_category_lists','staff_details.subcaste','=','caste_category_lists.id')
-            ->join('religion_lists','caste_category_lists.religion','=','religion_lists.id')
-            ->join('category_lists','caste_category_lists.category','=','category_lists.id')
+//            ->join('caste_category_lists','staff_details.subcaste','=','caste_category_lists.id')
+//            ->join('religion_lists','caste_category_lists.religion','=','religion_lists.id')
+//            ->join('category_lists','caste_category_lists.category','=','category_lists.id')
             ->orderBy('staff_details.id','desc')->get();
         return view(auth()->user()->role.'/staff_joining')->with('stafflist',$stafflist);
     }
@@ -57,6 +57,8 @@ class HumanResourceController extends Controller
         $staffDetails['placeob']=$request->placeob;
         $staffDetails['joiningdate']=$request->joiningdate;
         $staffDetails['shalarthid']=$request->shalarthid;
+        $staffDetails['pannumber']=$request->pannumber;
+        $staffDetails['retirementdate']=$request->retirementdate;
         $staffDetails['qualificationdetails']=$request->qualificationdetails;
         $staffDetails['experiencedetails']=$request->experiencedetails;
         $staffDetails['currentaddress']=$request->currentaddress;
@@ -83,12 +85,26 @@ class HumanResourceController extends Controller
         $staffOtherDetails['epfno']=$request->epfno;
         $staffOtherDetails['basicsalary']=$request->basicsalary;
         $staffOtherDetails['contracttype']=$request->contracttype;
+        $staffOtherDetails['seniorscale']=$request->seniorscale;
+        $staffOtherDetails['mostseniorscale']=$request->mostseniorscale;
         $staffOtherDetails['accounttitle'] = $request->accounttitle;
         $staffOtherDetails['accountno'] = $request->accountno;
         $staffOtherDetails['bankifsccode'] = $request->bankifsccode;
         $staffOtherDetails['bankname'] = $request->bankname;
         $staffOtherDetails['bankbranchname'] = $request->bankbranchname;
         $staffOtherDetails['bankmicrcode'] = $request->bankmicrcode;
+        $staffOtherDetails['salarytitle'] = $request->salarytitle;
+        $staffOtherDetails['salaryaccountno'] = $request->salaryaccountno;
+        $staffOtherDetails['salaryifsc'] = $request->salaryifsc;
+        $staffOtherDetails['salarybank'] = $request->salarybank;
+        $staffOtherDetails['salarybranch'] = $request->salarybranch;
+        $staffOtherDetails['salarymicr'] = $request->salarymicr;
+        $staffOtherDetails['pensiontitle'] = $request->pensiontitle;
+        $staffOtherDetails['pensionaccountno'] = $request->pensionaccountno;
+        $staffOtherDetails['pensionifsc'] = $request->pensionifsc;
+        $staffOtherDetails['pensionbank'] = $request->pensionbank;
+        $staffOtherDetails['pensionbranch'] = $request->pensionbranch;
+        $staffOtherDetails['pensionmicr'] = $request->pensionmicr;
         if($request->file('document1file'))
         {
             $file1 = $request->file('document1file');
@@ -280,6 +296,8 @@ class HumanResourceController extends Controller
         $staffDetails['placeob']=$request->placeob;
         $staffDetails['joiningdate']=$request->joiningdate;
         $staffDetails['shalarthid']=$request->shalarthid;
+        $staffDetails['pannumber']=$request->pannumber;
+        $staffDetails['retirementdate']=$request->retirementdate;
         $staffDetails['qualificationdetails']=$request->qualificationdetails;
         $staffDetails['experiencedetails']=$request->experiencedetails;
         $staffDetails['currentaddress']=$request->currentaddress;
@@ -301,12 +319,26 @@ class HumanResourceController extends Controller
         $staffOtherDetails['epfno']=$request->epfno;
         $staffOtherDetails['basicsalary']=$request->basicsalary;
         $staffOtherDetails['contracttype']=$request->contracttype;
+        $staffOtherDetails['seniorscale']=$request->seniorscale;
+        $staffOtherDetails['mostseniorscale']=$request->mostseniorscale;
         $staffOtherDetails['accounttitle'] = $request->accounttitle;
         $staffOtherDetails['accountno'] = $request->accountno;
         $staffOtherDetails['bankifsccode'] = $request->bankifsccode;
         $staffOtherDetails['bankname'] = $request->bankname;
         $staffOtherDetails['bankbranchname'] = $request->bankbranchname;
         $staffOtherDetails['bankmicrcode'] = $request->bankmicrcode;
+        $staffOtherDetails['salarytitle'] = $request->salarytitle;
+        $staffOtherDetails['salaryaccountno'] = $request->salaryaccountno;
+        $staffOtherDetails['salaryifsc'] = $request->salaryifsc;
+        $staffOtherDetails['salarybank'] = $request->salarybank;
+        $staffOtherDetails['salarybranch'] = $request->salarybranch;
+        $staffOtherDetails['salarymicr'] = $request->salarymicr;
+        $staffOtherDetails['pensiontitle'] = $request->pensiontitle;
+        $staffOtherDetails['pensionaccountno'] = $request->pensionaccountno;
+        $staffOtherDetails['pensionifsc'] = $request->pensionifsc;
+        $staffOtherDetails['pensionbank'] = $request->pensionbank;
+        $staffOtherDetails['pensionbranch'] = $request->pensionbranch;
+        $staffOtherDetails['pensionmicr'] = $request->pensionmicr;
         if($request->file('document1file'))
         {
             $file1 = $request->file('document1file');
@@ -401,9 +433,9 @@ class HumanResourceController extends Controller
     {
         $stafflist = DB::table('staff_details')
             ->join('staff_other_details','staff_details.userid','=','staff_other_details.userid')
-            ->join('caste_category_lists','staff_details.subcaste','=','caste_category_lists.id')
-            ->join('religion_lists','caste_category_lists.religion','=','religion_lists.id')
-            ->join('category_lists','caste_category_lists.category','=','category_lists.id')
+//            ->join('caste_category_lists','staff_details.subcaste','=','caste_category_lists.id')
+//            ->join('religion_lists','caste_category_lists.religion','=','religion_lists.id')
+//            ->join('category_lists','caste_category_lists.category','=','category_lists.id')
             ->orderBy('staff_details.id','desc')->get();
         return view(auth()->user()->role.'/staff_search')->with('stafflist',$stafflist);
     }
@@ -455,6 +487,8 @@ class HumanResourceController extends Controller
         $staffDetails['placeob']=$request->placeob;
         $staffDetails['joiningdate']=$request->joiningdate;
         $staffDetails['shalarthid']=$request->shalarthid;
+        $staffDetails['pannumber']=$request->pannumber;
+        $staffDetails['retirementdate']=$request->retirementdate;
         $staffDetails['qualificationdetails']=$request->qualificationdetails;
         $staffDetails['experiencedetails']=$request->experiencedetails;
         $staffDetails['currentaddress']=$request->currentaddress;
@@ -476,12 +510,26 @@ class HumanResourceController extends Controller
         $staffOtherDetails['epfno']=$request->epfno;
         $staffOtherDetails['basicsalary']=$request->basicsalary;
         $staffOtherDetails['contracttype']=$request->contracttype;
+        $staffOtherDetails['seniorscale']=$request->seniorscale;
+        $staffOtherDetails['mostseniorscale']=$request->mostseniorscale;
         $staffOtherDetails['accounttitle'] = $request->accounttitle;
         $staffOtherDetails['accountno'] = $request->accountno;
         $staffOtherDetails['bankifsccode'] = $request->bankifsccode;
         $staffOtherDetails['bankname'] = $request->bankname;
         $staffOtherDetails['bankbranchname'] = $request->bankbranchname;
         $staffOtherDetails['bankmicrcode'] = $request->bankmicrcode;
+        $staffOtherDetails['salarytitle'] = $request->salarytitle;
+        $staffOtherDetails['salaryaccountno'] = $request->salaryaccountno;
+        $staffOtherDetails['salaryifsc'] = $request->salaryifsc;
+        $staffOtherDetails['salarybank'] = $request->salarybank;
+        $staffOtherDetails['salarybranch'] = $request->salarybranch;
+        $staffOtherDetails['salarymicr'] = $request->salarymicr;
+        $staffOtherDetails['pensiontitle'] = $request->pensiontitle;
+        $staffOtherDetails['pensionaccountno'] = $request->pensionaccountno;
+        $staffOtherDetails['pensionifsc'] = $request->pensionifsc;
+        $staffOtherDetails['pensionbank'] = $request->pensionbank;
+        $staffOtherDetails['pensionbranch'] = $request->pensionbranch;
+        $staffOtherDetails['pensionmicr'] = $request->pensionmicr;
         if($request->file('document1file'))
         {
             $file1 = $request->file('document1file');
