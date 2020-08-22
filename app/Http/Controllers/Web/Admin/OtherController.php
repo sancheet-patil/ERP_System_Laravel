@@ -6,6 +6,7 @@ use App\CasteCategoryList;
 use App\CategoryLists;
 use App\ClassLists;
 use App\ClassSubjectDetails;
+use App\ClassTeacherDetails;
 use App\Http\Middleware\Student;
 use App\LeavingCertificateDetails;
 use App\OtherSchoolLists;
@@ -14,6 +15,7 @@ use App\StudentDetails;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -228,12 +230,68 @@ class OtherController extends Controller
         return $studentlist;
     }
 
+    public function isclassteacher(Request $request)
+    {
+        $classteacher = ClassTeacherDetails::where('academicyear',Session::get('academicyear'))
+            ->where('classname',$request->classname)->where('division',$request->division)->value('teacherid');
+
+        if($classteacher == Auth::user()->userid)
+        {
+            return 'true';
+        }
+        return 'false';
+    }
+
     public function migrate()
     {
-        $users = LeavingCertificateDetails::get();
+        $users = StudentDetails::where('academicyear','2019-2020')->where('registerfor','School')->get();
         foreach ($users as $user)
         {
-            LeavingCertificateDetails::where('id',$user->id)->update(['printcount' => '1']);
+            switch(substr($user->admission_date,6,4)){
+                case '2013':{
+                    $update=[
+                        'admission_class' => '04'
+                    ];
+                    break;
+                }
+                case '2014':{
+                    $update=[
+                        'admission_class' => '05'
+                    ];
+                    break;
+                }
+                case '2015':{
+                    $update=[
+                        'admission_class' => '06'
+                    ];
+                    break;
+                }
+                case '2016':{
+                    $update=[
+                        'admission_class' => '07'
+                    ];
+                    break;
+                }
+                case '2017':{
+                    $update=[
+                        'admission_class' => '08'
+                    ];
+                    break;
+                }
+                case '2018':{
+                    $update=[
+                        'admission_class' => '09'
+                    ];
+                    break;
+                }
+                case '2019':{
+                    $update=[
+                        'admission_class' => '10'
+                    ];
+                    break;
+                }
+            }
+            StudentDetails::where('id',$user->id)->update($update);
         }
 
         return $users->count();

@@ -81,7 +81,6 @@
                                     <th>Available for</th>
                                     <th>Description</th>
                                     <th>File</th>
-                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -100,9 +99,6 @@
                                                 @else
                                                     File not present
                                                 @endif
-                                            </td>
-                                            <td>
-                                                <a href="{{url('/circular/delete/'.encrypt($content->id))}}"><button class=" btn btn-warning" title="Delete content" onclick="return confirmDelete()"><i class="fa fa-trash"></i> Delete</button></a>
                                             </td>
                                         </tr>
                                     @endforeach

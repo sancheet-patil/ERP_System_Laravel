@@ -23,7 +23,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="{{route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Bulk division assign</li>
+                <li class="active">Demote students</li>
             </ol>
         </section>
         <section class="content">
@@ -31,9 +31,9 @@
                 <div class="col-md-12">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title"><i class="fa fa-search"></i> Bulk Division Assign</h3>
+                            <h3 class="box-title"><i class="fa fa-search"></i> Demote students</h3>
                         </div>
-                        <form action="{{route('bulkdivisionassign.add')}}" method="post">
+                        <form action="{{route('demotestudents.add')}}" method="post">
                             <div class="box-body">
                                 @if($message = Session::get('success'))
                                     <span id="result"><div class="alert alert-success">{{$message}}</div></span>
@@ -47,8 +47,13 @@
                                         $classlist = \App\ClassLists::orderBy('classname','asc')->get();
                                         ?>
                                         @foreach($classlist as $class)
-                                            <option value="{{$class->classname}}" @if($class->classname == old('classname')) selected @endif>{{$class->classname}}</option>
+                                            <option value="{{$class->classname}}">{{$class->classname}}</option>
                                         @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="division">Division</label><small class="req"> *</small>
+                                    <select id="division" name="division" class="form-control select2" required>
                                     </select>
                                 </div>
                                 @if(\Illuminate\Support\Facades\Session::get('registerfor') == 'College')
@@ -63,12 +68,11 @@
                                     </div>
                                 @endif
                                 <div class="form-group col-md-4">
-                                    <label for="division">Add students in Division</label><small class="req"> *</small>
-                                    <select id="division" name="division" class="form-control select2" required>
-                                    </select>
+                                    <label for="classtopromote">Class to demote</label><small class="req"> *</small>
+                                    <input type="text" id="classtopromote" name="classtopromote" class="form-control" required readonly/>
                                 </div>
                                 <div class="container col-md-12">
-                                    <h3 style="margin: 0 0 10px 0; text-align: center;">Select students for division</h3>
+                                    <h3 style="margin: 0 0 10px 0; text-align: center;">Select students to demote</h3>
                                     <div class="row">
                                         <div class="col-md-5">
                                             <select name="from[]" id="undo_redo" class="form-control" size="10" multiple="multiple"></select>
@@ -91,7 +95,8 @@
                             </div>
                             <div class="box-footer">
                                 @csrf
-                                <button type="submit" id="btnsubmit" class="btn btn-primary pull-right" onclick="selectall()">Save</button>
+                                <span id="studentcount"></span>
+                                <button type="submit" id="submitbtn" class="btn btn-primary pull-right" onclick="selectall()">Save</button>
                             </div>
                         </form>
                     </div>
@@ -134,9 +139,24 @@
 <script>
     $('#classname').change(function(){
         var classname = $('#classname').val();
+        /*if(classname > 1){
+            $('#classtopromote').val(parseInt(classname)-1);
+            $('#sectionname').prop('disabled',false);
+            $('#submitbtn').prop('disabled',false);
+        }*/
+        if(classname == '01' || classname.substr(0,2) == '11'){
+            alert('Can not demote students');
+            $('#sectionname').prop('disabled',true);
+            $('#submitbtn').prop('disabled',true);
+        }
+        else{
+            $('#classtopromote').val((parseInt(classname.substr(0,2))-1));
+            $('#sectionname').prop('disabled',false);
+            $('#submitbtn').prop('disabled',false);
+        }
         $.ajax({
             type:"get",
-            url:"{{url('divisionlist')}}?classname=" + classname,
+            url:"{{url('divisionlist')}}?classname=" + $('#classname').val(),
             beforeSend:function(){
                 $("#division").empty().append('<option value="">Select</option>');
             },
@@ -148,59 +168,7 @@
                 }
             }
         });
-        if(classname > '10'){
-            $.ajax({
-                type:"get",
-                url:"{{url('undividedcollegestudents')}}?classname=" + classname+'&faculty='+$('#faculty').val(),
-                beforeSend:function(){
-                    $("#undo_redo").empty();
-                    $("#undo_redo_to").empty();
-                },
-                success:function(data){
-                    if(data){
-                        var boys=0;
-                        for(var i=0;i<data.length;i++){
-                            $("#undo_redo").append('<option value="'+data[i].userid+'" data-gender="'+data[i].gender+'">'+data[i].lname+' '+data[i].fname+' '+data[i].mname+'</option>');
-                            if(data[i].gender === 'Male'){
-                                boys+=1;
-                            }
-                        }
-                        var printdata = "Total students in box: <b>"+data.length+"</b>, Boys: <b>"+boys+"</b>, Girls: <b>"+(data.length - boys)+"</b>";
-                        /*$('#studentcount').html(printdata);*/
-                    }
-                    if (data.length === 0){
-                        alert('Student not present.');
-                    }
-                }
-            });
-            return;
-        }
-        $.ajax({
-            type:"get",
-            url:"{{url('undividedstudents')}}?classname=" + classname,
-            beforeSend:function(){
-                $("#undo_redo").empty();
-                $("#undo_redo_to").empty();
-            },
-            success:function(data){
-                if(data){
-                    var boys=0;
-                    for(var i=0;i<data.length;i++){
-                        $("#undo_redo").append('<option value="'+data[i].userid+'" data-gender="'+data[i].gender+'">'+data[i].lname+' '+data[i].fname+' '+data[i].mname+'</option>');
-                        if(data[i].gender === 'Male'){
-                            boys+=1;
-                        }
-                    }
-                    var printdata = "Total students in box: <b>"+data.length+"</b>, Boys: <b>"+boys+"</b>, Girls: <b>"+(data.length - boys)+"</b>";
-                    /*$('#studentcount').html(printdata);*/
-                }
-                if (data.length === 0){
-                    alert('Student not present.');
-                }
-            }
-        });
     });
-
     $('#division').change(function(){
         $.ajax({
             type:"get",
@@ -209,72 +177,58 @@
             },
             success:function(data){
                 if(data === 'true'){
-                    $('#btnsubmit').prop('disabled',false);
+                    $('#submitbtn').prop('disabled',false);
                 }
                 else {
-                    $('#btnsubmit').prop('disabled',true);
+                    $('#submitbtn').prop('disabled',true);
                 }
             }
         });
-        if(classname > '10'){
-            $.ajax({
-                type:"get",
-                url:"{{url('dividedcollegestudents')}}?classname=" + $('#classname').val()+'&division='+$('#division').val()+'&faculty='+$('#faculty').val(),
-                beforeSend:function(){
-                },
-                success:function(data){
-                    if(data){
-                        totaldivisions = data.length;
-                        html = '';
-                        for (var i=0; i<data.length ; i++)
-                        {
-                            html += '<tr>';
-                            html += '<td>'+data[i].registerfor+'</td>';
-                            html += '<td>'+data[i].registerno+'</td>';
-                            html += '<td>'+data[i].fname+' '+data[i].mname+' '+data[i].lname+'</td>';
-                            html += '<td>'+data[i].gender+'</td>';
-                            html += '<td>'+data[i].dob+'</td>';
-                            html += '<td>'+data[i].aadhar+'</td>';
-                            html += '</tr>';
-                        }
-                        $('#student_division_table tbody').html(html);
-                        document.getElementById('student_division_div').style.display = "block";
-                    }
-                }
-            });
+        if($('#classname').val() > '10'){
             return;
         }
         $.ajax({
             type:"get",
-            url:"{{url('dividedstudents')}}?classname=" + $('#classname').val()+'&division='+$('#division').val(),
+            url:"{{url('unissuedlc')}}?classname=" + $('#classname').val()+'&division='+$('#division').val(),
             beforeSend:function(){
+                $("#undo_redo").empty();
+                $("#undo_redo_to").empty();
             },
             success:function(data){
                 if(data){
-                    totaldivisions = data.length;
-                    html = '';
-                    for (var i=0; i<data.length ; i++)
-                    {
-                        html += '<tr>';
-                        html += '<td>'+data[i].registerfor+'</td>';
-                        html += '<td>'+data[i].registerno+'</td>';
-                        html += '<td>'+data[i].fname+' '+data[i].mname+' '+data[i].lname+'</td>';
-                        html += '<td>'+data[i].gender+'</td>';
-                        html += '<td>'+data[i].dob+'</td>';
-                        html += '<td>'+data[i].aadhar+'</td>';
-                        html += '</tr>';
+                    for(var i=0;i<data.length;i++){
+                        $("#undo_redo").append('<option value="'+data[i].userid+'" data-gender="'+data[i].gender+'">'+data[i].lname+' '+data[i].fname+' '+data[i].mname+'</option>');
                     }
-                    $('#student_division_table tbody').html(html);
-                    document.getElementById('student_division_div').style.display = "block";
+                }
+                if (data.length === 0){
+                    alert('Student not present or LC already issued');
                 }
             }
         });
     });
-
+    $('#faculty').change(function(){
+        $.ajax({
+            type:"get",
+            url:"{{url('collegeunissuedlc')}}?classname=" + $('#classname').val()+'&division='+$('#division').val()+'&faculty='+$('#faculty').val(),
+            beforeSend:function(){
+                $("#undo_redo").empty();
+                $("#undo_redo_to").empty();
+            },
+            success:function(data){
+                if(data){
+                    for(var i=0;i<data.length;i++){
+                        $("#undo_redo").append('<option value="'+data[i].userid+'" data-gender="'+data[i].gender+'">'+data[i].lname+' '+data[i].fname+' '+data[i].mname+'</option>');
+                    }
+                }
+                if (data.length === 0){
+                    alert('Student not present or LC already issued');
+                }
+            }
+        });
+    });
     $(document).ready(function() {
         $('#undo_redo').multiselect();
     });
-
     function selectall() {
         if($('#undo_redo_to option').length < 1){
             return false;

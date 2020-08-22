@@ -610,7 +610,7 @@
                                                 <a href="{{route('student.report',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Print form"><i class="fa fa-print"></i></a>
                                                 <a href="{{route('student.view',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Show"><i class="fa fa-eye"></i></a>
                                                 <a href="{{route('student.editadmission',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></a>
-                                                <a href="{{route('student.delete',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" onclick="return confirmDelete()" title="Delete"><i class="fa fa-trash"></i></a>
+{{--                                                <a href="{{route('student.delete',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" onclick="return confirmDelete()" title="Delete"><i class="fa fa-trash"></i></a>--}}
                                             </td>
                                         </tr>
                                     @endforeach

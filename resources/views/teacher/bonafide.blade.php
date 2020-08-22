@@ -92,7 +92,7 @@
                             <div class="box-footer">
                                 <span class="pull-right">
                                     @csrf
-                                    <button type="submit" formaction="{{route('bonafide.issue')}}" class="btn btn-primary" onclick="selectall()">Save</button>
+                                    <button type="submit" id="submitbtn" formaction="{{route('bonafide.issue')}}" class="btn btn-primary" onclick="selectall()">Save</button>
                                     <span style="margin: 5px"></span>
 {{--                                    <button type="submit" formaction="{{route('bonafide.issue.print')}}" class="btn btn-primary" onclick="selectall()">Save and print</button>--}}
                                 </span>
@@ -131,8 +131,6 @@
                                             <td>{{$bonafide->printcount}}</td>
                                             <td>
                                                 <a href="{{url('/bonafide/view/'.encrypt($bonafide->id))}}" target="_blank"><button class=" btn btn-primary" title="View"><i class="fa fa-eye"></i></button></a>
-                                                {{--                                                <a href="{{url('/bonafide/print/'.encrypt($bonafide->id))}}"><button class=" btn btn-success" title="Print"><i class="fa fa-print"></i></button></a>--}}
-                                                <a href="{{url('/bonafide/delete/'.encrypt($bonafide->id))}}"><button class=" btn btn-danger" title="Delete" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button></a>
                                             </td>
                                         </tr>
                                         <?php $srno++;?>
@@ -170,6 +168,20 @@
         });
     });
     $('#division').change(function(){
+        $.ajax({
+            type:"get",
+            url:"{{url('isclassteacher')}}?classname=" + $('#classname').val()+'&division='+$('#division').val(),
+            beforeSend:function(){
+            },
+            success:function(data){
+                if(data === 'true'){
+                    $('#submitbtn').prop('disabled',false);
+                }
+                else {
+                    $('#submitbtn').prop('disabled',true);
+                }
+            }
+        });
         if($('#classname').val() > '10'){
             return;
         }

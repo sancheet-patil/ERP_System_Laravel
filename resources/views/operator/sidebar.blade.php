@@ -15,20 +15,9 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('schoolinfo')}}"><i class="fa fa-angle-double-right"></i>School Information</a></li>
-                    <li><a href="{{route('setmaxlc')}}"><i class="fa fa-angle-double-right"></i>Set Max LC prints</a></li>
-{{--                    <li><a href="{{route('academicyear')}}"><i class="fa fa-angle-double-right"></i>Academic Year List</a></li>--}}
-{{--                    <li><a href="{{route('usertype')}}"><i class="fa fa-angle-double-right"></i>User roles/types</a></li>--}}
                     <li><a href="{{route('religion')}}"><i class="fa fa-angle-double-right"></i>Religion Information</a></li>
                     <li><a href="{{route('category')}}"><i class="fa fa-angle-double-right"></i>Caste Category</a></li>
                     <li><a href="{{route('castecategories')}}"><i class="fa fa-angle-double-right"></i>Add Caste & subcaste</a></li>
-                    <li><a href="{{route('designation')}}"><i class="fa fa-angle-double-right"></i>Staff Designation</a></li>
-                    <li><a href="{{route('division')}}"><i class="fa fa-angle-double-right"></i>Create Division</a></li>
-                    <li><a href="{{route('classes')}}"><i class="fa fa-angle-double-right"></i>Assign Division to class</a></li>
-                    <li><a href="{{route('subjects')}}"><i class="fa fa-angle-double-right"></i>Subjects</a></li>
-                    <li><a href="{{route('assignsubjects')}}"><i class="fa fa-angle-double-right"></i>Assign Subjects</a></li>
-                    <li><a href="{{route('assignclassteacher')}}"><i class="fa fa-angle-double-right"></i>Assign Class Teacher</a></li>
-                    <li><a href="{{route('classtimetable')}}"><i class="fa fa-angle-double-right"></i>Class Timetable</a></li>
                     <li><a href="{{route('scholarship')}}"><i class="fa fa-angle-double-right"></i>Scholarships</a></li>
                     <li><a href="{{route('event')}}"><i class="fa fa-angle-double-right"></i>Events</a></li>
                     <li><a href="{{route('holiday')}}"><i class="fa fa-angle-double-right"></i>Holidays</a></li>
@@ -60,9 +49,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{route('student.admission')}}"><i class="fa fa-angle-double-right"></i>Student admission</a></li>
                     <li><a href="{{route('student.search')}}"><i class="fa fa-angle-double-right"></i>Student details search</a></li>
-                    <li><a href="{{route('bulkdivisionassign')}}"><i class="fa fa-angle-double-right"></i>Bulk Division Assign</a></li>
                     <li><a href="{{route('studentidgenerate')}}"><i class="fa fa-angle-double-right"></i>Student ID Generate</a></li>
-{{--                    <li><a href="{{route('studentscholarshipapply')}}"><i class="fa fa-angle-double-right"></i>Student Scholarship Apply</a></li>--}}
                 </ul>
             </li>
             <li class="treeview">
@@ -73,48 +60,7 @@
                         </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('staff.joining')}}"><i class="fa fa-angle-double-right"></i>Staff joining</a></li>
-                    <li><a href="{{route('staff.search')}}"><i class="fa fa-angle-double-right"></i>Staff search</a></li>
                     <li><a href="{{route('staffidgenerate')}}"><i class="fa fa-angle-double-right"></i>Staff ID Generate</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="{{''}}">
-                    <i class="fa fa-calendar"></i> <span>Attendance</span>
-                    <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('classattendance')}}"><i class="fa fa-angle-double-right"></i>Class Attendance</a></li>
-                    <li><a href="{{route('staffattendance')}}"><i class="fa fa-angle-double-right"></i>Staff Attendance</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="{{''}}">
-                    <i class="fa fa-book"></i> <span>Examinations</span>
-                    <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('examination')}}"><i class="fa fa-angle-double-right"></i>Examination marks</a></li>
-                    <li><a href="{{route('promotestudents')}}"><i class="fa fa-angle-double-right"></i>Promote Students</a></li>
-                    <li><a href="{{route('demotestudents')}}"><i class="fa fa-angle-double-right"></i>Demote Students</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="{{''}}">
-                    <i class="fa fa-download"></i> <span>Download Center</span>
-                    <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('contentupload')}}"><i class="fa fa-angle-double-right"></i>Content upload</a></li>
-                    <li><a href="{{route('assignments')}}"><i class="fa fa-angle-double-right"></i>Assignments</a></li>
-                    <li><a href="{{route('studymaterial')}}"><i class="fa fa-angle-double-right"></i>Study material</a></li>
-                    <li><a href="{{route('syllabus')}}"><i class="fa fa-angle-double-right"></i>Syllabus</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -206,18 +152,6 @@
                             <li><a href="{{route('genderwisestaffreport')}}"><i class="fa fa-angle-double-right"></i>Gender wise staff Report</a></li>
                         </ul>
                     </li>
-{{--                    <li class="treeview">--}}
-{{--                        <a href="#"><i class="fa fa-circle-o"></i> Attendance Report--}}
-{{--                            <span class="pull-right-container">--}}
-{{--                                    <i class="fa fa-angle-left pull-right"></i>--}}
-{{--                                </span>--}}
-{{--                        </a>--}}
-{{--                        <ul class="treeview-menu">--}}
-{{--                            <li><a href="{{route('classattendancereport')}}"><i class="fa fa-angle-double-right"></i>Student attendance Report</a></li>--}}
-{{--                            <li><a href="{{route('classmonthlyattendancereport')}}"><i class="fa fa-angle-double-right"></i>Student monthly attendance Report</a></li>--}}
-{{--                            <li><a href="{{route('staffattendancereport')}}"><i class="fa fa-angle-double-right"></i>Staff attendance Report</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
                     <li class="treeview">
                         <a href="#"><i class="fa fa-circle-o"></i> Catalogue Report
                             <span class="pull-right-container">

@@ -87,14 +87,22 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="division">Division</label>
-                                            <select id="division" name="division" class="form-control select2" readonly>
-                                                @if(isset($divisionlist))
-                                                    <option value="">Select</option>
-                                                    @foreach($divisionlist as $division)
-                                                        <option value="{{$division}}" @if($division == $studentdetails->division) selected @endif>{{$division}}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
+                                            <?php
+                                                $classteacher = \App\ClassTeacherDetails::where('academicyear',\Illuminate\Support\Facades\Session::get('academicyear'))
+                                                    ->where('classname',$studentdetails->classname)->where('division',$studentdetails->division)->value('teacherid');
+                                            ?>
+                                            @if(\Illuminate\Support\Facades\Auth::user()->userid == $classteacher)
+                                                <select id="division" name="division" class="form-control select2" readonly>
+                                                    @if(isset($divisionlist))
+                                                        <option value="">Select</option>
+                                                        @foreach($divisionlist as $division)
+                                                            <option value="{{$division}}" @if($division == $studentdetails->division) selected @endif>{{$division}}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            @else
+                                                <input type="text" id="division" name="division" class="form-control" value="{{$studentdetails->division}}" required readonly/>
+                                            @endif
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="registerno">Register No.</label> <small class="req"> *</small>

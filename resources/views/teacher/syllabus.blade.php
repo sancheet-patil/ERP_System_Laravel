@@ -45,7 +45,6 @@
                                     <th>Content type</th>
                                     <th>Available for</th>
                                     <th>File</th>
-                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -69,10 +68,6 @@
                                                 @else
                                                     File not present
                                                 @endif
-                                            </td>
-                                            <td>
-{{--                                                <a href="{{url('/contentupload/edit/'.encrypt($content->id))}}"><button class=" btn btn-success" title="Edit content"><i class="fa fa-pencil"></i></button></a>--}}
-                                                <a href="{{url('/contentupload/delete/'.encrypt($content->id))}}"><button class=" btn btn-warning" title="Delete content" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button></a>
                                             </td>
                                         </tr>
                                     @endforeach

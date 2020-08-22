@@ -66,7 +66,7 @@
                                     <span class="info-box-text">Student</span>
                                     <?php
                                     $studentcount = \App\StudentDetails::where('academicyear',\Illuminate\Support\Facades\Session::get('academicyear'))
-                                        ->where('registerfor',\Illuminate\Support\Facades\Session::get('registerfor'))->get()->count();
+                                        ->get()->count();
                                     ?>
                                     <span class="info-box-number">{{$studentcount}}</span>
                                 </div>

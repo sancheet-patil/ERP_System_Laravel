@@ -439,12 +439,14 @@ class SchoolSetupController extends Controller
             ->where('class_teacher_details.academicyear',Session::get('academicyear'))
             ->orderBy('class_teacher_details.classname','asc')
             ->get();
+//        return $classteacherlist;
         return view(auth()->user()->role.'/assignclassteacher')->with('classteacherlist',$classteacherlist);
     }
 
     public function assignclassteacher_add(Request $request)
     {
-        $check = ClassTeacherDetails::where('classname',$request->classname)->where('division',$request->division)->first();
+        $check = ClassTeacherDetails::where('academicyear',Session::get('academicyear'))->where('classname',$request->classname)
+            ->where('division',$request->division)->first();
         if($check)
         {
             return back()->with('success','Class teacher already assigned');

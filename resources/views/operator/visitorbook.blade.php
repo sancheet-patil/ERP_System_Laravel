@@ -121,7 +121,7 @@
                                             <td>{{$visitor->outtime}}</td>
                                             <td>
                                                 <a href="{{url('/visitorbook/edit/'.encrypt($visitor->id))}}"><button class=" btn btn-success" title="Edit visitor"><i class="fa fa-pencil"></i></button></a>
-                                                <a href="{{url('/visitorbook/delete/'.encrypt($visitor->id))}}"><button class=" btn btn-warning" title="Delete visitor" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button></a>
+{{--                                                <a href="{{url('/visitorbook/delete/'.encrypt($visitor->id))}}"><button class=" btn btn-warning" title="Delete visitor" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button></a>--}}
                                             </td>
                                         </tr>
                                     @endforeach

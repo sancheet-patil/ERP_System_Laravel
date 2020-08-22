@@ -109,7 +109,7 @@
                                             <td>{{$post->postaldate}}</td>
                                             <td>
                                                 <a href="{{url('/inwards/edit/'.encrypt($post->id))}}"><button class=" btn btn-success" title="Edit inwards"><i class="fa fa-pencil"></i></button></a>
-                                                <a href="{{url('/inwards/delete/'.encrypt($post->id))}}"><button class=" btn btn-warning" title="Delete inwards" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button></a>
+{{--                                                <a href="{{url('/inwards/delete/'.encrypt($post->id))}}"><button class=" btn btn-warning" title="Delete inwards" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button></a>--}}
                                             </td>
                                         </tr>
                                     @endforeach

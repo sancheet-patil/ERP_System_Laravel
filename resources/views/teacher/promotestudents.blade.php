@@ -170,6 +170,20 @@
         });
     });
     $('#division').change(function(){
+        $.ajax({
+            type:"get",
+            url:"{{url('isclassteacher')}}?classname=" + $('#classname').val()+'&division='+$('#division').val(),
+            beforeSend:function(){
+            },
+            success:function(data){
+                if(data === 'true'){
+                    $('#submitbtn').prop('disabled',false);
+                }
+                else {
+                    $('#submitbtn').prop('disabled',true);
+                }
+            }
+        });
         if($('#classname').val() > '10'){
             return;
         }

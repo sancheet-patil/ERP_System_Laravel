@@ -131,8 +131,8 @@
                                             <td>{{$bonafide->printcount}}</td>
                                             <td>
                                                 <a href="{{url('/bonafide/view/'.encrypt($bonafide->id))}}" target="_blank"><button class=" btn btn-primary" title="View"><i class="fa fa-eye"></i></button></a>
-                                                {{--                                                <a href="{{url('/bonafide/print/'.encrypt($bonafide->id))}}"><button class=" btn btn-success" title="Print"><i class="fa fa-print"></i></button></a>--}}
-                                                <a href="{{url('/bonafide/delete/'.encrypt($bonafide->id))}}"><button class=" btn btn-danger" title="Delete" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button></a>
+                                                <a href="{{url('/bonafide/print/'.encrypt($bonafide->id))}}"><button class=" btn btn-success" title="Print"><i class="fa fa-print"></i></button></a>
+{{--                                                <a href="{{url('/bonafide/delete/'.encrypt($bonafide->id))}}"><button class=" btn btn-danger" title="Delete" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button></a>--}}
                                             </td>
                                         </tr>
                                         <?php $srno++;?>

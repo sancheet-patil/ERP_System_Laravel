@@ -178,7 +178,12 @@
                                             <td>{{$lc->dob}}</td>
                                             <td>{{$lc->classname.' ('.$lc->division.')'}}</td>
                                             <td>{{$lc->admission_date}}</td>
-                                            <td>{{$lc->lastschool}}</td>
+                                            <td>
+                                                <?php
+                                                $lastschool = \App\OtherSchoolLists::where('id',$lc->lastschool)->value('schoolname');
+                                                ?>
+                                                {{$lastschool}}
+                                            </td>
                                             <td>{{$lc->issuedate}}</td>
                                             <td>{{$lc->progress}}</td>
                                             <td>{{$lc->conduct}}</td>

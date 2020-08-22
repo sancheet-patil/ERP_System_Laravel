@@ -178,7 +178,12 @@
                                             <td>{{$lc->dob}}</td>
                                             <td>{{$lc->classname.' ('.$lc->division.')'}}</td>
                                             <td>{{$lc->admission_date}}</td>
-                                            <td>{{$lc->lastschool}}</td>
+                                            <td>
+                                                <?php
+                                                $lastschool = \App\OtherSchoolLists::where('id',$lc->lastschool)->value('schoolname');
+                                                ?>
+                                                {{$lastschool}}
+                                            </td>
                                             <td>{{$lc->issuedate}}</td>
                                             <td>{{$lc->progress}}</td>
                                             <td>{{$lc->conduct}}</td>
@@ -198,8 +203,8 @@
                                                 @else
                                                     <button class=" btn btn-success" title="Print limit reached" disabled><i class="fa fa-download"></i></button>
                                                 @endif
-                                                <a href="{{url('/leavingcertificate/edit/'.encrypt($lc->id))}}"><button class=" btn btn-info" title="Edit"><i class="fa fa-pencil"></i></button></a>
-                                                <a href="{{url('/leavingcertificate/delete/'.encrypt($lc->id))}}"><button class=" btn btn-danger" title="Delete" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button></a>
+{{--                                                <a href="{{url('/leavingcertificate/edit/'.encrypt($lc->id))}}"><button class=" btn btn-info" title="Edit"><i class="fa fa-pencil"></i></button></a>--}}
+{{--                                                <a href="{{url('/leavingcertificate/delete/'.encrypt($lc->id))}}"><button class=" btn btn-danger" title="Delete" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button></a>--}}
                                             </td>
                                         </tr>
                                         <?php $srno++;?>

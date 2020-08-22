@@ -1,55 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4fee716d-4e93-4d5f-bda3-a356e522fe95" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/demotestudents.blade.php" afterDir="false" />
+    <list default="true" id="4fee716d-4e93-4d5f-bda3-a356e522fe95" name="Default Changelist" comment="Temp commit">
+      <change afterPath="$PROJECT_DIR$/resources/views/prints/student_admission_form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/teacher/demotestudents.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/CertificatesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/CertificatesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/ExaminationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/ExaminationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/HumanResourceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/HumanResourceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/OtherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/OtherController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/SchoolSetupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/SchoolSetupController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/StudentInformationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/StudentInformationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Middleware/DisableMoveBack.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/DisableMoveBack.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/StaffDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/StaffDetails.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/StaffOtherDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/StaffOtherDetails.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_20_190045_create_staff_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_20_190045_create_staff_details_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_20_190209_create_staff_other_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_20_190209_create_staff_other_details_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/bonafide.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/bonafide.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/leavingcertificate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/leavingcertificate.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/staff_editjoining.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/staff_editjoining.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/staff_editsearch.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/staff_editsearch.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/staff_joining.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/staff_joining.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/staff_search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/staff_search.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/student_admission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/student_admission.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/student_editadmission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/student_editadmission.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/student_editsearch.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/student_editsearch.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/student_search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/student_search.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/student_view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/student_view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/operator/bonafide.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/bonafide.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/operator/circular.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/circular.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/operator/form17lc.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/form17lc.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/operator/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/operator/inwards.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/inwards.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/operator/leavingcertificate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/leavingcertificate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/operator/outwards.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/outwards.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/operator/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/operator/staff_editjoining.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/staff_editjoining.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/operator/staff_editsearch.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/staff_editsearch.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/operator/staff_joining.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/staff_joining.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/operator/staff_search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/staff_search.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/operator/student_admission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/student_admission.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/operator/student_editadmission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/student_editadmission.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/operator/student_editsearch.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/student_editsearch.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/operator/student_search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/student_search.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/operator/student_view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/student_view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/operator/visitorbook.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/visitorbook.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/assignments.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/assignments.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/teacher/bonafide.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/bonafide.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/bulkdivisionassign.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/bulkdivisionassign.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/circular.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/circular.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/contentupload.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/contentupload.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/inwards.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/inwards.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/leavingcertificate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/leavingcertificate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/outwards.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/outwards.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/promotestudents.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/promotestudents.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/teacher/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/staff_editjoining.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/staff_editjoining.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/staff_editsearch.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/staff_editsearch.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/staff_joining.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/staff_joining.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/staff_search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/staff_search.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/student_admission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/student_admission.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/student_editadmission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/student_editadmission.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/teacher/student_editsearch.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/student_editsearch.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/teacher/student_search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/student_search.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/student_view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/student_view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/studymaterial.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/studymaterial.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/syllabus.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/syllabus.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/visitorbook.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/visitorbook.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web/examination.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/examination.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web/studentinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/studentinfo.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,11 +47,6 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ChangesViewManager">
-    <option name="groupingKeys">
-      <option value="directory" />
-    </option>
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
@@ -84,22 +69,38 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/Admin/OtherController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="293" column="12" selection-start-line="293" selection-start-column="12" selection-end-line="293" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Middleware/DisableMoveBack.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>casteca</find>
-      <find>other</find>
-      <find>edit</find>
-      <find>studentdetails</find>
-      <find>bonafide</find>
-      <find>bonafide_v</find>
-      <find>&lt; '2000</find>
-      <find>required</find>
-      <find>''</find>
-      <find>l</find>
-      <find>studentDetails</find>
-      <find>studentDetails::</find>
       <find>editad</find>
       <find>StaffDetails</find>
       <find>StaffDetails::</find>
@@ -118,16 +119,20 @@
       <find>Promote</find>
       <find>student_view</find>
       <find>$staffdetails-&gt;staffrole</find>
+      <find>lc</find>
+      <find>classtea</find>
+      <find>collegebonafidestudents</find>
+      <find>mar</find>
+      <find>class=&quot;row&quot;</find>
+      <find>{{</find>
+      <find>}}</find>
+      <find>40px</find>
+      <find>&lt;b&gt;</find>
+      <find>b&gt;</find>
+      <find>4)</find>
+      <find>echo substr($user-&gt;admission_date,6,4).'&lt;br&gt;';</find>
     </findStrings>
     <replaceStrings>
-      <replace>circularreport</replace>
-      <replace>inwardsreport</replace>
-      <replace>outwardsreport</replace>
-      <replace>circular</replace>
-      <replace>$circular-&gt;</replace>
-      <replace>inwards</replace>
-      <replace>$inwards</replace>
-      <replace>postaldate</replace>
       <replace>$content</replace>
       <replace>outwards</replace>
       <replace>Outward</replace>
@@ -150,6 +155,14 @@
       <replace>Demote</replace>
       <replace>ucfirst($staffdetails-&gt;staffrole)</replace>
       <replace>ucfirst(strtolower($staffdetails-&gt;staffrole))</replace>
+      <replace>student</replace>
+      <replace>isclassteacher</replace>
+      <replace>class=&quot;row vermar&quot;</replace>
+      <replace>&lt;b&gt;{{</replace>
+      <replace>}}&lt;/b&gt;</replace>
+      <replace>40px</replace>
+      <replace>60px</replace>
+      <replace>4).'&lt;br&gt;'</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -158,42 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/prints/leavingcertificate_view.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/prints/leavingcertificate.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2020_07_19_033437_create_student_details_table.php" />
-        <option value="$PROJECT_DIR$/app/StudentDetails.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/bonafide.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/operator/bonafide.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/teacher/bonafide.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2020_07_20_190045_create_staff_details_table.php" />
-        <option value="$PROJECT_DIR$/app/StaffDetails.php" />
-        <option value="$PROJECT_DIR$/app/StaffOtherDetails.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2020_07_20_190209_create_staff_other_details_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/teacher/staff_editsearch.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/CertificatesController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/OtherController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Middleware/DisableMoveBack.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web/examination.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/demotestudents.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/student_editadmission.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/student_editsearch.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/operator/student_editadmission.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/operator/student_editsearch.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/teacher/student_editadmission.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/teacher/student_editsearch.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/home.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/ExaminationController.php" />
-        <option value="$PROJECT_DIR$/routes/web/studentinfo.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/StudentInformationController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/staff_editsearch.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/staff_editjoining.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/operator/staff_editjoining.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/operator/staff_editsearch.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/teacher/staff_editjoining.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/HumanResourceController.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/staff_search.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/staff_search.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/staff_joining.blade.php" />
@@ -202,13 +179,49 @@
         <option value="$PROJECT_DIR$/resources/views/teacher/staff_joining.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/student_admission.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/student_search.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/operator/student_admission.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/operator/student_search.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/student_admission.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/teacher/student_search.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/student_view.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/operator/student_view.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/student_view.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/leavingcertificate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/leavingcertificate.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web/studentinfo.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/StudentInformationController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/home.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/operator/home.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/home.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/operator/visitorbook.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/operator/inwards.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/operator/outwards.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/operator/circular.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/operator/student_admission.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/operator/student_search.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/operator/bonafide.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/operator/form17lc.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/operator/leavingcertificate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/visitorbook.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/inwards.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/outwards.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/circular.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/student_search.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/contentupload.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/assignments.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/studymaterial.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/syllabus.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/operator/sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/SchoolSetupController.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/student_editsearch.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/bulkdivisionassign.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/promotestudents.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/demotestudents.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/bonafide.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/prints/leavingcertificate_view.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/prints/student_admission_form.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/OtherController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Middleware/DisableMoveBack.php" />
       </list>
     </option>
   </component>
@@ -372,17 +385,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="LSVMWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LSVMWeb" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -393,26 +396,26 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/teacher" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\teacher" />
+      <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\prints" />
+      <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\admin" />
+      <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\operator" />
+      <recent name="C:\xampp\htdocs\LSVMWeb\resources\views" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\LSVMWeb\routes\web" />
       <recent name="C:\xampp\htdocs\LSVMWeb\app\Http\Controllers\Web\Admin" />
       <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\prints" />
       <recent name="C:\xampp\htdocs\LSVMWeb\routes\web\admin" />
       <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\admin" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\admin" />
-      <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\teacher" />
-      <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\operator" />
-      <recent name="C:\xampp\htdocs\LSVMWeb\resources\views" />
-      <recent name="C:\xampp\htdocs\LSVMWeb\public\errors" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -494,7 +497,10 @@
       <workItem from="1597833145334" duration="306000" />
       <workItem from="1597851695550" duration="502000" />
       <workItem from="1597856424613" duration="6115000" />
-      <workItem from="1597927388119" duration="4921000" />
+      <workItem from="1597927388119" duration="5237000" />
+      <workItem from="1597943847940" duration="7798000" />
+      <workItem from="1597991427558" duration="12012000" />
+      <workItem from="1598099603709" duration="3450000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1596732254126</created>
@@ -517,11 +523,18 @@
       <option name="project" value="LOCAL" />
       <updated>1597756970691</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Temp commit">
+      <created>1597938373734</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1597938373734</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="495861000" />
+    <option name="totallyTimeSpent" value="519437000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -535,7 +548,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.497545" visible="true" weight="0.25869894" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.497545" visible="true" weight="0.2700454" />
       <window_info id="Structure" order="1" sideWeight="0.502455" side_tool="true" weight="0.2602118" />
       <window_info id="npm" order="2" sideWeight="0.5008183" side_tool="true" weight="0.22995462" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -599,73 +612,17 @@
     <option name="LAST_COMMIT_MESSAGE" value="Temp commit" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/operator/sidebar.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/student_search.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="85" column="32" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/scripts.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_07_20_190045_create_staff_details_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/StaffDetails.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_07_20_190209_create_staff_other_details_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="57" column="7" lean-forward="true" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/StaffOtherDetails.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="94" selection-start-line="13" selection-start-column="94" selection-end-line="13" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/staff_editsearch.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="309" column="46" selection-start-line="309" selection-start-column="46" selection-end-line="309" selection-end-column="46" />
-          <folding>
-            <element signature="n#style#0;n#hr#0;n#div#6;n#div#1;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#0;n#div#12;n#div#1;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/Admin/OtherController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="234" column="9" lean-forward="true" selection-start-line="234" selection-start-column="9" selection-end-line="234" selection-end-column="9" />
-          <folding>
-            <element signature="e#50#76#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="291">
+          <caret line="109" column="44" selection-start-line="109" selection-start-column="44" selection-end-line="114" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/Admin/CertificatesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="131" column="45" selection-start-line="131" selection-start-column="45" selection-end-line="131" selection-end-column="45" />
+        <state relative-caret-position="426">
+          <caret line="349" column="68" lean-forward="true" selection-start-line="344" selection-start-column="8" selection-end-line="349" selection-end-column="68" />
           <folding>
             <element signature="e#588#1381#0#PHP" />
             <element signature="e#1387#1818#0#PHP" />
@@ -677,296 +634,366 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/DisableMoveBack.php">
+    <entry file="file://$PROJECT_DIR$/routes/web/studentinfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2020_07_19_033437_create_student_details_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#39#51#0#PHP" expanded="true" />
-          </folding>
+          <caret line="47" column="53" lean-forward="true" selection-start-line="47" selection-start-column="53" selection-end-line="47" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/prints/leavingcertificate_view.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="224" column="43" selection-start-line="224" selection-start-column="43" selection-end-line="224" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web/attendance.php">
+    <entry file="file://$PROJECT_DIR$/app/StudentOtherDetails.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="48" column="89" selection-start-line="48" selection-start-column="89" selection-end-line="48" selection-end-column="89" />
+        <state relative-caret-position="459">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="102" column="56" selection-start-line="102" selection-start-column="56" selection-end-line="102" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web/examination.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="22" column="61" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/student_editsearch.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/operator/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="63" column="36" lean-forward="true" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/student_editadmission.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/operator/student_editsearch.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/operator/student_editadmission.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/student_editsearch.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/student_editadmission.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="62" selection-start-line="62" selection-end-line="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/demotestudents.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="152" column="72" selection-start-line="152" selection-start-column="72" selection-end-line="152" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/Admin/ExaminationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="115" column="40" lean-forward="true" selection-start-line="115" selection-start-column="40" selection-end-line="115" selection-end-column="40" />
+          <caret line="67" column="66" lean-forward="true" selection-start-line="67" selection-start-column="66" selection-end-line="67" selection-end-column="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="123" column="62" lean-forward="true" selection-start-line="123" selection-start-column="62" selection-end-line="123" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/Admin/StudentInformationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="264" column="5" selection-start-line="264" selection-start-column="5" selection-end-line="264" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web/studentinfo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="93" selection-start-line="16" selection-start-column="79" selection-end-line="16" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/staff_editjoining.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="59" column="130" selection-start-line="59" selection-start-column="85" selection-end-line="59" selection-end-column="130" />
+          <caret line="66" column="41" lean-forward="true" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/staff_editsearch.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/operator/circular.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="59" column="130" selection-start-line="59" selection-start-column="85" selection-end-line="59" selection-end-column="130" />
+        <state relative-caret-position="17">
+          <caret line="82" column="49" selection-start-line="82" selection-start-column="49" selection-end-line="82" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/operator/staff_editsearch.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/operator/complaints.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="59" column="130" selection-start-line="59" selection-start-column="130" selection-end-line="59" selection-end-column="130" />
+        <state relative-caret-position="-1292">
+          <caret line="25" column="50" lean-forward="true" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/operator/staff_editjoining.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/operator/inwards.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="59" column="130" selection-start-line="59" selection-start-column="130" selection-end-line="59" selection-end-column="130" />
+        <state relative-caret-position="206">
+          <caret line="111" column="70" lean-forward="true" selection-start-line="111" selection-start-column="70" selection-end-line="111" selection-end-column="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/staff_editjoining.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/operator/outwards.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="71" column="59" lean-forward="true" selection-start-line="71" selection-start-column="59" selection-end-line="71" selection-end-column="59" />
+        <state relative-caret-position="476">
+          <caret line="111" column="49" lean-forward="true" selection-start-line="111" selection-start-column="49" selection-end-line="111" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/Admin/HumanResourceController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/operator/visitorbook.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="31" column="48" lean-forward="true" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/DesignationLists.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/staff_search.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="83" column="54" selection-start-line="83" selection-start-column="54" selection-end-line="83" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/staff_search.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="86" column="49" selection-start-line="86" selection-start-column="49" selection-end-line="86" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/staff_joining.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="486" column="49" selection-start-line="486" selection-start-column="49" selection-end-line="486" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/operator/staff_joining.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="486" column="49" selection-start-line="486" selection-start-column="49" selection-end-line="486" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/operator/staff_search.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="86" column="49" selection-start-line="86" selection-start-column="49" selection-end-line="86" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/staff_joining.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="486" column="49" selection-start-line="486" selection-start-column="49" selection-end-line="486" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/OtherSchoolLists.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/student_search.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="115" column="79" lean-forward="true" selection-start-line="115" selection-start-column="79" selection-end-line="115" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/student_admission.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="601" column="49" selection-start-line="601" selection-start-column="49" selection-end-line="601" selection-end-column="49" />
+        <state relative-caret-position="459">
+          <caret line="124" column="49" lean-forward="true" selection-start-line="124" selection-start-column="49" selection-end-line="124" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/operator/student_search.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="114" column="49" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="49" />
+        <state relative-caret-position="526">
+          <caret line="124" column="76" lean-forward="true" selection-start-line="124" selection-start-column="76" selection-end-line="124" selection-end-column="76" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/operator/student_admission.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="601" column="49" selection-start-line="601" selection-start-column="49" selection-end-line="601" selection-end-column="49" />
+        <state relative-caret-position="424">
+          <caret line="612" column="82" selection-start-line="612" selection-start-column="82" selection-end-line="612" selection-end-column="82" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/student_search.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/operator/bonafide.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="114" column="49" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="49" />
+        <state relative-caret-position="374">
+          <caret line="135" column="49" lean-forward="true" selection-start-line="135" selection-start-column="49" selection-end-line="135" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/student_view.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/operator/leavingcertificate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="208" selection-start-line="208" selection-end-line="208" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/operator/form17lc.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="173" column="71" lean-forward="true" selection-start-line="173" selection-start-column="71" selection-end-line="173" selection-end-column="71" />
+          <folding>
+            <element signature="e#23#29#0" expanded="true" />
+            <element signature="e#29#35#0" expanded="true" />
+            <element signature="e#35#41#0" expanded="true" />
+            <element signature="e#41#47#0" expanded="true" />
+            <element signature="e#47#53#0" expanded="true" />
+            <element signature="e#53#59#0" expanded="true" />
+            <element signature="e#59#65#0" expanded="true" />
+            <element signature="e#65#71#0" expanded="true" />
+            <element signature="e#84#90#0" expanded="true" />
+            <element signature="e#90#96#0" expanded="true" />
+            <element signature="e#96#102#0" expanded="true" />
+            <element signature="e#102#108#0" expanded="true" />
+            <element signature="e#108#114#0" expanded="true" />
+            <element signature="e#114#120#0" expanded="true" />
+            <element signature="e#120#126#0" expanded="true" />
+            <element signature="e#126#132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/visitorbook.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="123" column="71" lean-forward="true" selection-start-line="123" selection-start-column="71" selection-end-line="123" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/inwards.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="111" column="73" selection-start-line="111" selection-start-column="73" selection-end-line="111" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/outwards.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="110" column="65" selection-start-line="110" selection-start-column="65" selection-end-line="110" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/circular.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="101" column="49" selection-start-line="101" selection-start-column="49" selection-end-line="101" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/complaints.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="124" column="18" lean-forward="true" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/syllabus.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="109" column="60" lean-forward="true" selection-start-line="109" selection-start-column="60" selection-end-line="109" selection-end-column="60" />
+          <caret line="46" column="49" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/operator/student_view.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/studymaterial.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="133" column="61" selection-start-line="133" selection-start-column="61" selection-end-line="133" selection-end-column="61" />
+        <state relative-caret-position="189">
+          <caret line="46" column="49" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/student_view.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignments.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="133" column="61" lean-forward="true" selection-start-line="113" selection-start-column="56" selection-end-line="133" selection-end-column="61" />
+        <state relative-caret-position="357">
+          <caret line="62" column="54" lean-forward="true" selection-start-line="62" selection-start-column="54" selection-end-line="62" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/student_admission.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/contentupload.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="588" column="77" selection-start-line="588" selection-start-column="50" selection-end-line="588" selection-end-column="77" />
+        <state relative-caret-position="34">
+          <caret line="110" column="49" selection-start-line="110" selection-start-column="49" selection-end-line="110" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/operator/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3026">
+          <caret line="178" column="13" lean-forward="true" selection-end-line="181" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2737">
+          <caret line="161" column="25" lean-forward="true" selection-end-line="189" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/Admin/HumanResourceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="217" column="61" selection-start-line="217" selection-start-column="52" selection-end-line="217" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/Admin/SchoolSetupController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="449" column="18" lean-forward="true" selection-start-line="449" selection-start-column="18" selection-end-line="449" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/assignclassteacher.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="91" column="46" selection-start-line="91" selection-start-column="46" selection-end-line="91" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/ClassTeacherDetails.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/bulkdivisionassign.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="204" column="8" lean-forward="true" selection-start-line="204" selection-start-column="8" selection-end-line="217" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/promotestudents.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="172" column="8" selection-start-line="172" selection-start-column="8" selection-end-line="185" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/bonafide.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="171" column="23" lean-forward="true" selection-start-line="171" selection-start-column="23" selection-end-line="171" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/demotestudents.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="172" column="8" selection-start-line="172" selection-start-column="8" selection-end-line="185" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/student_editsearch.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-613">
+          <caret line="173" column="73" lean-forward="true" selection-start-line="173" selection-start-column="73" selection-end-line="173" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/StudentDetails.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/prints/leavingcertificate_view.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="57" column="8" lean-forward="true" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/prints/leavingcertificate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="34" column="33" lean-forward="true" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+          <folding>
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/prints/studentid.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="54" column="33" lean-forward="true" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
+          <folding>
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/student_search.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="111" column="48" selection-start-line="111" selection-start-column="48" selection-end-line="111" selection-end-column="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/prints/bonafide_view.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-833">
+          <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/prints/student_admission_form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="71" column="47" lean-forward="true" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/Admin/StudentInformationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="61" column="55" lean-forward="true" selection-start-line="61" selection-start-column="55" selection-end-line="61" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/Admin/OtherController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="293" column="12" selection-start-line="293" selection-start-column="12" selection-end-line="293" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/DisableMoveBack.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
         </state>
       </provider>
     </entry>

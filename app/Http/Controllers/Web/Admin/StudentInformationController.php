@@ -257,11 +257,15 @@ class StudentInformationController extends Controller
         return view(auth()->user()->role.'/student_view')->with('studentdetails',$studentdetails);
     }
 
-    public function student_report($id)
+    public function student_admission_form($id)
     {
-        $userid = decrypt($id);
+        $studentid = decrypt($id);
 
-        return $userid;
+        /*$arr[] = [
+            'studentid' => $studentid,
+        ];*/
+
+        return view('prints/student_admission_form')->with('studentid',$studentid);
     }
 
     public function student_editadmission($id)
