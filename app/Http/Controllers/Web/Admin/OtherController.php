@@ -244,56 +244,27 @@ class OtherController extends Controller
 
     public function migrate()
     {
-        $users = StudentDetails::where('academicyear','2019-2020')->where('registerfor','School')->get();
-        foreach ($users as $user)
+//        $castecategories = CasteCategoryList::get();
+        $castecategories = DB::table('caste_category_lists')
+            ->join('religion_lists','caste_category_lists.religion','=','religion_lists.id')
+            ->join('category_lists','caste_category_lists.category','=','category_lists.id')
+            ->select('religion_lists.religion','category_lists.category','caste_category_lists.castename',
+                'caste_category_lists.subcaste')
+            ->get();
+
+        foreach ($castecategories as $caste)
         {
-            switch(substr($user->admission_date,6,4)){
-                case '2013':{
-                    $update=[
-                        'admission_class' => '04'
-                    ];
-                    break;
-                }
-                case '2014':{
-                    $update=[
-                        'admission_class' => '05'
-                    ];
-                    break;
-                }
-                case '2015':{
-                    $update=[
-                        'admission_class' => '06'
-                    ];
-                    break;
-                }
-                case '2016':{
-                    $update=[
-                        'admission_class' => '07'
-                    ];
-                    break;
-                }
-                case '2017':{
-                    $update=[
-                        'admission_class' => '08'
-                    ];
-                    break;
-                }
-                case '2018':{
-                    $update=[
-                        'admission_class' => '09'
-                    ];
-                    break;
-                }
-                case '2019':{
-                    $update=[
-                        'admission_class' => '10'
-                    ];
-                    break;
-                }
-            }
-            StudentDetails::where('id',$user->id)->update($update);
+            $downloadable[] = [
+                'religion' => $caste->religion, 'category' => $caste->category,'castename' => $caste->castename,
+                'subcaste' => $caste->subcaste,
+            ];
         }
 
-        return $users->count();
+        return Excel::create('Religion list', function($excel) use ($downloadable) {
+            $excel->sheet('Sheet1', function($sheet) use ($downloadable)
+            {
+                $sheet->fromArray($downloadable);
+            });
+        })->download('xlsx');
     }
 }

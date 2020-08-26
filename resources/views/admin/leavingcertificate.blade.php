@@ -176,7 +176,7 @@
                                             <td>{{$lc->castename}}</td>
                                             <td>{{$lc->subcaste}}</td>
                                             <td>{{$lc->dob}}</td>
-                                            <td>{{$lc->classname.' ('.$lc->division.')'}}</td>
+                                            <td>{{$lc->admission_class}}</td>
                                             <td>{{$lc->admission_date}}</td>
                                             <td>
                                                 <?php

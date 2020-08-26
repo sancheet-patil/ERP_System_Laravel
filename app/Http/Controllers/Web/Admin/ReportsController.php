@@ -653,9 +653,10 @@ class ReportsController extends Controller
             $subcaste = $castecategory['subcaste'];
 
             $downloadable[] = [
-                'academic year' => $student->academicyear, 'registerno' => $student->registerno, 'admission date' => $student->admission_date, 'first name' => $student->fname,
+                'current academic year' => $student->academicyear, 'admission year' => $student->admission_year, 'registerno' => $student->registerno,
+                'admission date' => $student->admission_date, 'admission class' => $student->admission_class, 'first name' => $student->fname,
                 'father name' => $student->mname, 'last name' => $student->lname, 'mothername' => $student->mothername,
-                'classname' => $student->classname, 'division' => $student->division, 'aadhar' => $student->aadhar,
+                'current class' => $student->classname, 'division' => $student->division, 'aadhar' => $student->aadhar,
                 'saralid' => $student->saralid, 'place of birth' => $student->placeob, 'mothertongue' => $student->mothertongue,
                 'date of birth' => $student->dob, 'religion' => $religion, 'category' => $category,'castename' => $castename,
                 'subcaste' => $subcaste, 'lastschool' => $lastschool,'current address' => $student->currentaddress,

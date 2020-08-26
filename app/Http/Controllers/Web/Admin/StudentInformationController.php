@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Web\Admin;
 
+use App\BonafideDetails;
 use App\CasteCategoryList;
 use App\ClassLists;
+use App\Form17LcDetails;
+use App\LeavingCertificateDetails;
 use App\OtherSchoolLists;
 use App\StudentDetails;
+use App\StudentEducationalDetails;
 use App\StudentOtherDetails;
 use App\User;
 use Illuminate\Http\Request;
@@ -234,6 +238,11 @@ class StudentInformationController extends Controller
 
         StudentOtherDetails::create($studentOtherDetails);
 
+        StudentEducationalDetails::updateOrCreate(
+            ['userid' => $userid, 'academicyear' => $request->academicyear],
+            ['classname' => $request->classname]
+        );
+
         $userDetails['userid'] = $userid;
         $userDetails['name'] = $request->fname;
         $userDetails['aadhar'] = $request->aadhar;
@@ -254,7 +263,10 @@ class StudentInformationController extends Controller
             ->where('student_details.userid',$userid)
             ->first();
 
-        return view(auth()->user()->role.'/student_view')->with('studentdetails',$studentdetails);
+        $educationaldetails = StudentEducationalDetails::where('userid',$userid)->get();
+
+        return view(auth()->user()->role.'/student_view')->with('studentdetails',$studentdetails)
+            ->with('educationaldetails',$educationaldetails);
     }
 
     public function student_admission_form($id)
@@ -306,10 +318,10 @@ class StudentInformationController extends Controller
     {
         $userid = $request->userid;
 
-        $studentDetails['academicyear'] = $request->academicyear;
+        $studentDetails['admission_year'] = $request->admission_year;
         $studentDetails['registerfor']=$request->registerfor;
         $studentDetails['faculty']=$request->faculty;
-        $studentDetails['classname']=$request->classname;
+        $studentDetails['admission_class']=$request->admission_class;
         $studentDetails['division']=$request->division;
         $studentDetails['registerno']=$request->registerno;
         $studentDetails['admission_date']=$request->admission_date;
@@ -469,6 +481,11 @@ class StudentInformationController extends Controller
         $userid = decrypt($id);
         StudentDetails::where('userid',$userid)->delete();
         StudentOtherDetails::where('userid',$userid)->delete();
+        User::where('userid',$userid)->delete();
+        LeavingCertificateDetails::where('studentid',$userid)->delete();
+        Form17LcDetails::where('studentid',$userid)->delete();
+        BonafideDetails::where('studentid',$userid)->delete();
+        StudentEducationalDetails::where('userid',$userid)->delete();
 
         return Redirect::route('student.search')->with('success','Student deleted successfully');
     }
@@ -520,10 +537,10 @@ class StudentInformationController extends Controller
     {
         $userid = $request->userid;
 
-        $studentDetails['academicyear'] = $request->academicyear;
+        $studentDetails['admission_year'] = $request->admission_year;
         $studentDetails['registerfor']=$request->registerfor;
         $studentDetails['faculty']=$request->faculty;
-        $studentDetails['classname']=$request->classname;
+        $studentDetails['admission_class']=$request->admission_class;
         $studentDetails['division']=$request->division;
         $studentDetails['registerno']=$request->registerno;
         $studentDetails['admission_date']=$request->admission_date;

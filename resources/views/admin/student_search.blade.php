@@ -42,12 +42,12 @@
                                     <thead>
                                     <tr>
                                         <th>Sr.No.</th>
-                                        <th>Academic year</th>
+                                        <th>Admission year</th>
                                         <th>Register for</th>
                                         <th>Register no.</th>
                                         <th>Admission date</th>
                                         <th>Saral ID</th>
-                                        <th>Class</th>
+                                        <th>Admission class</th>
                                         <th>Roll No.</th>
                                         <th>Student name</th>
                                         <th>Father name</th>
@@ -80,12 +80,12 @@
                                         <tr>
                                             <td>{{$srno}}</td>
                                             <?php $srno++;?>
-                                            <td>{{$student->academicyear}}</td>
+                                            <td>{{$student->admission_year}}</td>
                                             <td>{{$student->registerfor}}</td>
                                             <td>{{$student->registerno}}</td>
                                             <td>{{$student->admission_date}}</td>
                                             <td>{{$student->saralid}}</td>
-                                            <td>{{$student->classname.' ('.$student->division.')'}}</td>
+                                            <td>{{$student->admission_class}}</td>
                                             <td>{{$student->roll_no}}</td>
                                             <td>{{$student->fname.' '.$student->mname.' '.$student->lname}}</td>
                                             <td>{{$student->fathername}}</td>

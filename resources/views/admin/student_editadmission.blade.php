@@ -59,8 +59,8 @@
                                             <input type="text" id="userid" name="userid" class="form-control" value="{{$studentdetails->userid}}" required />
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label for="academicyear">Academic year</label> <small class="req"> *</small>
-                                            <input type="text" id="academicyear" name="academicyear" class="form-control" value="{{$studentdetails->academicyear}}" required readonly/>
+                                            <label for="admission_year">Admission year</label> <small class="req"> *</small>
+                                            <input type="text" id="admission_year" name="admission_year" class="form-control" value="{{$studentdetails->admission_year}}" required readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="registerfor">Register for</label> <small class="req"> *</small>
@@ -82,8 +82,8 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label for="classname">Admission Class</label><small class="req"> *</small>
-                                            <input type="text" id="classname" name="classname" class="form-control" value="{{$studentdetails->admission_class}}" required readonly/>
+                                            <label for="admission_class">Admission Class</label><small class="req"> *</small>
+                                            <input type="text" id="admission_class" name="admission_class" class="form-control" value="{{$studentdetails->admission_class}}" required readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="division">Division</label>
@@ -558,9 +558,7 @@
             </div>
         </section>
     </div>
-    <footer class="main-footer">
-        @include('layouts.footer')
-    </footer>
+    @include('admin.footer')
     <div class="control-sidebar-bg"></div>
 </div>
 @include('layouts.scripts')
@@ -616,7 +614,7 @@
         });
     });
 
-    $('#classname').change(function(){
+    $('#admission_class').change(function(){
         var classname = $(this).val();
         $.ajax({
             type:"get",

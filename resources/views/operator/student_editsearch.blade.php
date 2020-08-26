@@ -59,8 +59,9 @@
                                             <input type="text" id="userid" name="userid" class="form-control" value="{{$studentdetails->userid}}" required />
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label for="academicyear">Academic year</label> <small class="req"> *</small>
-                                            <input type="text" id="academicyear" name="academicyear" class="form-control" value="{{$studentdetails->academicyear}}" required readonly/>
+                                            <label for="admission_year">Admission year</label> <small class="req"> *</small>
+                                            <input type="text" id="admission_year" name="admission_year" class="form-control" value="{{$studentdetails->admission_year}}" required readonly/>
+
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="registerfor">Register for</label> <small class="req"> *</small>

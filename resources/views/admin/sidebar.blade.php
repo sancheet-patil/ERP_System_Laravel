@@ -179,7 +179,7 @@
                                     </span>
                             </a>
                             <ul class="treeview-menu">
-    {{--                            <li><a href="{{route('studentscholarshipreport')}}"><i class="fa fa-angle-double-right"></i>Student Scholarship Report</a></li>--}}
+{{--                            <li><a href="{{route('studentscholarshipreport')}}"><i class="fa fa-angle-double-right"></i>Student Scholarship Report</a></li>--}}
                             </ul>
                         </li>
                         <li class="treeview">
@@ -361,7 +361,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                {{--                            <li><a href="{{route('studentscholarshipreport')}}"><i class="fa fa-angle-double-right"></i>Student Scholarship Report</a></li>--}}
+{{--                            <li><a href="{{route('studentscholarshipreport')}}"><i class="fa fa-angle-double-right"></i>Student Scholarship Report</a></li>--}}
                             </ul>
                         </li>
                         <li class="treeview">

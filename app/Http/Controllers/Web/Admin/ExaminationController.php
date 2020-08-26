@@ -6,6 +6,7 @@ use App\ClassLists;
 use App\Http\Controllers\Controller;
 use App\SchoolExamination;
 use App\StudentDetails;
+use App\StudentEducationalDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -89,19 +90,23 @@ class ExaminationController extends Controller
     {
         foreach($request->to as $userid)
         {
+            $academicyear = (substr(Session::get('academicyear'), 0, 4) + 1) . '-' . (substr(Session::get('academicyear'), 5, 4) + 1);
             if(strlen(strlen($request->classtopromote) == 1)) {
-                $updateData = [
-                    'academicyear' => (substr(Session::get('academicyear'), 0, 4) + 1) . '-' . (substr(Session::get('academicyear'), 5, 4) + 1),
-                    'classname' => '0'.$request->classtopromote,
-                ];
+                $classname = '0'.$request->classtopromote;
             }
             else{
-                $updateData = [
-                    'academicyear' => (substr(Session::get('academicyear'), 0, 4) + 1) . '-' . (substr(Session::get('academicyear'), 5, 4) + 1),
-                    'classname' => $request->classtopromote,
-                ];
+                $classname = $request->classtopromote;
             }
+            $updateData = [
+                'academicyear' => $academicyear,
+                'classname' => $classname,
+            ];
             StudentDetails::where('userid',$userid)->update($updateData);
+
+            StudentEducationalDetails::updateOrCreate(
+                ['userid' => $userid, 'academicyear' => $academicyear],
+                ['classname' => $classname]
+            );
         }
         return back()->with('success','Students promoted successfully');
     }
@@ -115,19 +120,23 @@ class ExaminationController extends Controller
     {
         foreach($request->to as $userid)
         {
+            $academicyear = (substr(Session::get('academicyear'), 0, 4) - 1) . '-' . (substr(Session::get('academicyear'), 5, 4) - 1);
             if(strlen(strlen($request->classtopromote) == 1)) {
-                $updateData = [
-                    'academicyear' => (substr(Session::get('academicyear'), 0, 4) - 1) . '-' . (substr(Session::get('academicyear'), 5, 4) - 1),
-                    'classname' => '0'.$request->classtopromote,
-                ];
+                $classname = '0'.$request->classtopromote;
             }
             else{
-                $updateData = [
-                    'academicyear' => (substr(Session::get('academicyear'), 0, 4) - 1) . '-' . (substr(Session::get('academicyear'), 5, 4) - 1),
-                    'classname' => $request->classtopromote,
-                ];
+                $classname = $request->classtopromote;
             }
+            $updateData = [
+                'academicyear' => $academicyear,
+                'classname' => $classname,
+            ];
             StudentDetails::where('userid',$userid)->update($updateData);
+
+            StudentEducationalDetails::updateOrCreate(
+                ['userid' => $userid, 'academicyear' => $academicyear],
+                ['classname' => $classname]
+            );
         }
         return back()->with('success','Students demoted successfully');
     }

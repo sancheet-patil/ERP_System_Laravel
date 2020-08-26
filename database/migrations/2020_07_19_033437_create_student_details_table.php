@@ -24,6 +24,7 @@ class CreateStudentDetailsTable extends Migration
             $table->integer('registerno')->nullable();
             $table->string('admission_date')->nullable();
             $table->string('admission_class')->nullable();
+            $table->string('admission_year')->nullable();
             $table->string('saralid')->nullable();
             $table->integer('roll_no')->nullable();
             $table->string('fname')->nullable();

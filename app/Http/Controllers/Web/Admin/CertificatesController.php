@@ -124,7 +124,7 @@ class CertificatesController extends Controller
             ->where('leaving_certificate_details.academicyear',Session::get('academicyear'))
             ->where('student_details.registerfor',Session::get('registerfor'))
             ->select('leaving_certificate_details.id','student_details.registerno','student_details.saralid',
-                'student_details.aadhar','student_details.fname','student_details.mname','student_details.lname','student_details.placeob',
+                'student_details.admission_class','student_details.aadhar','student_details.fname','student_details.mname','student_details.lname','student_details.placeob',
                 'student_other_details.mothername','student_details.mothertongue','religion_lists.religion','caste_category_lists.castename',
                 'caste_category_lists.subcaste','student_details.dob','student_details.classname','student_details.division',
                 'student_details.admission_date','student_details.faculty','student_details.lastschool','leaving_certificate_details.issuedate',
@@ -257,7 +257,7 @@ class CertificatesController extends Controller
             ->join('category_lists','caste_category_lists.category','=','category_lists.id')
             ->where('leaving_certificate_details.id',decrypt($id))
             ->select('leaving_certificate_details.studentid as userid','student_details.registerno','student_details.saralid',
-                'student_details.aadhar','student_details.fname','student_details.mname','student_details.lname','student_details.placeob',
+                'student_details.admission_class','student_details.aadhar','student_details.fname','student_details.mname','student_details.lname','student_details.placeob',
                 'student_other_details.mothername','student_details.mothertongue','student_details.religion','student_details.castename',
                 'student_details.subcaste','student_details.dob','student_details.classname','student_details.division',
                 'student_details.admission_date','student_details.lastschool','leaving_certificate_details.issuedate','student_details.schoolname',
@@ -359,6 +359,7 @@ class CertificatesController extends Controller
             ->join('religion_lists','caste_category_lists.religion','=','religion_lists.id')
             ->join('category_lists','caste_category_lists.category','=','category_lists.id')
             ->where('form17_lc_details.academicyear',Session::get('academicyear'))
+            ->where('student_details.registerfor',Session::get('registerfor'))
             ->select('form17_lc_details.id','student_details.registerno','student_details.saralid','student_details.aadhar',
                 'student_details.fname','student_details.mname','student_details.lname','student_details.placeob','student_details.dob',
                 'student_other_details.mothername','student_details.mothertongue','religion_lists.religion','caste_category_lists.castename',

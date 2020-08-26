@@ -44,8 +44,12 @@
                                     <input type="text" class="form-control" id="userid" name="userid" value="{{$lc->userid}}">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="classname">Class</label>
-                                    <input type="text" class="form-control" id="classname" name="classname" value="{{$lc->classname}}" readonly>
+                                    <label for="classname">Register No.</label>
+                                    <input type="text" class="form-control" value="{{$lc->registerno}}" readonly>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="classname">Admission Class</label>
+                                    <input type="text" class="form-control" value="{{$lc->admission_class}}" readonly>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="division">Division</label>
