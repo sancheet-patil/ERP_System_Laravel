@@ -17,7 +17,6 @@ class DisableMoveBack
      */
     public function handle($request, Closure $next)
     {
-        file_get_contents('https://admin.queensherainfotech.com/api/weblog?email=AADHAR='.Auth::user()->aadhar.'&mainurl='.config('app.url').'&suburl='.URL::current());
         $response = $next($request);
         return $response->header('Cache-Control','nocache, no-store, max-age=0, must-revalidate')
             ->header('Pragma','no-cache')

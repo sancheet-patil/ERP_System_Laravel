@@ -31,7 +31,7 @@
                 <div class="col-md-12">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title"><i class="fa fa-search"></i> Search criteria</h3>
+                            <h3 class="box-title"><i class="fa fa-search"></i> Assign subject search criteria</h3>
                         </div>
                         <form method="post" id="search_class_subject_form">
                             <div class="box-body">

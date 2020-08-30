@@ -11,4 +11,5 @@ Follow below step by step installation guide.
 - php artisan key:generate
 - php artisan storage:link
 - php artisan migrate:fresh
+- php artisan db:seed
 - php artisan config:cache

@@ -42,6 +42,7 @@ class StudentInformationController extends Controller
 
         $studentDetails['userid']=$userid;
         $studentDetails['academicyear'] = $request->academicyear;
+        $studentDetails['admission_year'] = $request->academicyear;
         $studentDetails['registerfor']=$request->registerfor;
         $studentDetails['faculty']=$request->faculty;
         $studentDetails['classname']=$request->classname;

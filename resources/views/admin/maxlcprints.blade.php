@@ -31,7 +31,7 @@
                 <div class="col-md-12">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title"><i class="fa fa-search"></i> School Information</h3>
+                            <h3 class="box-title"><i class="fa fa-search"></i> Max Leaving Certificates</h3>
                         </div>
                         <form action="{{route('setmaxlc.update')}}" method="post" enctype="multipart/form-data">
                             <div class="box-body">

@@ -21,4 +21,13 @@ Route::group(['middleware' => ['auth','disablemoveback']], function() {
     Route::post('/promotestudents/add', 'Web\Admin\ExaminationController@promotestudents_add')->name('promotestudents.add');
     Route::get('/demotestudents', 'Web\Admin\ExaminationController@demotestudents')->name('demotestudents');
     Route::post('/demotestudents/add', 'Web\Admin\ExaminationController@demotestudents_add')->name('demotestudents.add');
+
+    Route::get('/exam', 'Web\Admin\ExaminationController@exam')->name('exam');
+    Route::post('/exam', 'Web\Admin\ExaminationController@exam_post')->name('exam');
+    Route::get('/addexam', 'Web\Admin\ExaminationController@addexam')->name('addexam');
+    Route::post('/addexam', 'Web\Admin\ExaminationController@addexam_post')->name('addexam');
+    Route::post('/exam/create', 'Web\Admin\ExaminationController@exam_create')->name('exam.create');
+    Route::get('/exam/evaluation', 'Web\Admin\ExaminationController@exam_evaluation')->name('exam.evaluation');
+    Route::post('/examevaluation/submit', 'Web\Admin\ExaminationController@examevaluation_submit')->name('examevaluation.submit');
+
 });

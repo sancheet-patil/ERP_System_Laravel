@@ -31,7 +31,7 @@
                 <div class="col-md-12">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title"><i class="fa fa-search"></i> Search Criteria</h3>
+                            <h3 class="box-title"><i class="fa fa-search"></i> Class Timetable</h3>
                         </div>
                         <div class="box-body">
                             @if($message = Session::get('success'))

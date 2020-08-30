@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="box-body">
                                         <div class="form-group col-md-3">
-                                            <label for="academicyear">Academic year</label> <small class="req"> *</small>
+                                            <label for="academicyear">Admission year</label> <small class="req"> *</small>
                                             <select id="academicyear" name="academicyear" class="form-control select2" required>
                                                 <option value="">Select</option>
                                                 <?php

@@ -23,7 +23,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="{{route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Classes</li>
+                <li class="active">Assign division to class</li>
             </ol>
         </section>
         <section class="content">
@@ -31,7 +31,7 @@
                 <div class="col-md-4">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Add Class</h3>
+                            <h3 class="box-title">Assign division to class</h3>
                         </div>
                         <form action="{{route('classes.add')}}" method="post">
                             <div class="box-body">

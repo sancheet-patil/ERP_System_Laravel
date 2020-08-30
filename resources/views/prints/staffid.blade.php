@@ -45,7 +45,7 @@
                             LOKSEVA VIDYAMANDIR & JUNIOR COLLEGE, MANDRUP, SOLAPUR
                         </h6>
                         <p style="font-size: 8px;">Cell: 9420490054, 9923350050</p>
-                            <img src="{{$staffdetails['staffphoto']}}" height="75px" width="70px" alt="photo"/>
+                            <img src="{{$staffdetails->staffphoto}}" height="75px" width="70px" alt="photo"/>
                     </div>
                 </div>
                 <div class="row">
@@ -54,7 +54,7 @@
                         Name:
                     </div>
                     <div class="col-xs-8">
-                        <b>{{$staffdetails['fname'].' '.$staffdetails['mname'].' '.$staffdetails['lname']}}</b>
+                        <b>{{$staffdetails->fname.' '.$staffdetails->mname.' '.$staffdetails->lname}}</b>
                     </div>
                 </div>
                 <div class="row">
@@ -62,7 +62,7 @@
                         Designation:
                     </div>
                     <div class="col-xs-8">
-                        <b>{{$staffdetails['designation']}}</b>
+                        <b>{{$staffdetails->designation}}</b>
                     </div>
                 </div>
                 <div class="row">
@@ -70,7 +70,7 @@
                         Shalarth:
                     </div>
                     <div class="col-xs-8">
-                        <b>{{$staffdetails['shalarthid']}}</b>
+                        <b>{{$staffdetails->shalarthid}}</b>
                     </div>
                 </div>
                 <div class="row">
@@ -78,7 +78,7 @@
                         DoB:
                     </div>
                     <div class="col-xs-8">
-                        <b>{{$staffdetails['dob']}}</b>
+                        <b>{{$staffdetails->dob}}</b>
                     </div>
                 </div>
                 <div class="row">
@@ -86,7 +86,7 @@
                         Phone:
                     </div>
                     <div class="col-xs-8">
-                        <b>{{$staffdetails['mobile']}}</b>
+                        <b>{{$staffdetails->mobile}}</b>
                     </div>
                 </div>
                 <div class="row">
@@ -94,7 +94,7 @@
                         Bloodgroup:
                     </div>
                     <div class="col-xs-8">
-                        <b>{{$staffdetails['bloodgroup']}}</b>
+                        <b>{{$staffdetails->bloodgroup}}</b>
                     </div>
                 </div>
                 <div class="row">
@@ -102,7 +102,7 @@
                         Address:
                     </div>
                     <div class="col-xs-8">
-                        <b>{{$staffdetails['currentaddress']}}</b>
+                        <b>{{$staffdetails->currentaddress}}</b>
                     </div>
                 </div>
                 <div class="col-xs-12" style="text-align: right;position: absolute;bottom: 5px;">

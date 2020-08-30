@@ -7,6 +7,7 @@ use App\CategoryLists;
 use App\ClassLists;
 use App\ClassSubjectDetails;
 use App\ClassTeacherDetails;
+use App\Form17LcDetails;
 use App\Http\Middleware\Student;
 use App\LeavingCertificateDetails;
 use App\OtherSchoolLists;
@@ -244,27 +245,12 @@ class OtherController extends Controller
 
     public function migrate()
     {
-//        $castecategories = CasteCategoryList::get();
-        $castecategories = DB::table('caste_category_lists')
-            ->join('religion_lists','caste_category_lists.religion','=','religion_lists.id')
-            ->join('category_lists','caste_category_lists.category','=','category_lists.id')
-            ->select('religion_lists.religion','category_lists.category','caste_category_lists.castename',
-                'caste_category_lists.subcaste')
-            ->get();
+        $users = Form17LcDetails::get();
 
-        foreach ($castecategories as $caste)
+        foreach($users as $user)
         {
-            $downloadable[] = [
-                'religion' => $caste->religion, 'category' => $caste->category,'castename' => $caste->castename,
-                'subcaste' => $caste->subcaste,
-            ];
+            echo $user->id.'<br>';
+            Form17LcDetails::where('id',$user->id)->update(['printcount'=>'0']);
         }
-
-        return Excel::create('Religion list', function($excel) use ($downloadable) {
-            $excel->sheet('Sheet1', function($sheet) use ($downloadable)
-            {
-                $sheet->fromArray($downloadable);
-            });
-        })->download('xlsx');
     }
 }

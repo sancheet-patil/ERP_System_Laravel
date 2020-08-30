@@ -23,7 +23,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="{{route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Division</li>
+                <li class="active">Create Division</li>
             </ol>
         </section>
         <section class="content">

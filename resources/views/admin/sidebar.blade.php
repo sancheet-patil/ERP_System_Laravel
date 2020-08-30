@@ -97,7 +97,7 @@
                             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('examination')}}"><i class="fa fa-angle-double-right"></i>Examination marks</a></li>
+                        <li><a href="{{route('exam')}}"><i class="fa fa-angle-double-right"></i>Examination</a></li>
                         <li><a href="{{route('promotestudents')}}"><i class="fa fa-angle-double-right"></i>Promote Students</a></li>
                         <li><a href="{{route('demotestudents')}}"><i class="fa fa-angle-double-right"></i>Demote Students</a></li>
                     </ul>
@@ -472,7 +472,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('examination')}}"><i class="fa fa-angle-double-right"></i>Examination marks</a></li>
+                        <li><a href="{{route('exam')}}"><i class="fa fa-angle-double-right"></i>Examination</a></li>
                         <li><a href="{{route('promotestudents')}}"><i class="fa fa-angle-double-right"></i>Promote Students</a></li>
                         <li><a href="{{route('demotestudents')}}"><i class="fa fa-angle-double-right"></i>Demote Students</a></li>
                     </ul>

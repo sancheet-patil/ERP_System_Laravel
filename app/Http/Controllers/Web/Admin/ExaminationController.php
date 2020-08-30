@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\Web\Admin;
 
 use App\ClassLists;
+use App\ClassSubjectDetails;
+use App\ExamEvaluationDetails;
+use App\ExamList;
+use App\ExamScheduleList;
 use App\Http\Controllers\Controller;
 use App\SchoolExamination;
 use App\StudentDetails;
 use App\StudentEducationalDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class ExaminationController extends Controller
@@ -139,5 +144,103 @@ class ExaminationController extends Controller
             );
         }
         return back()->with('success','Students demoted successfully');
+    }
+
+    public function exam()
+    {
+        $examlist = ExamScheduleList::orderBy('classname','asc')->get();
+        return view(auth()->user()->role.'/exam')->with('examlist',$examlist)->with('classname','')
+            ->with('examtype','')->with('faculty','');
+    }
+
+    public function exam_post(Request $request)
+    {
+        $examlist = ExamScheduleList::where('classname',$request->classname)->where('examtype',$request->examtype)
+            ->where('faculty',$request->faculty)->get();
+        return view(auth()->user()->role.'/exam')->with('examlist',$examlist)->with('classname',$request->classname)
+            ->with('examtype',$request->examtype)->with('faculty',$request->faculty);
+    }
+
+    public function addexam()
+    {
+        return view(auth()->user()->role.'/addexam')->with('examtype','')->with('classname','')->with('faculty','');
+    }
+
+    public function addexam_post(Request $request)
+    {
+        $subjectlist = DB::table('class_subject_details')
+            ->join('subject_lists','class_subject_details.subjectname','=','subject_lists.id')
+            ->where('class_subject_details.classname',$request->classname)
+            ->select('subject_lists.subjectname')->distinct('subject_lists.subjectname')
+            ->orderBy('subject_lists.subjectname','asc')->get();
+        return view(auth()->user()->role.'/addexam')->with('examtype',$request->examtype)->with('classname',$request->classname)
+            ->with('faculty',$request->faculty)->with('subjectlist',$subjectlist);
+    }
+
+    public function exam_create(Request $request)
+    {
+        $subjectscount = sizeof($request->examtype);
+
+        ExamScheduleList::where('examtype',$request->examtype[0])->where('classname',$request->classname[0])
+            ->where('faculty',$request->faculty[0])->delete();
+
+        for($i=0;$i<$subjectscount;$i++)
+        {
+            $inputdata[] = [
+                'examtype'=> $request->examtype[$i],
+                'classname'=> $request->classname[$i],
+                'faculty'=> $request->faculty[$i],
+                'subjectname'=> $request->subjectname[$i],
+                'passingmarks'=> $request->passingmarks[$i],
+                'outofmarks'=> $request->outofmarks[$i],
+            ];
+        }
+        ExamScheduleList::insert($inputdata);
+
+        return Redirect::route('exam');
+    }
+
+    public function exam_evaluation(Request $request)
+    {
+        $studentlist = StudentDetails::where('academicyear',Session::get('academicyear'))->where('classname',$request->classname)
+            ->where('division',$request->division)->where('hasaccess','1');
+        $exam = ExamScheduleList::where('examtype',$request->examtype)->where('classname',$request->classname)
+            ->where('faculty',$request->faculty)->first();
+        if($request->faculty)
+        {
+            $studentlist = $studentlist->where('faculty',$request->faculty);
+        }
+        $studentlist = $studentlist->get();
+
+        return view(auth()->user()->role.'/examevaluation')->with('studentlist',$studentlist)->with('exam',$exam)
+            ->with('data',$request);
+    }
+
+    public function examevaluation_submit(Request $request)
+    {
+        $studentscount = sizeof($request->studentid);
+
+        ExamEvaluationDetails::where('academicyear',Session::get('academicyear'))->where('examtype',$request->examtype[0])
+            ->where('classname',$request->classname[0])->where('division',$request->division[0])
+            ->where('faculty',$request->faculty[0])->where('subjectname',$request->subjectname[0])
+            ->delete();
+
+        for($i=0;$i<$studentscount;$i++)
+        {
+            $inputdata[] = [
+                'academicyear'=> Session::get('academicyear'),
+                'studentid'=> $request->studentid[$i],
+                'classname'=> $request->classname[$i],
+                'division'=> $request->division[$i],
+                'faculty'=> $request->faculty[$i],
+                'examtype'=> $request->examtype[$i],
+                'subjectname'=> $request->subjectname[$i],
+                'passingmarks'=> $request->passingmarks[$i],
+                'outofmarks'=> $request->outofmarks[$i],
+                'obtainedmarks'=> $request->obtainedmarks[$i],
+            ];
+        }
+        ExamEvaluationDetails::insert($inputdata);
+        return Redirect::route('exam');
     }
 }

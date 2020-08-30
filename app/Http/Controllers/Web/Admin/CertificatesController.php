@@ -421,8 +421,27 @@ class CertificatesController extends Controller
         Form17LcDetails::find($request->studentid)->increment('printcount');
         $format = new NumberFormatter("en", NumberFormatter::SPELLOUT);
         $dob = StudentDetails::where('userid',$request->studentid)->value('dob');
-        $dob = Carbon::parse($dob)->format('d-M-Y');
-        $dobinwords = strtoupper($format->format(substr($dob,0,2)).' '.Carbon::parse(substr($dob,3,3))->format('F').' '.$format->format(substr($dob,7,4)));
+
+//        $dob = $lc->dob;
+
+        $newdob = Carbon::parse($dob)->format('d-M-Y');
+        $dates = AppHelper::instance()->dates();
+        $worddate = $dates[substr($dob,0,2)];
+
+        if(substr($dob,6,4) < '2000')
+        {
+            $mainyear =  substr($dob,6,2);
+            $subyear =  substr($dob,8,2);
+
+            $dobinwords = $worddate.strtoupper(' '.Carbon::parse(substr($newdob,3,3))->format('F').' '.$format->format($mainyear).' '.$format->format($subyear));
+        }
+        else
+        {
+            $dobinwords = $worddate.strtoupper(' '.Carbon::parse(substr($newdob,3,3))->format('F').' '.$format->format(substr($newdob,7,4)));
+        }
+
+        $data['dobinwords'] = $dobinwords;
+
         $arr[] = [
             'studentid' => $request->studentid,
             'dobinwords' => $dobinwords,
@@ -448,8 +467,25 @@ class CertificatesController extends Controller
                 'form17_lc_details.examseatno','form17_lc_details.dateofpassing','student_details.previousgrno','student_details.previouslcno')
             ->first();
 
-        $dob = Carbon::parse($lc->dob)->format('d-M-Y');
-        $data['dobinwords'] = strtoupper($format->format(substr($dob,0,2)).' '.Carbon::parse(substr($dob,3,3))->format('F').' '.$format->format(substr($dob,7,4)));
+        $dob = $lc->dob;
+
+        $newdob = Carbon::parse($dob)->format('d-M-Y');
+        $dates = AppHelper::instance()->dates();
+        $worddate = $dates[substr($dob,0,2)];
+
+        if(substr($dob,6,4) < '2000')
+        {
+            $mainyear =  substr($dob,6,2);
+            $subyear =  substr($dob,8,2);
+
+            $dobinwords = $worddate.strtoupper(' '.Carbon::parse(substr($newdob,3,3))->format('F').' '.$format->format($mainyear).' '.$format->format($subyear));
+        }
+        else
+        {
+            $dobinwords = $worddate.strtoupper(' '.Carbon::parse(substr($newdob,3,3))->format('F').' '.$format->format(substr($newdob,7,4)));
+        }
+
+        $data['dobinwords'] = $dobinwords;
         $data['lc'] = $lc;
 
         $pdf = PDF::loadView('prints/form17lc_view',$data)->setPaper('A4','portrait');
@@ -519,8 +555,26 @@ class CertificatesController extends Controller
         $studentid = Form17LcDetails::where('id',decrypt($id))->value('studentid');
         Form17LcDetails::find(decrypt($id))->increment('printcount');
         $dob = StudentDetails::where('userid',$studentid)->value('dob');
-        $dob = Carbon::parse($dob)->format('d-M-Y');
-        $dobinwords = strtoupper($format->format(substr($dob,0,2)).' '.Carbon::parse(substr($dob,3,3))->format('F').' '.$format->format(substr($dob,7,4)));
+
+        $newdob = Carbon::parse($dob)->format('d-M-Y');
+        $dates = AppHelper::instance()->dates();
+        $worddate = $dates[substr($dob,0,2)];
+
+        if(substr($dob,6,4) < '2000')
+        {
+            $mainyear =  substr($dob,6,2);
+            $subyear =  substr($dob,8,2);
+
+            $dobinwords = $worddate.strtoupper(' '.Carbon::parse(substr($newdob,3,3))->format('F').' '.$format->format($mainyear).' '.$format->format($subyear));
+        }
+        else
+        {
+            $dobinwords = $worddate.strtoupper(' '.Carbon::parse(substr($newdob,3,3))->format('F').' '.$format->format(substr($newdob,7,4)));
+        }
+
+        $data['dobinwords'] = $dobinwords;
+
+
         $arr[] = [
             'studentid' => $studentid,
             'dobinwords' => $dobinwords,
