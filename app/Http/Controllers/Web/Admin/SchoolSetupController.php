@@ -549,8 +549,18 @@ class SchoolSetupController extends Controller
 
     public function scholarship()
     {
+        $categories = CategoryLists::get();
+        foreach ($categories as $category)
+        {
+            $applicablefor[] = 'C-'.$category->category;
+        }
+        $applicablefor[] = 'P-'.'PWD';
+        $applicablefor[] = 'M-'.'Minority';
+        $applicablefor[] = 'G-'.'Male';
+        $applicablefor[] = 'G-'.'Female';
+
         $scholarshiplist = ScholarshipLists::orderBy('scholarshipname','asc')->get();
-        return view(auth()->user()->role.'/scholarship')->with('scholarshiplist',$scholarshiplist);
+        return view(auth()->user()->role.'/scholarship')->with('scholarshiplist',$scholarshiplist)->with('applicablefor',$applicablefor);
     }
 
     public function scholarship_add(Request $request)
@@ -559,21 +569,36 @@ class SchoolSetupController extends Controller
         {
             return back()->with('success','Scholarship exists already');
         }
-        ScholarshipLists::create($request->all());
+        $input = $request->all();
+        $input['applicablefor'] = implode(',',$request->applicablefor);
+        ScholarshipLists::create($input);
         return back()->with('success','Scholarship category added');
     }
 
     public function scholarship_edit($id)
     {
+        $categories = CategoryLists::get();
+        foreach ($categories as $category)
+        {
+            $applicablefor[] = 'C-'.$category->category;
+        }
+        $applicablefor[] = 'P-'.'PWD';
+        $applicablefor[] = 'M-'.'Minority';
+        $applicablefor[] = 'G-'.'Male';
+        $applicablefor[] = 'G-'.'Female';
+
         $scholarshiplist = ScholarshipLists::orderBy('scholarshipname','asc')->get();
         $scholarship = ScholarshipLists::where('id','=',decrypt($id))->first();
-        return view(auth()->user()->role.'/scholarship_edit')->with('scholarshiplist',$scholarshiplist)->with('scholarship',$scholarship);
+        $scholarship['applicablefor'] = explode(',',$scholarship->applicablefor);
+        return view(auth()->user()->role.'/scholarship_edit')->with('scholarshiplist',$scholarshiplist)
+            ->with('scholarship',$scholarship)->with('applicablefor',$applicablefor);
     }
 
     public function scholarship_editscholarship(Request $request)
     {
         $updateData = [
             'scholarshipname' => $request->scholarshipname,
+            'applicablefor' => implode(',',$request->applicablefor),
         ];
         ScholarshipLists::where('id',$request->id)->update($updateData);
 

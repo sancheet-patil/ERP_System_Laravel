@@ -49,6 +49,8 @@ Route::group(['middleware' => ['auth', 'disablemoveback']], function() {
     Route::get('/bonafidestudents', 'Web\Admin\OtherController@bonafidestudents')->name('bonafidestudents');
     Route::get('/collegebonafidestudents', 'Web\Admin\OtherController@collegebonafidestudents')->name('collegebonafidestudents');
     Route::get('/isclassteacher', 'Web\Admin\OtherController@isclassteacher')->name('isclassteacher');
+    Route::get('/scholarshipdetails', 'Web\Admin\OtherController@scholarshipdetails')->name('scholarshipdetails');
+    Route::post('/scholarshipstudents', 'Web\Admin\OtherController@scholarshipstudents')->name('scholarshipstudents');
 
     Route::get('/migrate', 'Web\Admin\OtherController@migrate')->name('migrate');
 

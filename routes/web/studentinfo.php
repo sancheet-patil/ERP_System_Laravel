@@ -31,4 +31,10 @@ Route::group(['middleware' => ['auth','disablemoveback']], function() {
     Route::get('/studentidgenerate/bulk', 'Web\Admin\StudentInformationController@studentidgenerate_bulk')->name('studentidgenerate.bulk');
     Route::post('/studentidgenerate/bulk/post', 'Web\Admin\StudentInformationController@studentidgenerate_bulk_post')->name('studentidgenerate.bulk.post');
     Route::get('/studentid/bulk/print', 'Web\Admin\StudentInformationController@studentid_bulk_print')->name('studentid.bulk.print');
+
+    Route::get('/studentscholarshipapply', 'Web\Admin\StudentInformationController@studentscholarshipapply')->name('studentscholarshipapply');
+    Route::post('/studentscholarshipapply/post', 'Web\Admin\StudentInformationController@studentscholarshipapply_post')->name('studentscholarshipapply.post');
+
+    Route::get('/studentrejoin', 'Web\Admin\StudentInformationController@studentrejoin')->name('studentrejoin');
+
 });

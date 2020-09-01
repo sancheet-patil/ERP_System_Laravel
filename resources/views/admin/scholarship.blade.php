@@ -43,6 +43,16 @@
                                     <label for="scholarshipname">Scholarship Name </label><small class="req"> *</small>
                                     <input type="text" id="scholarshipname" name="scholarshipname" class="form-control" required autofocus/>
                                 </div>
+                                <div class="form-group">
+                                    <label for="applicablefor">Applicable for</label><small class="req"> *</small>
+                                    <select class="form-control select2" id="applicablefor" name="applicablefor[]" style="width:100%;" required multiple>
+                                        @if(isset($applicablefor))
+                                            @foreach($applicablefor as $for)
+                                                <option value="{{$for}}">{{substr($for,2)}}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                </div>
                             </div>
                             <div class="box-footer">
                                 @csrf
@@ -54,7 +64,7 @@
                 <div class="col-md-8">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Class List</h3>
+                            <h3 class="box-title">Scholarship List</h3>
                         </div>
                         <div class="box-body">
                             <table id="scholarship_table" class="table table-striped table-bordered table-hover">
@@ -62,6 +72,7 @@
                                 <tr>
                                     <th>Sr. No.</th>
                                     <th>Scholarship name</th>
+                                    <th>Applicable for</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -73,8 +84,13 @@
                                             <td>{{$srno}}</td>
                                             <td>{{$scholarship->scholarshipname}}</td>
                                             <td>
-                                                <a href="{{url('/scholarship/edit/'.encrypt($scholarship->id))}}"><button class=" btn btn-success" title="Edit scholarship"><i class="fa fa-pencil"></i> edit</button></a>
-{{--                                                <a href="{{url('/scholarship/delete/'.encrypt($scholarship->id))}}"><button class=" btn btn-warning" title="Delete scholarship" onclick="return confirmDelete()"><i class="fa fa-trash"></i> Delete</button></a>--}}
+                                                @foreach(explode(',',$scholarship->applicablefor) as $for)
+                                                    {{substr($for,2)}} @if(!$loop->last), @endif
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                <a href="{{url('/scholarship/edit/'.encrypt($scholarship->id))}}"><button class=" btn btn-success" title="Edit scholarship"><i class="fa fa-pencil"></i> </button></a>
+                                                <a href="{{url('/scholarship/delete/'.encrypt($scholarship->id))}}"><button class=" btn btn-warning" title="Delete scholarship" onclick="return confirmDelete()"><i class="fa fa-trash"></i> </button></a>
                                             </td>
                                         </tr>
                                         <?php $srno++;?>

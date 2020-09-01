@@ -104,6 +104,17 @@
                 </li>
                 <li class="treeview">
                     <a href="{{''}}">
+                        <i class="fa fa-money"></i> <span>Scholarship</span>
+                        <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('studentscholarshipapply')}}"><i class="fa fa-angle-double-right"></i>Student scholarship apply</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="{{''}}">
                         <i class="fa fa-download"></i> <span>Download Center</span>
                         <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -300,6 +311,17 @@
                 </li>
                 <li class="treeview">
                     <a href="{{''}}">
+                        <i class="fa fa-money"></i> <span>Scholarship</span>
+                        <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('studentscholarshipapply')}}"><i class="fa fa-angle-double-right"></i>Student scholarship apply</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="{{''}}">
                         <i class="fa fa-download"></i> <span>Certificates</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
@@ -475,6 +497,17 @@
                         <li><a href="{{route('exam')}}"><i class="fa fa-angle-double-right"></i>Examination</a></li>
                         <li><a href="{{route('promotestudents')}}"><i class="fa fa-angle-double-right"></i>Promote Students</a></li>
                         <li><a href="{{route('demotestudents')}}"><i class="fa fa-angle-double-right"></i>Demote Students</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="{{''}}">
+                        <i class="fa fa-money"></i> <span>Scholarship</span>
+                        <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('studentscholarshipapply')}}"><i class="fa fa-angle-double-right"></i>Student scholarship apply</a></li>
                     </ul>
                 </li>
                 <li class="treeview">

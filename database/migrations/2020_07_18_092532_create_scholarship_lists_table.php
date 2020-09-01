@@ -16,6 +16,7 @@ class CreateScholarshipListsTable extends Migration
         Schema::create('scholarship_lists', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('scholarshipname')->nullable();
+            $table->string('applicablefor')->nullable();
             $table->timestamps();
         });
     }

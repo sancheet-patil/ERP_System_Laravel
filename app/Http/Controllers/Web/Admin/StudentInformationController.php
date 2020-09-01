@@ -8,6 +8,7 @@ use App\ClassLists;
 use App\Form17LcDetails;
 use App\LeavingCertificateDetails;
 use App\OtherSchoolLists;
+use App\ScholarshipApplyDetails;
 use App\StudentDetails;
 use App\StudentEducationalDetails;
 use App\StudentOtherDetails;
@@ -757,4 +758,35 @@ class StudentInformationController extends Controller
         return view('prints/studentid')->with('data',$data);
     }
 
+    public function studentscholarshipapply()
+    {
+        return view(auth()->user()->role.'/studentscholarshipapply');
+    }
+
+    public function studentscholarshipapply_post(Request $request)
+    {
+        ScholarshipApplyDetails::where('academicyear',Session::get('academicyear'))->where('scholarship',$request->scholarship)
+            ->where('scholarshipclass',$request->scholarshipclass)->where('scholarshipdivision',$request->scholarshipdivision)
+            ->where('scholarshipfaculty',$request->scholarshipfaculty)->delete();
+        $data = $request->all();
+        foreach($data['to'] as $studentid) {
+            $input['academicyear'] = Session::get('academicyear');
+            $input['studentid'] = $studentid;
+            $input['scholarship'] = $request->scholarship;
+            $input['scholarshipclass'] = $request->scholarshipclass;
+            $input['scholarshipdivision'] = $request->scholarshipdivision;
+            $input['scholarshipfaculty'] = $request->scholarshipfaculty;
+            $input['scholarshipamount'] = $request->scholarshipamount;
+            $input['noofmonths'] = $request->noofmonths;
+
+            ScholarshipApplyDetails::create($input);
+
+        }
+        return back()->with('success','Scholarship applied successfully');
+    }
+
+    public function studentrejoin()
+    {
+        return view(auth()->user()->role.'/studentrejoin');
+    }
 }
