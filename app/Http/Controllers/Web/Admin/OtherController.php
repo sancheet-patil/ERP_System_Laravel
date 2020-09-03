@@ -155,7 +155,7 @@ class OtherController extends Controller
             ->join('staff_details','class_subject_details.teachername','=','staff_details.userid')
             ->join('subject_lists','class_subject_details.subjectname','=','subject_lists.id')
             ->select('class_subject_details.classname','class_subject_details.division','class_subject_details.outofmarks',
-                'class_subject_details.subjectname as subjectid','class_subject_details.teachername as teacherid',
+                'class_subject_details.subjectname as subjectid','class_subject_details.faculty','class_subject_details.teachername as teacherid',
                 'subject_lists.subjectname','staff_details.fname','staff_details.mname','staff_details.lname')
             ->where('class_subject_details.academicyear',Session::get('academicyear'))
             ->where('class_subject_details.classname',$request->classname)

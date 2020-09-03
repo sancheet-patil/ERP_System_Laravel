@@ -420,6 +420,7 @@ class SchoolSetupController extends Controller
                 'classname' => $request->classname[$id],
                 'division' => $request->division[$id],
                 'subjectname' => $request->subjectname[$id],
+                'faculty' => $request->faculty[$id],
                 'outofmarks' => $request->outofmarks[$id],
                 'teachername' => $request->teachername[$id],
             );
@@ -446,7 +447,7 @@ class SchoolSetupController extends Controller
     public function assignclassteacher_add(Request $request)
     {
         $check = ClassTeacherDetails::where('academicyear',Session::get('academicyear'))->where('classname',$request->classname)
-            ->where('division',$request->division)->first();
+            ->where('faculty',$request->faculty)->where('division',$request->division)->first();
         if($check)
         {
             return back()->with('success','Class teacher already assigned');
@@ -454,6 +455,7 @@ class SchoolSetupController extends Controller
         $data['academicyear'] = Session::get('academicyear');
         $data['classname'] = $request->classname;
         $data['division'] = $request->division;
+        $data['faculty'] = $request->faculty;
         $data['teacherid'] = $request->teacherid;
         ClassTeacherDetails::create($data);
 
@@ -477,6 +479,7 @@ class SchoolSetupController extends Controller
     {
         $data['classname'] = $request->classname;
         $data['division'] = $request->division;
+        $data['faculty'] = $request->faculty;
         $data['teacherid'] = $request->teacherid;
         ClassTeacherDetails::where('id',$request->id)->update($data);
 

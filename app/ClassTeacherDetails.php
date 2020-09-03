@@ -9,6 +9,6 @@ class ClassTeacherDetails extends Model
     protected $table = 'class_teacher_details';
 
     protected $fillable = [
-        'academicyear','classname','division','teacherid',
+        'academicyear','classname','division','faculty','teacherid',
     ];
 }

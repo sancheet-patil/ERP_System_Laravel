@@ -18,6 +18,7 @@ class CreateClassTeacherDetailsTable extends Migration
             $table->string('academicyear')->nullable();
             $table->string('classname')->nullable();
             $table->string('division')->nullable();
+            $table->string('faculty')->nullable();
             $table->string('teacherid')->nullable();
             $table->timestamps();
         });

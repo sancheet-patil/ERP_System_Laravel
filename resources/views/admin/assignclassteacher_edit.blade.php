@@ -52,6 +52,15 @@
                                     <label for="division">Division</label><small class="req"> *</small>
                                     <input type="text" id="division" name="division" class="form-control" value="{{$classteacher->division}}" required readonly/>
                                 </div>
+                                <div class="form-group" id="facultydiv" style="@if($classteacher->faculty == '') display: none; @endif">
+                                    <label for="faculty">Faculty</label>
+                                    <select id="faculty" name="faculty" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="Arts" @if('Arts' == $classteacher->faculty) selected @endif>Arts</option>
+                                        <option value="Commerce" @if('Commerce' == $classteacher->faculty) selected @endif>Commerce</option>
+                                        <option value="Science" @if('Science' == $classteacher->faculty) selected @endif>Science</option>
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="teacherid">Teacher Name </label><small class="req"> *</small>
                                     <select id="teacherid" name="teacherid" class="form-control select2" required>

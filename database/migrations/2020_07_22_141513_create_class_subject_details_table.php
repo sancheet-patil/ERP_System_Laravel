@@ -18,6 +18,7 @@ class CreateClassSubjectDetailsTable extends Migration
             $table->string('academicyear')->nullable();
             $table->string('classname')->nullable();
             $table->string('division')->nullable();
+            $table->string('faculty')->nullable();
             $table->string('subjectname')->nullable();
             $table->string('outofmarks')->nullable();
             $table->string('teachername')->nullable();

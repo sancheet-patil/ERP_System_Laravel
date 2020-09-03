@@ -56,6 +56,15 @@
                                     <select class="form-control select2" id="division" name="division" required>
                                     </select>
                                 </div>
+                                <div class="form-group" id="facultydiv" style="display: none;">
+                                    <label for="faculty">Faculty</label>
+                                    <select id="faculty" name="faculty" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="Arts">Arts</option>
+                                        <option value="Commerce">Commerce</option>
+                                        <option value="Science">Science</option>
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="teacherid">Teacher Name </label><small class="req"> *</small>
                                     <select id="teacherid" name="teacherid" class="form-control select2" required>
@@ -68,6 +77,7 @@
                                         @endforeach
                                     </select>
                                 </div>
+
                             </div>
                             <div class="box-footer">
                                 @csrf
@@ -152,6 +162,12 @@
                 }
             }
         });
+        if(classname > '10') {
+            document.getElementById("facultydiv").style.display = "block";
+        }
+        else {
+            document.getElementById("facultydiv").style.display = "none";
+        }
     });
 
     function confirmDelete(){

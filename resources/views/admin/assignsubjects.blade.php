@@ -39,7 +39,7 @@
                                     <span id="result"><div class="alert alert-success">{{$message}}</div></span>
                                 @endif
                                 {!! Session::forget('success') !!}
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     <label for="classname">Class</label><small class="req"> *</small>
                                     <select id="classname" name="classname" class="form-control select2" required autofocus>
                                         <option value="">Select</option>
@@ -51,9 +51,18 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     <label for="division">Division</label><small class="req"> *</small>
                                     <select id="division" name="division" class="form-control select2" required>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4" id="facultydiv" style="display: none;">
+                                    <label for="faculty">Faculty</label>
+                                    <select id="faculty" name="faculty" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="Arts">Arts</option>
+                                        <option value="Commerce">Commerce</option>
+                                        <option value="Science">Science</option>
                                     </select>
                                 </div>
                             </div>
@@ -129,6 +138,12 @@
                 }
             }
         });
+        if(classname > '10') {
+            document.getElementById("facultydiv").style.display = "block";
+        }
+        else {
+            document.getElementById("facultydiv").style.display = "none";
+        }
     });
 
     $('#division').change(function() {
@@ -157,6 +172,7 @@
                         html += '<tr>';
                         html += '<td hidden><input type="text" name="classname[]" class="form-control" value="'+data[i].classname+'"/></td>';
                         html += '<td hidden><input type="text" name="division[]" class="form-control" value="'+data[i].division+'"/></td>';
+                        html += '<td hidden><input type="text" name="faculty[]" class="form-control" value="'+data[i].faculty+'"/></td>';
                         html += '<td>' +
                             '<input type="text" name="subjectname[]" class="form-control" value="'+data[i].subjectid+'" readonly style="display: none;"/>' +
                             '<input type="text" class="form-control" value="'+data[i].subjectname+'" readonly />' +
@@ -189,6 +205,7 @@
         html = '<tr>';
         html += '<td hidden><input type="text" name="classname[]" class="form-control" value="'+$('#classname').val()+'"/></td>';
         html += '<td hidden><input type="text" name="division[]" class="form-control" value="'+$('#division').val()+'"/></td>';
+        html += '<td hidden><input type="text" name="faculty[]" class="form-control" value="'+$('#faculty').val()+'"/></td>';
         html += '<td><select id="subjectname" name="subjectname[]" class="form-control select2" required><option value="">Select</option>';
         html += '<?php if(isset($subjectlist)) { foreach($subjectlist as $subject){ echo '<option value="'.$subject->id.'">'.$subject->subjectname.' ('.$subject->subjecttype.')</option>'; } } ?>';
         html += '</select></td>';
