@@ -7,6 +7,7 @@ use App\CategoryLists;
 use App\ClassLists;
 use App\ClassSubjectDetails;
 use App\ClassTeacherDetails;
+use App\ExamTypeList;
 use App\Form17LcDetails;
 use App\Http\Middleware\Student;
 use App\LeavingCertificateDetails;
@@ -341,12 +342,9 @@ class OtherController extends Controller
 
     public function migrate()
     {
-        $users = Form17LcDetails::get();
+        $classsubject = \App\ClassSubjectDetails::where('academicyear',\Illuminate\Support\Facades\Session::get('academicyear'))
+            ->where('teachername',\Illuminate\Support\Facades\Auth::user()->userid)->get();
 
-        foreach($users as $user)
-        {
-            echo $user->id.'<br>';
-            Form17LcDetails::where('id',$user->id)->update(['printcount'=>'0']);
-        }
+        return $classsubject;
     }
 }

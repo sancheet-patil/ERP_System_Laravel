@@ -145,6 +145,10 @@
                                             <label for="noofmonths">No. of months</label>
                                             <input type="number" class="form-control" id="noofmonths" name="noofmonths" min="1" max="12" required/>
                                         </div>
+                                        <div class="col-md-4">
+                                            <label for="totalscholarship">Total Scholarship Amount</label>
+                                            <input type="text" class="form-control" id="totalscholarship" name="totalscholarship" readonly/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -153,6 +157,51 @@
                                 <input type="submit" id="save" class="btn btn-primary pull-right" value="Save"/>
                             </div>
                         </form>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Scholarship students list</h3>
+                        </div>
+                        <div class="box-body">
+                            <table id="scholarship-table" class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Reg. No.</th>
+                                    <th>Student Name</th>
+                                    <th>Class (Division)</th>
+                                    <th>Scholarship Name</th>
+                                    <th>Scholarship per month</th>
+                                    <th>Scholarship no of month</th>
+                                    <th>Total Scholarship</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php $srno=1;?>
+                                @if(isset($studentscholarshiplist))
+                                    @foreach($studentscholarshiplist as $studentscholarship)
+                                        <tr>
+                                            <td>{{$srno}}</td>
+                                            <td>{{$studentscholarship->registerno}}</td>
+                                            <td>{{$studentscholarship->fname.' '.$studentscholarship->mname.' '.$studentscholarship->lname}}</td>
+                                            <td>{{$studentscholarship->classname.' ('.$studentscholarship->division.')'}}</td>
+                                            <td>{{$studentscholarship->scholarshipname}}</td>
+                                            <td>{{$studentscholarship->scholarshipamount}}</td>
+                                            <td>{{$studentscholarship->noofmonths}}</td>
+                                            <td>{{$studentscholarship->scholarshipamount * $studentscholarship->noofmonths}}</td>
+                                            <td>
+                                                <a href="{{route('deletescholarshipstudent',encrypt($studentscholarship->id))}}"><button class=" btn btn-danger" title="Delete" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button></a>
+                                            </td>
+                                        </tr>
+                                        <?php $srno++;?>
+                                    @endforeach
+                                @endif
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -181,6 +230,19 @@
         });
     });
 
+    $(document).ready(function(){
+        $('#scholarship-table').DataTable({
+            "scrollX"		: true,
+            'paging'		: true,
+            "processing"	: true,
+            'searching'   : true,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false,
+            'aaSorting'     : [],
+        });
+    });
+
     $('#classname').change(function(){
         var classname = $(this).val();
         $.ajax({
@@ -197,6 +259,16 @@
                 }
             }
         });
+    });
+
+    $('#scholarshipamount').change(function () {
+        var totalscholarshipamount = $('#scholarshipamount').val()*$('#noofmonths').val();
+        $('#totalscholarship').val(totalscholarshipamount);
+    });
+
+    $('#noofmonths').change(function () {
+        var totalscholarshipamount = $('#scholarshipamount').val()*$('#noofmonths').val();
+        $('#totalscholarship').val(totalscholarshipamount);
     });
 
     $('#studentsearch').click(function () {

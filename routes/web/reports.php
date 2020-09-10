@@ -80,4 +80,7 @@ Route::group(['middleware' => ['auth','disablemoveback']], function() {
     Route::post('/visitorsreport', 'Web\Admin\ReportsController@visitorsreport_post')->name('visitorsreport.post');
     Route::get('/visitorsreportexcel', 'Web\Admin\ReportsController@visitorsreportexcel')->name('visitorsreportexcel');
 
+    Route::get('/studentscholarshipreport', 'Web\Admin\ReportsController@studentscholarshipreport')->name('studentscholarshipreport');
+    Route::post('/studentscholarshipreport', 'Web\Admin\ReportsController@studentscholarshipreport_post')->name('studentscholarshipreport.post');
+    Route::get('/studentscholarshipreportexcel', 'Web\Admin\ReportsController@studentscholarshipreportexcel')->name('studentscholarshipreportexcel');
 });

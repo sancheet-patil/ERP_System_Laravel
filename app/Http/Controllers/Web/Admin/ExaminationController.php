@@ -168,13 +168,16 @@ class ExaminationController extends Controller
 
     public function addexam_post(Request $request)
     {
+        $examschedulelist = ExamScheduleList::where('examtype',$request->examtype)->where('classname',$request->classname)
+            ->where('faculty',$request->faculty)->get();
         $subjectlist = DB::table('class_subject_details')
             ->join('subject_lists','class_subject_details.subjectname','=','subject_lists.id')
             ->where('class_subject_details.classname',$request->classname)
-            ->select('subject_lists.subjectname')->distinct('subject_lists.subjectname')
+            ->select('subject_lists.id','subject_lists.subjectname')->distinct('subject_lists.subjectname')
             ->orderBy('subject_lists.subjectname','asc')->get();
+//        return $examschedulelist;
         return view(auth()->user()->role.'/addexam')->with('examtype',$request->examtype)->with('classname',$request->classname)
-            ->with('faculty',$request->faculty)->with('subjectlist',$subjectlist);
+            ->with('faculty',$request->faculty)->with('subjectlist',$subjectlist)->with('examschedulelist',$examschedulelist);
     }
 
     public function exam_create(Request $request)

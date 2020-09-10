@@ -12,6 +12,7 @@ use App\ClassTimeTableDetails;
 use App\DesignationLists;
 use App\DivisionLists;
 use App\EventsLists;
+use App\ExaminerDetails;
 use App\HolidayLists;
 use App\OtherSchoolLists;
 use App\ReligionLists;
@@ -411,7 +412,7 @@ class SchoolSetupController extends Controller
     public function assignsubjects_add(Request $request)
     {
         ClassSubjectDetails::where('academicyear',Session::get('academicyear'))->where('classname',$request->classname[0])
-            ->where('division',$request->division[0])->delete();
+            ->where('division',$request->division[0])->where('faculty',$request->faculty[0])->delete();
 
         for($id = 0; $id < count($request->classname); $id++)
         {
@@ -421,7 +422,6 @@ class SchoolSetupController extends Controller
                 'division' => $request->division[$id],
                 'subjectname' => $request->subjectname[$id],
                 'faculty' => $request->faculty[$id],
-                'outofmarks' => $request->outofmarks[$id],
                 'teachername' => $request->teachername[$id],
             );
             $insertData[] = $data;
@@ -436,7 +436,7 @@ class SchoolSetupController extends Controller
         $classteacherlist = DB::table('class_teacher_details')
             ->join('staff_details','class_teacher_details.teacherid','=','staff_details.userid')
             ->select('class_teacher_details.id','class_teacher_details.classname','class_teacher_details.division',
-                'staff_details.fname','staff_details.mname','staff_details.lname')
+                'class_teacher_details.faculty','staff_details.fname','staff_details.mname','staff_details.lname')
             ->where('class_teacher_details.academicyear',Session::get('academicyear'))
             ->orderBy('class_teacher_details.classname','asc')
             ->get();
@@ -468,11 +468,14 @@ class SchoolSetupController extends Controller
         $classteacherlist = DB::table('class_teacher_details')
             ->join('staff_details','class_teacher_details.teacherid','=','staff_details.userid')
             ->select('class_teacher_details.id','class_teacher_details.classname','class_teacher_details.division',
-                'staff_details.fname','staff_details.mname','staff_details.lname')
+                'class_teacher_details.faculty','staff_details.fname','staff_details.mname','staff_details.lname')
             ->where('class_teacher_details.academicyear',Session::get('academicyear'))
             ->orderBy('class_teacher_details.classname','asc')
             ->get();
-        return view(auth()->user()->role.'/assignclassteacher_edit')->with('classteacher',$classteacher)->with('classteacherlist',$classteacherlist);
+        $class = ClassLists::where('classname',$classteacher->classname)->first();
+        $divisionlist = explode(',',$class->division);
+        return view(auth()->user()->role.'/assignclassteacher_edit')->with('classteacher',$classteacher)
+            ->with('divisionlist',$divisionlist)->with('classteacherlist',$classteacherlist);
     }
 
     public function assignclassteacher_editclassteacher(Request $request)
@@ -493,6 +496,35 @@ class SchoolSetupController extends Controller
         return back()->with('success','Class teacher deleted successfully');
     }
 
+    public function assignexaminer()
+    {
+        $examinerlist = DB::table('examiner_details')
+            ->join('staff_details','examiner_details.staffid','=','staff_details.userid')
+            ->select('examiner_details.academicyear','examiner_details.registerfor','staff_details.fname','staff_details.mname',
+                'staff_details.lname','examiner_details.id')
+            ->orderBy('examiner_details.id','desc')->get();
+//        $examinerlist = ExaminerDetails::orderBy('id','desc')->get();
+        return view(auth()->user()->role.'/assignexaminer')->with('examinerlist',$examinerlist);
+    }
+
+    public function assignexaminer_add(Request $request)
+    {
+        $data = $request->all();
+        $data['academicyear'] = Session::get('academicyear');
+        if(ExaminerDetails::where('academicyear',$data['academicyear'])->where('staffid',$request->staffid)->first()){
+            return back()->with('success','Staff is already examiner');
+        }
+        ExaminerDetails::create($data);
+        return back()->with('success','Examiner added');
+    }
+
+    public function assignexaminer_delete($id)
+    {
+        ExaminerDetails::where('id',decrypt($id))->delete();
+
+        return back()->with('success','Examiner deleted successfully');
+    }
+
     public function classtimetable()
     {
         return view(auth()->user()->role.'/classtimetable');
@@ -502,7 +534,7 @@ class SchoolSetupController extends Controller
     {
         $timetable = ClassTimeTableDetails::where('academicyear',Session::get('academicyear'))
             ->where('classname',$request->classname)->where('division',$request->division)
-            ->where('subjectname',$request->subjectname)->get();
+            ->where('faculty',$request->faculty)->where('subjectname',$request->subjectname)->get();
 
         $firstDay = Carbon::createFromFormat('d-m-Y','01-03-2020');
         $timeTableDetails = [];
@@ -531,12 +563,13 @@ class SchoolSetupController extends Controller
     {
         $inputData = [];
         ClassTimeTableDetails::where('academicyear',Session::get('academicyear'))->where('classname',$request->classname[0])
-            ->where('division',$request->division[0])->where('subjectname',$request->subjectname[0])->delete();
+            ->where('division',$request->division[0])->where('faculty',$request->faculty[0])->where('subjectname',$request->subjectname[0])->delete();
         for($i=0;$i<6;$i++)
         {
             $data['academicyear'] = Session::get('academicyear');
             $data['classname'] = $request->classname[$i];
             $data['division'] = $request->division[$i];
+            $data['faculty'] = $request->faculty[$i];
             $data['subjectname'] = $request->subjectname[$i];
             $data['dayofweek'] = $request->dayofweek[$i];
             $data['starttime'] = $request->starttime[$i];

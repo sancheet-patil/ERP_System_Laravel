@@ -27,6 +27,7 @@
                         <li><a href="{{route('subjects')}}"><i class="fa fa-angle-double-right"></i>Subjects</a></li>
                         <li><a href="{{route('assignsubjects')}}"><i class="fa fa-angle-double-right"></i>Assign Subjects</a></li>
                         <li><a href="{{route('assignclassteacher')}}"><i class="fa fa-angle-double-right"></i>Assign Class Teacher</a></li>
+                        
                         <li><a href="{{route('classtimetable')}}"><i class="fa fa-angle-double-right"></i>Class Timetable</a></li>
                         <li><a href="{{route('scholarship')}}"><i class="fa fa-angle-double-right"></i>Scholarships</a></li>
                         <li><a href="{{route('event')}}"><i class="fa fa-angle-double-right"></i>Events</a></li>
@@ -190,7 +191,7 @@
                                     </span>
                             </a>
                             <ul class="treeview-menu">
-{{--                            <li><a href="{{route('studentscholarshipreport')}}"><i class="fa fa-angle-double-right"></i>Student Scholarship Report</a></li>--}}
+                                <li><a href="{{route('studentscholarshipreport')}}"><i class="fa fa-angle-double-right"></i>Scholarship Report</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -383,7 +384,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-{{--                            <li><a href="{{route('studentscholarshipreport')}}"><i class="fa fa-angle-double-right"></i>Student Scholarship Report</a></li>--}}
+                                <li><a href="{{route('studentscholarshipreport')}}"><i class="fa fa-angle-double-right"></i>Scholarship Report</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -585,7 +586,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                {{--                            <li><a href="{{route('studentscholarshipreport')}}"><i class="fa fa-angle-double-right"></i>Student Scholarship Report</a></li>--}}
+                                <li><a href="{{route('studentscholarshipreport')}}"><i class="fa fa-angle-double-right"></i>Scholarship Report</a></li>
                             </ul>
                         </li>
                         <li class="treeview">

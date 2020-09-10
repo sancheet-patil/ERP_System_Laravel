@@ -38,7 +38,7 @@ class CreateStudentDetailsTable extends Migration
             $table->string('subcaste')->nullable();
             $table->string('mobile')->nullable();
             $table->string('email')->nullable();
-            $table->string('aadhar')->unique();
+            $table->string('aadhar')->nullable();
             $table->string('placeob')->nullable();
             $table->string('mothertongue')->nullable();
             $table->string('bloodgroup')->nullable();

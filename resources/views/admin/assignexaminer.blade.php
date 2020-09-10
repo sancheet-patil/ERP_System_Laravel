@@ -23,7 +23,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="{{route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Assign Class Teacher</li>
+                <li class="active">Assign Examiner</li>
             </ol>
         </section>
         <section class="content">
@@ -31,53 +31,34 @@
                 <div class="col-md-4">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Assign Class Teacher</h3>
+                            <h3 class="box-title">Assign Examiner</h3>
                         </div>
-                        <form action="{{route('assignclassteacher.add')}}" method="post">
+                        <form action="{{route('assignexaminer.add')}}" method="post">
                             <div class="box-body">
                                 @if($message = Session::get('success'))
                                     <span id="result"><div class="alert alert-success">{{$message}}</div></span>
                                 @endif
                                 {!! Session::forget('success') !!}
                                 <div class="form-group">
-                                    <label for="classname">Class Name </label><small class="req"> *</small>
-                                    <select id="classname" name="classname" class="form-control select2" required autofocus>
+                                    <label for="registerfor">Register for </label><small class="req"> *</small>
+                                    <select id="registerfor" name="registerfor" class="form-control select2" required autofocus>
                                         <option value="">Select</option>
-                                        <?php
-                                        $classlist = \App\ClassLists::orderBy('classname','asc')->get();
-                                        ?>
-                                        @foreach($classlist as $class)
-                                            <option value="{{$class->classname}}" @if($class->classname == old('classname')) selected @endif>{{$class->classname}}</option>
-                                        @endforeach
+                                        <option value="School">School</option>
+                                        <option value="College">College</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="division">Division</label><small class="req"> *</small>
-                                    <select class="form-control select2" id="division" name="division" required>
-                                    </select>
-                                </div>
-                                <div class="form-group" id="facultydiv" style="display: none;">
-                                    <label for="faculty">Faculty</label><small class="req"> *</small>
-                                    <select id="faculty" name="faculty" class="form-control">
-                                        <option value="">Select</option>
-                                        <option value="Arts">Arts</option>
-                                        <option value="Commerce">Commerce</option>
-                                        <option value="Science">Science</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="teacherid">Teacher Name </label><small class="req"> *</small>
-                                    <select id="teacherid" name="teacherid" class="form-control select2" required>
+                                    <label for="staffid">Staff Name </label><small class="req"> *</small>
+                                    <select id="staffid" name="staffid" class="form-control select2" required>
                                         <option value="">Select</option>
                                         <?php
-                                        $teacherlist = \App\StaffDetails::where('staffrole','Teacher')->orderBy('fname','asc')->get();
+                                        $stafflist = \App\StaffDetails::orderBy('lname','asc')->get();
                                         ?>
-                                        @foreach($teacherlist as $teacher)
-                                            <option value="{{$teacher->userid}}">{{$teacher->fname.' '.$teacher->mname.' '.$teacher->lname}}</option>
+                                        @foreach($stafflist as $staff)
+                                            <option value="{{$staff->userid}}">{{$staff->lname.' '.$staff->fname.' '.$staff->mname}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-
                             </div>
                             <div class="box-footer">
                                 @csrf
@@ -89,33 +70,31 @@
                 <div class="col-md-8">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Class Teacher List</h3>
+                            <h3 class="box-title">Examiner List</h3>
                         </div>
                         <div class="box-body">
                             <table id="class_teacher_table" class="table table-striped table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th>Sr.No.</th>
-                                    <th>Class</th>
-                                    <th>Division</th>
-                                    <th>Faculty</th>
-                                    <th>Class Teacher</th>
+                                    <th>Academic year</th>
+                                    <th>Register for</th>
+                                    <th>Staff name</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php $srno=1;?>
-                                @if(isset($classteacherlist))
-                                    @foreach($classteacherlist as $item)
+                                @if(isset($examinerlist))
+                                    @foreach($examinerlist as $item)
                                         <tr>
                                             <td>{{$srno}}</td>
-                                            <td>{{$item->classname}}</td>
-                                            <td>{{$item->division}}</td>
-                                            <td>{{$item->faculty}}</td>
-                                            <td>{{$item->fname.' '.$item->mname.' '.$item->lname}}</td>
+                                            <td>{{$item->academicyear}}</td>
+                                            <td>{{$item->registerfor}}</td>
+                                            <td>{{$item->lname.' '.$item->fname.' '.$item->mname}}</td>
                                             <td>
-                                                <a href="{{url('/assignclassteacher/edit/'.encrypt($item->id))}}"><button class=" btn btn-success" title="Edit class teacher"><i class="fa fa-pencil"></i> Edit</button></a>
-{{--                                                <a href="{{url('/assignclassteacher/delete/'.encrypt($item->id))}}"><button class=" btn btn-warning" title="Delete class teacher" onclick="return confirmDelete()"><i class="fa fa-trash"></i> Delete</button></a>--}}
+{{--                                                <a href="{{url('/assignexaminer/edit/'.encrypt($item->id))}}"><button class=" btn btn-success" title="Edit class teacher"><i class="fa fa-pencil"></i> Edit</button></a>--}}
+                                                <a href="{{route('assignexaminer.delete',encrypt($item->id))}}"><button class=" btn btn-warning" title="Delete examiner" onclick="return confirmDelete()"><i class="fa fa-trash"></i> Delete</button></a>
                                             </td>
                                         </tr>
                                         <?php $srno++;?>

@@ -55,6 +55,15 @@
                                 <select id="division" name="division" class="form-control select2" required>
                                 </select>
                             </div>
+                            <div class="form-group col-md-4" id="facultydiv" style="display: none;">
+                                <label for="faculty">Faculty</label><small class="req"> *</small>
+                                <select id="faculty" name="faculty" class="form-control">
+                                    <option value="">Select</option>
+                                    <option value="Arts">Arts</option>
+                                    <option value="Commerce">Commerce</option>
+                                    <option value="Science">Science</option>
+                                </select>
+                            </div>
                             <div class="form-group col-md-4">
                                 <label for="subjectname">Subject</label><small class="req"> *</small>
                                 <select id="subjectname" name="subjectname" class="form-control select2" required>
@@ -122,6 +131,14 @@
                 }
             }
         });
+        if(classname > '10') {
+            document.getElementById("facultydiv").style.display = "block";
+            // $('#faculty').prop('required',true);
+        }
+        else {
+            document.getElementById("facultydiv").style.display = "none";
+            // $('#faculty').removeAttr('required');
+        }
     });
     $('#division').change(function(){
         document.getElementById('add_timetable_div').style.display = 'none';
@@ -147,6 +164,11 @@
     });
 
     $('#search_timetable').click(function(){
+        if(!$('#subjectname').val())
+        {
+            alert('select subject');
+            return false;
+        }
         $.ajax({
             type:"GET",
             url:"{{url('/timetablecalender')}}",
@@ -154,6 +176,7 @@
                 'classname': $('#classname').val(),
                 'division': $('#division').val(),
                 'subjectname': $('#subjectname').val(),
+                'faculty': $('#faculty').val(),
             },
             success:function(res){
                 if(res){
@@ -162,13 +185,14 @@
                     {
                         html += '<tr>';
                         html += '<td>'+res[i].dayofweek+'</td>';
-                        html += '<td hidden><input type="text" id="classname" name="classname[]" class="form-control" value="'+document.getElementById('classname').value+'" required/></td>';
-                        html += '<td hidden><input type="text" id="division" name="division[]" class="form-control" value="'+document.getElementById('division').value+'" required/></td>';
-                        html += '<td hidden><input type="text" id="subjectname" name="subjectname[]" class="form-control" value="'+document.getElementById('subjectname').value+'" required/></td>';
+                        html += '<td hidden><input type="text" id="classname" name="classname[]" class="form-control" value="'+document.getElementById('classname').value+'" /></td>';
+                        html += '<td hidden><input type="text" id="division" name="division[]" class="form-control" value="'+document.getElementById('division').value+'" /></td>';
+                        html += '<td hidden><input type="text" id="faculty" name="faculty[]" class="form-control" value="'+document.getElementById('faculty').value+'" /></td>';
+                        html += '<td hidden><input type="text" id="subjectname" name="subjectname[]" class="form-control" value="'+document.getElementById('subjectname').value+'" /></td>';
                         html += '<td hidden><input type="text" id="dayofweek" name="dayofweek[]" class="form-control" value="'+res[i].dayofweek+'" required/></td>';
                         html += '<td><div class="input-group"><input type="text" id="starttime'+i+'" onblur="onstartclose('+i+')" name="starttime[]" class="form-control mytimepicker" value="'+res[i].starttime+'" required/><div class="input-group-addon"><i class="fa fa-clock-o"></i></div></div></td>';
                         html += '<td><div class="input-group"><input type="text" id="endtime'+i+'" onblur="onendclose('+i+')" name="endtime[]" class="form-control mytimepicker" value="'+res[i].endtime+'" required/><div class="input-group-addon"><i class="fa fa-clock-o"></i></div></div></td>';
-                        html += '<td><input type="number" min="1" id="hallno" name="hallno[]" class="form-control" value="'+res[i].hallno+'" required/></td>';
+                        html += '<td><input type="text" id="hallno" name="hallno[]" class="form-control" value="'+res[i].hallno+'" required/></td>';
                         html += '</tr>';
                     }
                     $('tbody').html(html);

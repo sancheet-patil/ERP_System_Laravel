@@ -58,9 +58,14 @@ Route::group(['middleware' => ['auth','disablemoveback']], function() {
     Route::post('/assignsubjects/add', 'Web\Admin\SchoolSetupController@assignsubjects_add')->name('assignsubjects.add');
     Route::get('/assignclassteacher', 'Web\Admin\SchoolSetupController@assignclassteacher')->name('assignclassteacher');
     Route::post('/assignclassteacher/add', 'Web\Admin\SchoolSetupController@assignclassteacher_add')->name('assignclassteacher.add');
-    Route::get('/assignclassteacher/edit/{id}', 'Web\Admin\SchoolSetupController@assignclassteacher_edit')->name('assignsubjects.edit');
+    Route::get('/assignclassteacher/edit/{id}', 'Web\Admin\SchoolSetupController@assignclassteacher_edit')->name('assignclassteacher.edit');
     Route::post('/assignclassteacher/editclassteacher', 'Web\Admin\SchoolSetupController@assignclassteacher_editclassteacher')->name('assignclassteacher.editclassteacher');
-    Route::get('/assignclassteacher/delete/{id}', 'Web\Admin\SchoolSetupController@assignclassteacher_delete')->name('assignsubjects.delete');
+    Route::get('/assignclassteacher/delete/{id}', 'Web\Admin\SchoolSetupController@assignclassteacher_delete')->name('assignclassteacher.delete');
+
+    Route::get('/assignexaminer', 'Web\Admin\SchoolSetupController@assignexaminer')->name('assignexaminer');
+    Route::post('/assignexaminer/add', 'Web\Admin\SchoolSetupController@assignexaminer_add')->name('assignexaminer.add');
+    Route::get('/assignexaminer/delete/{id}', 'Web\Admin\SchoolSetupController@assignexaminer_delete')->name('assignexaminer.delete');
+
     Route::get('/classtimetable', 'Web\Admin\SchoolSetupController@classtimetable')->name('classtimetable');
     Route::get('/timetablecalender', 'Web\Admin\SchoolSetupController@timetablecalender')->name('timetablecalender');
     Route::post('/classtimetable/add', 'Web\Admin\SchoolSetupController@classtimetable_add')->name('classtimetable.add');

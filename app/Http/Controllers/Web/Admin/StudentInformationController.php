@@ -760,7 +760,15 @@ class StudentInformationController extends Controller
 
     public function studentscholarshipapply()
     {
-        return view(auth()->user()->role.'/studentscholarshipapply');
+        $studentscholarshiplist = DB::table('scholarship_apply_details')
+            ->join('scholarship_lists','scholarship_apply_details.scholarship','=','scholarship_lists.id')
+            ->join('student_details','scholarship_apply_details.studentid','=','student_details.userid')
+            ->select('scholarship_apply_details.scholarshipamount','scholarship_apply_details.noofmonths',
+                'scholarship_lists.scholarshipname','student_details.fname','student_details.mname','student_details.lname',
+                'student_details.classname','student_details.division','student_details.registerno','scholarship_apply_details.id as id')
+            ->where('scholarship_apply_details.academicyear',Session::get('academicyear'))
+            ->get();
+        return view(auth()->user()->role.'/studentscholarshipapply')->with('studentscholarshiplist',$studentscholarshiplist);
     }
 
     public function studentscholarshipapply_post(Request $request)
@@ -783,6 +791,13 @@ class StudentInformationController extends Controller
 
         }
         return back()->with('success','Scholarship applied successfully');
+    }
+
+    public function deletescholarshipstudent($id)
+    {
+        $id = decrypt($id);
+        ScholarshipApplyDetails::where('id',$id)->delete();
+        return back()->with('success','Student scholarship removed');
     }
 
     public function studentrejoin()

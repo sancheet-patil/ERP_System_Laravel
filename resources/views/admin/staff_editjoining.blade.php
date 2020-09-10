@@ -54,10 +54,10 @@
                                             <label for="staffrole">User Role</label><small class="req"> *</small>
                                             <select id="staffrole" name="staffrole" class="form-control select2" required>
                                                 <option value="">Select</option>
-                                                <option value="Admin" @if('Admin' == ucfirst(strtolower($staffdetails->staffrole))) selected @endif>Admin</option>
-                                                <option value="Operator" @if('Operator' == ucfirst(strtolower($staffdetails->staffrole))) selected @endif>Operator</option>
-                                                <option value="Teacher" @if('Teacher' == ucfirst(strtolower($staffdetails->staffrole))) selected @endif>Teacher</option>
-                                                <option value="Other" @if('Other' == ucfirst(strtolower($staffdetails->staffrole))) selected @endif>Other</option>
+                                                <option value="admin" @if('admin' == $staffdetails->staffrole) selected @endif>Admin</option>
+                                                <option value="operator" @if('operator' == $staffdetails->staffrole) selected @endif>Operator</option>
+                                                <option value="teacher" @if('teacher' == $staffdetails->staffrole) selected @endif>Teacher</option>
+                                                <option value="other" @if('other' == $staffdetails->staffrole) selected @endif>Other</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-3">

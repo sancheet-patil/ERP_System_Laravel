@@ -99,6 +99,24 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                            @if(isset($examschedulelist))
+                                                @foreach($examschedulelist as $exam)
+                                                    <tr>
+
+                                                        <td hidden><input type="text" name="examtype[]" class="form-control" value="{{$exam->examtype}}"/></td>
+                                                        <td hidden><input type="text" name="classname[]" class="form-control" value="{{$exam->classname}}"/></td>
+                                                        <td hidden><input type="text" name="faculty[]" class="form-control" value="{{$exam->faculty}}"/></td>
+                                                        <td hidden><input type="text" id="subjectname" name="subjectname[]" class="form-control" value="{{$exam->subjectname}}" required/></td>
+                                                        <?php
+                                                        $subjectname = \App\SubjectLists::where('id',$exam->subjectname)->value('subjectname');
+                                                        ?>
+                                                        <td><input type="text" class="form-control" value="{{$subjectname}}" required readonly/></td>
+                                                        <td><input type="number" min="1" id="passingmarks" name="passingmarks[]" value="{{$exam->passingmarks}}" class="form-control" required readonly/></td>
+                                                        <td><input type="number" min="1" id="outofmarks" name="outofmarks[]" class="form-control" value="{{$exam->outofmarks}}" required readonly/></td>
+                                                        <td><button type="button" id="removesubject" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
                                         </tbody>
                                         <tfoot id="table_footer">
                                         <tr>
@@ -134,7 +152,7 @@
         html += '<td hidden><input type="text" name="faculty[]" class="form-control" value="<?php echo $faculty; ?>"/></td>';
         html += '<td><select id="subjectname" name="subjectname[]" class="form-control" required><option value="">Select</option>';
         html += '<?php if(isset($subjectlist)) { foreach($subjectlist as $subject){?>';
-        html += '<?php echo '<option value="' . $subject->subjectname . '">' . $subject->subjectname . '</option>'; ?>';
+        html += '<?php echo '<option value="' . $subject->id . '">' . $subject->subjectname . '</option>'; ?>';
         html += '<?php } } ?>';
         html += '</select></td>';
         html += '<td><input type="number" min="1" id="passingmarks" name="passingmarks[]" class="form-control" required/></td>';

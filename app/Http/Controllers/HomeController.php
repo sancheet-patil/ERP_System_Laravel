@@ -37,6 +37,10 @@ class HomeController extends Controller
                 return view('teacher/home');
                 break;
             }
+            case 'examiner':{
+                return view('examiner/home');
+                break;
+            }
             case 'student':{
                 return view('student/home');
                 break;

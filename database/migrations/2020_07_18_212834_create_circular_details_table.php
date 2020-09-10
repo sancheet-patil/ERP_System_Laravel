@@ -16,6 +16,7 @@ class CreateCircularDetailsTable extends Migration
         Schema::create('circular_details', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('academicyear')->nullable();
+            $table->string('circulardate')->nullable();
             $table->string('contenttitle')->nullable();
             $table->string('contenttype')->nullable();
             $table->string('availablefor')->nullable();

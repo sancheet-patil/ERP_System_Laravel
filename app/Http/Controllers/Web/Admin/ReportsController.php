@@ -14,6 +14,7 @@ use App\LeavingCertificateDetails;
 use App\OtherSchoolLists;
 use App\OutwardsDetails;
 use App\ReligionLists;
+use App\ScholarshipLists;
 use App\StaffDetails;
 use App\StudentAttendanceInfo;
 use App\StudentDetails;
@@ -2750,4 +2751,190 @@ class ReportsController extends Controller
         })->download('xlsx');
     }
 
+    public function studentscholarshipreport()
+    {
+        return view(auth()->user()->role.'/studentscholarshipreport');
+    }
+
+    public function studentscholarshipreport_post(Request $request)
+    {
+        $studentlist = DB::table('scholarship_apply_details')
+            ->join('scholarship_lists','scholarship_apply_details.scholarship','=','scholarship_lists.id')
+            ->join('student_details','scholarship_apply_details.studentid','=','student_details.userid')
+            ->select('scholarship_apply_details.scholarshipamount','scholarship_apply_details.noofmonths',
+                'scholarship_lists.scholarshipname','student_details.fname','student_details.mname','student_details.lname',
+                'student_details.classname','student_details.division','student_details.registerno','scholarship_apply_details.id as id',
+                'student_details.gender')
+            ->where('scholarship_apply_details.academicyear','=',$request->academicyear)
+            ->where('scholarship_apply_details.scholarship','=',$request->scholarshipname);
+
+        if($request->classname) {
+            $studentlist = $studentlist->where('classname',$request->classname);
+        }
+        if($request->division) {
+            $studentlist = $studentlist->where('division',$request->division);
+        }
+        if($request->faculty) {
+            $studentlist = $studentlist->where('faculty',$request->faculty);
+        }
+        if($request->gender) {
+            $studentlist = $studentlist->where('gender',$request->gender);
+        }
+        if($request->category) {
+            $studentlist = $studentlist->where('category',$request->category);
+        }
+        $studentlist = $studentlist->get();
+
+        return view(auth()->user()->role.'/studentscholarshipreport')->with('studentlist',$studentlist)->with('academicyear',$request->academicyear)
+            ->with('scholarshipname',$request->scholarshipname)->with('classname',$request->classname)->with('division',$request->division)
+            ->with('faculty',$request->faculty)->with('gender',$request->gender)->with('category',$request->category);
+    }
+
+    public function studentscholarshipreportexcel(Request $request)
+    {
+        $studentlist = DB::table('scholarship_apply_details')
+            ->join('scholarship_lists','scholarship_apply_details.scholarship','=','scholarship_lists.id')
+            ->join('student_details','scholarship_apply_details.studentid','=','student_details.userid')
+            ->join('student_other_details','scholarship_apply_details.studentid','=','student_other_details.userid')
+            ->select('scholarship_apply_details.scholarshipamount','scholarship_apply_details.noofmonths',
+                'scholarship_lists.scholarshipname','student_details.fname','student_details.mname','student_details.lname',
+                'student_details.classname','student_details.division','student_details.registerno','scholarship_apply_details.id as id',
+                'student_details.gender','student_details.subcaste','student_details.aadhar','student_other_details.accounttitle',
+                'student_other_details.accountno','student_other_details.bankifsccode','student_other_details.bankname',
+                'student_other_details.bankbranchname','student_other_details.bankmicrcode')
+            ->where('scholarship_apply_details.academicyear','=',$request->academicyear)
+            ->where('scholarship_apply_details.scholarship','=',$request->scholarshipname);
+
+        if($request->classname) {
+            $studentlist = $studentlist->where('classname',$request->classname);
+        }
+        if($request->division) {
+            $studentlist = $studentlist->where('division',$request->division);
+        }
+        if($request->faculty) {
+            $studentlist = $studentlist->where('faculty',$request->faculty);
+        }
+        if($request->gender) {
+            $studentlist = $studentlist->where('gender',$request->gender);
+        }
+        if($request->category) {
+            $studentlist = $studentlist->where('category',$request->category);
+        }
+        $studentlist = $studentlist->get();
+
+        foreach($studentlist as $student)
+        {
+            $castecategory = CasteCategoryList::where('id',$student->subcaste)->first();
+            $religion = ReligionLists::where('id',$castecategory['religion'])->value('religion');
+            $category = CategoryLists::where('id',$castecategory['category'])->value('category');
+            $castename = $castecategory['castename'];
+            $subcaste = $castecategory['subcaste'];
+
+            $downloadable[] = [
+                'registerno' => $student->registerno,'first name' => $student->fname,'father name' => $student->mname,
+                'last name' => $student->lname,'castename' => $castename,'subcaste' => $subcaste,'aadhar' => $student->aadhar,
+                'classname' => $student->classname,'Last year pass' => 'Pass','Attendance' => 'Regular',
+                'Scholarship rate' => $student->scholarshipamount,'No. of months' => $student->noofmonths,
+                'Total amount' => $student->scholarshipamount*$student->noofmonths,'AADHAR' => $student->aadhar,
+                'bank name' => $student->bankname,'bank branch name' => $student->bankbranchname,'account no' => $student->accountno,
+                'IFSC code' => $student->bankifsccode,
+            ];
+        }
+
+        $applicablefor = ScholarshipLists::where('id',$request->scholarshipname)->value('applicablefor');
+        $applicable = explode(',',$applicablefor);
+        foreach ($applicable as $for)
+        {
+            $data[] = substr($for,2);
+        }
+        $applicablefor = implode(',',$data);
+
+        $reportdata['scholarshipname'] = ScholarshipLists::where('id',$request->scholarshipname)->value('scholarshipname');
+        $reportdata['applicablefor'] = $applicablefor;
+        $reportdata['academicyear'] = $request->academicyear;
+
+        return Excel::create('scholarship report', function($excel) use ($downloadable,$reportdata) {
+            $excel->sheet('Sheet1', function($sheet) use ($downloadable,$reportdata)
+            {
+                $sheet->mergeCells("A1:R1")->setCellValue("A1","{$reportdata['scholarshipname']}");
+                $sheet->cells("A1", function ($cells) {
+                    $cells->setFont(array(
+                        'name' => 'Times New Roman',
+                        'size' => 16,
+                        'bold' => true
+                    ));
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+                });
+                $sheet->mergeCells("B2:C2")->setCellValue("B2","School name:");
+                $sheet->mergeCells("B3:C3")->setCellValue("B3","School address:");
+                $sheet->mergeCells("B4:C4")->setCellValue("B4","U dice code:");
+                $sheet->mergeCells("B5:C5")->setCellValue("B5","Principal name:");
+                $sheet->mergeCells("B6:C6")->setCellValue("B6","Principal mobile:");
+                $sheet->mergeCells("D2:G2")->setCellValue("D2","Lokseva Vidyamandir and Jr. College");
+                $sheet->mergeCells("D3:G3")->setCellValue("D3","Mandrup, Tq. S. Solapur, Dist. Solapur");
+                $sheet->mergeCells("D4:G4")->setCellValue("D4","27301105412");
+                $sheet->mergeCells("D5:G5")->setCellValue("D5","Mr. Tele Shridhar Vishwanath");
+                $sheet->mergeCells("D6:G6")->setCellValue("D6","9420490054");
+
+                $sheet->mergeCells("L3:M3")->setCellValue("L3","Applicable for");
+                $sheet->mergeCells("L4:M4")->setCellValue("L4","Academic year");
+                $sheet->mergeCells("N3:O3")->setCellValue("N3","{$reportdata['applicablefor']}");
+                $sheet->mergeCells("N4:O4")->setCellValue("N4","{$reportdata['academicyear']}");
+
+                $sheet->setCellValue("A8","Sr. No.");
+                $sheet->setCellValue("B8","Register no.");
+                $sheet->mergeCells("C8:E8")->setCellValue("C8","Student name");
+                $sheet->setCellValue("F8","Caste/subcaste");
+                $sheet->setCellValue("G8","Classname");
+                $sheet->setCellValue("H8","Passed last year");
+                $sheet->setCellValue("I8","Attendance");
+                $sheet->setCellValue("C9","First name");
+                $sheet->setCellValue("D9","Father name");
+                $sheet->setCellValue("E9","Last name");
+                $sheet->setCellValue("J8","Scholarship rate");
+                $sheet->setCellValue("K8","Duration (months)");
+                $sheet->setCellValue("L8","Total Amount");
+                $sheet->setCellValue("M8","AADHAR no.");
+                $sheet->mergeCells("N8:Q8")->setCellValue("N8","Bank account details");
+                $sheet->setCellValue("N9","Bank name");
+                $sheet->setCellValue("O9","Branch name");
+                $sheet->setCellValue("P9","Account no.");
+                $sheet->setCellValue("Q9","IFSC code");
+
+                /*$sheet->fromArray($downloadable,null,'A11',true);*/
+                $row=11;
+                for($i=0; $i<count($downloadable); $i++) {
+                    $sheet->setCellValue("A{$row}",($i+1));
+                    $sheet->setCellValue("B{$row}",$downloadable[$i]['registerno']);
+                    $sheet->setCellValue("C{$row}",$downloadable[$i]['first name']);
+                    $sheet->setCellValue("D{$row}",$downloadable[$i]['father name']);
+                    $sheet->setCellValue("E{$row}",$downloadable[$i]['last name']);
+                    $sheet->setCellValue("F{$row}",$downloadable[$i]['castename']);
+                    $sheet->setCellValue("G{$row}",$downloadable[$i]['classname']);
+                    $sheet->setCellValue("H{$row}",$downloadable[$i]['Last year pass']);
+                    $sheet->setCellValue("I{$row}",$downloadable[$i]['Attendance']);
+                    $sheet->setCellValue("J{$row}",$downloadable[$i]['Scholarship rate']);
+                    $sheet->setCellValue("K{$row}",$downloadable[$i]['No. of months']);
+                    $sheet->setCellValue("L{$row}",$downloadable[$i]['Total amount']);
+                    $sheet->setCellValue("M{$row}",$downloadable[$i]['AADHAR']);
+                    $sheet->setCellValue("N{$row}",$downloadable[$i]['bank name']);
+                    $sheet->setCellValue("O{$row}",$downloadable[$i]['bank branch name']);
+                    $sheet->setCellValue("P{$row}",$downloadable[$i]['account no']);
+                    $sheet->setCellValue("Q{$row}",$downloadable[$i]['IFSC code']);
+                    $row++;
+                }
+                $row++;
+                $sheet->mergeCells("B{$row}:Q{$row}")->setCellValue("B{$row}","This is certified that,");$row++;
+                $sheet->mergeCells("B{$row}:Q{$row}")->setCellValue("B{$row}","1.");$row++;
+                $sheet->mergeCells("B{$row}:Q{$row}")->setCellValue("B{$row}","2.");$row++;
+                $sheet->mergeCells("B{$row}:Q{$row}")->setCellValue("B{$row}","3.");$row++;
+                $sheet->mergeCells("B{$row}:Q{$row}")->setCellValue("B{$row}","4.");$row++;
+                $sheet->mergeCells("B{$row}:Q{$row}")->setCellValue("B{$row}","5.");$row++;
+                $sheet->mergeCells("B{$row}:Q{$row}")->setCellValue("B{$row}","6.");$row++;$row++;$row++;
+                $sheet->mergeCells("M{$row}:P{$row}")->setCellValue("M{$row}","Principal,");$row++;
+                $sheet->mergeCells("M{$row}:P{$row}")->setCellValue("M{$row}","Lokseva Vidyamandir and Jr. College, Mandrup");
+            });
+        })->download('xlsx');
+    }
 }

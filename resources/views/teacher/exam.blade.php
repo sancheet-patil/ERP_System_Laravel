@@ -32,9 +32,6 @@
                     <div class="box box-default">
                         <div class="box-header with-border">
                             <h3 class="box-title">Class Exam Search</h3>
-                            <div class="box-tools pull-right">
-                                <a href="{{route('addexam')}}" class="btn btn-github btn-sm"><i class="fa fa-plus"></i> Add Exam</a>
-                            </div>
                         </div>
                         <form method="post" action="{{route('exam')}}">
                             <div class="box-body">
@@ -66,13 +63,13 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group col-md-3" @if(\Illuminate\Support\Facades\Session::get('registerfor') != 'College') hidden @endif>
-                                    <label for="faculty">Faculty</label>
+                                <div class="form-group col-md-3" id="facultydiv" style="display: none;">
+                                    <label for="faculty">Faculty</label><small class="req"> *</small>
                                     <select id="faculty" name="faculty" class="form-control">
                                         <option value="">Select</option>
-                                        <option value="Arts" @if('Arts' == $faculty) selected @endif>Arts</option>
-                                        <option value="Commerce" @if('Commerce' == $faculty) selected @endif>Commerce</option>
-                                        <option value="Science" @if('Science' == $faculty) selected @endif>Science</option>
+                                        <option value="Arts">Arts</option>
+                                        <option value="Commerce">Commerce</option>
+                                        <option value="Science">Science</option>
                                     </select>
                                 </div>
                             </div>
@@ -106,34 +103,45 @@
                                     @if(isset($examlist))
                                         <?php $srno=1; ?>
                                         @foreach($examlist as $exam)
-                                            <tr>
-                                                <td>{{$srno++}}</td>
-                                                <td>{{$exam->examtype}}</td>
-                                                <td>{{$exam->classname}}</td>
-                                                <td>
-                                                    <?php
-                                                    $subjectname = \App\SubjectLists::where('id',$exam->subjectname)->value('subjectname');
-                                                    ?>
-                                                    {{$subjectname}}
-                                                </td>
-                                                <td>{{$exam->passingmarks}}</td>
-                                                <td>{{$exam->outofmarks}}</td>
-                                                <td>
-                                                    <?php
+{{--                                            @if($check)--}}
+                                                <tr>
+                                                    <td>{{$srno++}}</td>
+                                                    <td>{{$exam->examtype}}</td>
+                                                    <td>{{$exam->classname}}</td>
+                                                    <td>
+                                                        <?php
+                                                        $subjectname = \App\SubjectLists::where('id',$exam->subjectname)->value('subjectname');
+                                                        ?>
+                                                        {{$subjectname}}
+                                                    </td>
+                                                    <td>{{$exam->passingmarks}}</td>
+                                                    <td>{{$exam->outofmarks}}</td>
+                                                    <td>
+                                                        <?php
                                                         $divisions = \App\ClassLists::where('classname',$exam->classname)->value('division');
                                                         $divisions = explode(',',$divisions);
-                                                    ?>
-                                                    @foreach($divisions as $division)
-                                                        <?php
+                                                        ?>
+                                                        @foreach($divisions as $division)
+                                                            <?php
+                                                            $divisioncheck = \App\ClassSubjectDetails::where('academicyear',\Illuminate\Support\Facades\Session::get('academicyear'))
+                                                                ->where('classname',$exam->classname)->where('division',$division)
+                                                                ->where('subjectname',$exam->subjectname)
+                                                                ->where('teachername',\Illuminate\Support\Facades\Auth::user()->userid)
+                                                                ->value('division');
+                                                            ?>
+                                                            <?php
                                                             $isevaluated = \App\ExamEvaluationDetails::where('academicyear',\Illuminate\Support\Facades\Session::get('academicyear'))
                                                                 ->where('examtype',$exam->examtype)
                                                                 ->where('classname',$exam->classname)->where('division',$division)
                                                                 ->where('faculty',$exam->faculty)->where('subjectname',$exam->subjectname)->first();
-                                                        ?>
-                                                        <a href="{{route('exam.evaluation',['examtype'=>$exam->examtype,'classname'=>$exam->classname,'division'=>$division,'faculty'=>$exam->faculty,'subjectname'=>$exam->subjectname])}}" class="btn @if($isevaluated) btn-success @else btn-warning @endif btn-sm" title="Submit marks">Div {{$division}}</a>
-                                                    @endforeach
-                                                </td>
-                                            </tr>
+                                                            ?>
+                                                            @if($divisioncheck)
+                                                                <a href="{{route('exam.evaluation',['examtype'=>$exam->examtype,'classname'=>$exam->classname,'division'=>$division,'faculty'=>$exam->faculty,'subjectname'=>$exam->subjectname])}}" class="btn @if($isevaluated) btn-success @else btn-warning @endif btn-sm" title="Submit marks">Div {{$division}}</a>
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+                                                </tr>
+{{--                                            @endif--}}
                                         @endforeach
                                     @endif
                                     </tbody>
@@ -152,7 +160,6 @@
 <script src="{{asset('js/multiselect.js')}}"></script>
 
 <script>
-
     $(document).ready(function(){
         $('#examlist_table').DataTable({
             "scrollX"		: true,
@@ -164,6 +171,18 @@
             'autoWidth'   : false,
             'aaSorting'     : [],
         });
+    });
+
+    $('#classname').change(function(){
+        var classname = $(this).val();
+        if(classname > '10') {
+            document.getElementById("facultydiv").style.display = "block";
+            $('#faculty').prop('required',true);
+        }
+        else {
+            document.getElementById("facultydiv").style.display = "none";
+            $('#faculty').removeAttr('required');
+        }
     });
 
     if ( window.history.replaceState ) {

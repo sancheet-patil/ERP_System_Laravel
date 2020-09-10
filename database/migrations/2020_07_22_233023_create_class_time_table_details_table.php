@@ -18,6 +18,7 @@ class CreateClassTimeTableDetailsTable extends Migration
             $table->string('academicyear')->nullable();
             $table->string('classname')->nullable();
             $table->string('division')->nullable();
+            $table->string('faculty')->nullable();
             $table->string('subjectname')->nullable();
             $table->string('dayofweek')->nullable();
             $table->string('starttime')->nullable();

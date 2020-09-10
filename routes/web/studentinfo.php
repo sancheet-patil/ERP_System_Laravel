@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth','disablemoveback']], function() {
 
     Route::get('/studentscholarshipapply', 'Web\Admin\StudentInformationController@studentscholarshipapply')->name('studentscholarshipapply');
     Route::post('/studentscholarshipapply/post', 'Web\Admin\StudentInformationController@studentscholarshipapply_post')->name('studentscholarshipapply.post');
+    Route::get('/deletescholarshipstudent/{id}', 'Web\Admin\StudentInformationController@deletescholarshipstudent')->name('deletescholarshipstudent');
 
     Route::get('/studentrejoin', 'Web\Admin\StudentInformationController@studentrejoin')->name('studentrejoin');
 

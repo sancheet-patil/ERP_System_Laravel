@@ -49,10 +49,10 @@
                                             <label for="staffrole">User Role</label><small class="req"> *</small>
                                             <select id="staffrole" name="staffrole" class="form-control select2" required>
                                                 <option value="">Select</option>
-                                                <option value="Admin">Admin</option>
-                                                <option value="Operator">Operator</option>
-                                                <option value="Teacher">Teacher</option>
-                                                <option value="Other">Other</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="operator">Operator</option>
+                                                <option value="teacher">Teacher</option>
+                                                <option value="other">Other</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-3">

@@ -52,9 +52,9 @@
                                     <label for="division">Division</label><small class="req"> *</small>
                                     <input type="text" id="division" name="division" class="form-control" value="{{$classteacher->division}}" required readonly/>
                                 </div>
-                                <div class="form-group" id="facultydiv" style="@if($classteacher->faculty == '') display: none; @endif">
-                                    <label for="faculty">Faculty</label>
-                                    <select id="faculty" name="faculty" class="form-control">
+                                <div class="form-group" id="facultydiv" style="@if($classteacher->classname < '11') display: none; @endif">
+                                    <label for="faculty">Faculty</label> @if($classteacher->classname > '10') <small class="req"> *</small> @endif
+                                    <select id="faculty" name="faculty" class="form-control" @if($classteacher->classname > '10') required @endif>
                                         <option value="">Select</option>
                                         <option value="Arts" @if('Arts' == $classteacher->faculty) selected @endif>Arts</option>
                                         <option value="Commerce" @if('Commerce' == $classteacher->faculty) selected @endif>Commerce</option>
@@ -93,6 +93,7 @@
                                     <th>Sr. No.</th>
                                     <th>Class</th>
                                     <th>Division</th>
+                                    <th>Faculty</th>
                                     <th>Teacher name</th>
                                     <th>Action</th>
                                 </tr>
@@ -105,6 +106,7 @@
                                             <td>{{$srno}}</td>
                                             <td>{{$item->classname}}</td>
                                             <td>{{$item->division}}</td>
+                                            <td>{{$item->faculty}}</td>
                                             <td>{{$item->fname.' '.$item->mname.' '.$item->lname}}</td>
                                             <td>
                                                 <a href="{{url('/assignclassteacher/edit/'.encrypt($item->id))}}"><button class=" btn btn-success" title="Edit class teacher"><i class="fa fa-pencil"></i> Edit</button></a>

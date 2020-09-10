@@ -57,7 +57,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4" id="facultydiv" style="display: none;">
-                                    <label for="faculty">Faculty</label>
+                                    <label for="faculty">Faculty</label><small class="req"> *</small>
                                     <select id="faculty" name="faculty" class="form-control">
                                         <option value="">Select</option>
                                         <option value="Arts">Arts</option>
@@ -85,20 +85,19 @@
                                     <table class="table table-bordered table-striped" id="assign_subject_table">
                                         <thead>
                                         <tr>
-                                            <th width="25%">Subject name</th>
-                                            <th width="25%">Out of marks</th>
-                                            <th width="25%">Teacher name</th>
-                                            <th width="25%">Action</th>
+                                            <th width="33%">Subject name</th>
+                                            <th width="33%">Teacher name</th>
+                                            <th width="33%">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         </tbody>
                                         <tfoot id="table_footer">
                                         <tr>
-                                            <td colspan="3" align="right"><button type="button" name="add" id="addsubject" class="btn btn-success">Add subject</button></td>
+                                            <td colspan="2" align="right"><button type="button" name="add" id="addsubject" class="btn btn-success">Add subject</button></td>
                                             <td>
                                                 @csrf
-                                                <input type="submit" name="save" id="savesubject" class="btn btn-primary" value="Save List" />
+                                                <input type="submit" name="save" id="savesubject" class="btn btn-primary" onclick="return checkcount();" value="Save List" />
                                             </td>
                                         </tr>
                                         </tfoot>
@@ -140,9 +139,11 @@
         });
         if(classname > '10') {
             document.getElementById("facultydiv").style.display = "block";
+            $('#faculty').prop('required',true);
         }
         else {
             document.getElementById("facultydiv").style.display = "none";
+            $('#faculty').removeAttr('required');
         }
     });
 
@@ -178,16 +179,14 @@
                             '<input type="text" class="form-control" value="'+data[i].subjectname+'" readonly />' +
                             '</td>';
                         html += '<td>' +
-                            '<input type="text" name="outofmarks[]" class="form-control" value="'+data[i].outofmarks+'" readonly style="display: none;"/>' +
-                            '<input type="text" class="form-control" value="'+data[i].outofmarks+'" readonly />' +
-                            '</td>';
-                        html += '<td>' +
                             '<input type="text" name="teachername[]" class="form-control" value="'+data[i].teacherid+'" readonly style="display: none;"/>' +
                             '<input type="text" class="form-control" value="'+data[i].fname+' '+data[i].mname+' '+data[i].lname+'" readonly />' +
                             '</td>';
                         html += '<td><button type="button" id="removesubject" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>';
                         html += '</tr>';
+                        count++;
                     }
+                    count--;
                     $('#assign_subject_table tbody').html(html);
                 }
                 else
@@ -209,7 +208,6 @@
         html += '<td><select id="subjectname" name="subjectname[]" class="form-control select2" required><option value="">Select</option>';
         html += '<?php if(isset($subjectlist)) { foreach($subjectlist as $subject){ echo '<option value="'.$subject->id.'">'.$subject->subjectname.' ('.$subject->subjecttype.')</option>'; } } ?>';
         html += '</select></td>';
-        html += '<td><input type="number" name="outofmarks[]" class="form-control" value="" min="0" required/></td>';
         html += '<td><select id="teachername" name="teachername[]" class="form-control select2" required><option value="">Select</option>';
         html += '<?php if(isset($teacherlist)) { foreach($teacherlist as $teacher){ echo '<option value="'.$teacher->userid.'">'.$teacher->fname.' '.$teacher->mname.' '.$teacher->lname.'</option>'; } } ?>';
         html += '</select></td>';
@@ -227,6 +225,13 @@
         $(this).closest("tr").remove();
     });
 
+    function checkcount() {
+        if(count==0)
+        {
+            alert('Fill at least one subject');
+            return false;
+        }
+    }
 </script>
 </body>
 </html>
