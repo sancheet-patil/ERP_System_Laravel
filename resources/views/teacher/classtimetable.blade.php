@@ -91,7 +91,7 @@
                             </div>
                             <div class="box-footer">
                                 @csrf
-                                <button type="submit" class="btn btn-primary pull-right">Save</button>
+                                <button type="submit" id="btnsubmit" class="btn btn-primary pull-right">Save</button>
                             </div>
                         </form>
                     </div>
@@ -124,6 +124,21 @@
         });
     });
     $('#division').change(function(){
+        $.ajax({
+            type:"get",
+            url:"{{url('isclassteacher')}}?classname=" + $('#classname').val()+'&division='+$('#division').val(),
+            beforeSend:function(){
+            },
+            success:function(data){
+                if(data === 'true'){
+                    $('#btnsubmit').prop('disabled',false);
+                }
+                else {
+                    $('#btnsubmit').prop('disabled',true);
+                }
+            }
+        });
+
         document.getElementById('add_timetable_div').style.display = 'none';
         $.ajax({
             type:"GET",

@@ -2,7 +2,14 @@
 <project version="4">
   <component name="PublishConfigData" autoUpload="Always" serverName="QSITLSVM">
     <serverData>
-      <paths name="QSITLSVM">
+      <paths name="LSVM">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="School">
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />

@@ -37,7 +37,7 @@
                                 <div class="info-box-content">
                                     <span class="info-box-text">Admin</span>
                                     <?php
-                                    $admincount = \App\StaffDetails::where('staffrole','Admin')->get()->count();
+                                    use App\CircularDetails;use Carbon\Carbon;$admincount = \App\StaffDetails::where('staffrole','Admin')->get()->count();
                                     ?>
                                     <span class="info-box-number">{{$admincount}}</span>
                                 </div>
@@ -127,6 +127,37 @@
                                     $issuedlccount = \App\Form17LcDetails::where('academicyear',\Illuminate\Support\Facades\Session::get('academicyear'))->get()->count();
                                     ?>
                                     <span class="info-box-number">{{$issuedlccount}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="info-box">
+                                <a href="{{route('circular')}}">
+                                    <span class="info-box-icon bg-aqua"><i class="fa fa-sticky-note"></i></span>
+                                </a>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Latest Circulars</span>
+                                    <?php
+                                    $circularcount = \App\CircularDetails::where('availablefor','Staff')
+                                        ->where('circulardate','>',Carbon::now()->subDays(7)->format('d-m-Y'))->get()->count();
+                                    ?>
+                                    <span class="info-box-number">{{$circularcount}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="info-box">
+                                <a href="{{route('terminatestudentlist')}}">
+                                    <span class="info-box-icon bg-red"><i class="fa fa-user"></i></span>
+                                </a>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Pending Termination</span>
+                                    <?php
+                                    $pendingcount = \App\TerminateStudentDetails::get()->count();
+                                    ?>
+                                    <span class="info-box-number">{{$pendingcount}}</span>
                                 </div>
                             </div>
                         </div>

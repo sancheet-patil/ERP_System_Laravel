@@ -30,4 +30,10 @@ Route::group(['middleware' => ['auth','disablemoveback']], function() {
     Route::get('/exam/evaluation', 'Web\Admin\ExaminationController@exam_evaluation')->name('exam.evaluation');
     Route::post('/examevaluation/submit', 'Web\Admin\ExaminationController@examevaluation_submit')->name('examevaluation.submit');
 
+    Route::get('/terminatestudentlist', 'Web\Admin\ExaminationController@terminatestudentlist')->name('terminatestudentlist');
+    Route::get('/studentterminate', 'Web\Admin\ExaminationController@student_terminate')->name('student.terminate');
+    Route::post('/studentterminate/submit', 'Web\Admin\ExaminationController@student_terminate_submit')->name('student.terminate.submit');
+    Route::post('/studentterminate/approve', 'Web\Admin\ExaminationController@student_terminate_approve')->name('student.terminate.approve');
+    Route::get('/studentterminate/reject/{id}', 'Web\Admin\ExaminationController@student_terminate_reject')->name('student.terminate.reject');
+
 });

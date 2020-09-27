@@ -64,13 +64,7 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="registerfor">Register for</label> <small class="req"> *</small>
-                                            <select id="registerfor" name="registerfor" class="form-control select2" required readonly>
-                                                <option value="">Select</option>
-                                                <option value="School" @if('School' == $studentdetails->registerfor) selected @endif>School</option>
-                                                <option value="College" @if('College' == $studentdetails->registerfor) selected @endif>College</option>
-                                                <option value="School Form 17" @if('School Form 17' == $studentdetails->registerfor) selected @endif>School Form 17</option>
-                                                <option value="College Form 17" @if('College Form 17' == $studentdetails->registerfor) selected @endif>College Form 17</option>
-                                            </select>
+                                            <input type="text" class="form-control" value="{{$studentdetails->registerfor}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3" id="facultydiv" style="@if(!$studentdetails->faculty) display:none; @endif">
                                             <label for="faculty">Faculty</label> <small class="req"> *</small>
@@ -130,12 +124,7 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="gender">Gender</label> <small class="req"> *</small>
-                                            <select id="gender" name="gender" class="form-control select2" required readonly>
-                                                <option value="">Select</option>
-                                                <option value="Male" @if('Male' == $studentdetails->gender) selected @endif>Male</option>
-                                                <option value="Female" @if('Female' == $studentdetails->gender) selected @endif>Female</option>
-                                                <option value="Other" @if('Other' == $studentdetails->gender) selected @endif>Other</option>
-                                            </select>
+                                            <input type="text" class="form-control" value="{{$studentdetails->gender}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="mothertongue">Mother tongue</label> <small class="req"> *</small>
@@ -143,33 +132,30 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="religion">Religion</label>
-                                            <select id="religion" name="religion" class="form-control select2" readonly >
-                                                <option value="">Select</option>
-                                                <?php
-                                                $religions = \App\ReligionLists::orderBy('religion','asc')->get();
-                                                ?>
-                                                @foreach($religions as $religion)
-                                                    <option value="{{$religion->id}}" @if($religion->id == $studentdetails->religion) selected @endif>{{$religion->religion}}</option>
-                                                @endforeach
-                                            </select>
+                                            <?php
+                                            $religions = \App\ReligionLists::orderBy('religion','asc')->get();
+                                            ?>
+                                            @foreach($religions as $religion)
+                                                @if($religion->id == $studentdetails->religion)
+                                                    <input type="text" class="form-control" value="{{$religion->religion}}" readonly/>
+                                                @endif
+                                            @endforeach
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="castename">Caste</label><small class="req"> *</small>
-                                            <select id="castename" name="castename" class="form-control select2" required readonly>
-                                                <option value="">Select</option>
-                                                @foreach($castelist as $caste)
-                                                    <option value="{{$caste->castename}}" @if($caste->castename == $studentdetails->castename) selected @endif>{{$caste->castename}}</option>
-                                                @endforeach
-                                            </select>
+                                            @foreach($castelist as $caste)
+                                                @if($caste->castename == $studentdetails->castename)
+                                                    <input type="text" class="form-control" value="{{$caste->castename}}" readonly/>
+                                                @endif
+                                            @endforeach
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="subcaste">Sub Caste</label><small class="req"> *</small>
-                                            <select id="subcaste" name="subcaste" class="form-control select2" required readonly>
-                                                <option value="">Select</option>
-                                                @foreach($subcastelist as $subcaste)
-                                                    <option value="{{$subcaste->id}}" @if($subcaste->id == $studentdetails->subcaste) selected @endif>{{$subcaste->subcaste}}</option>
-                                                @endforeach
-                                            </select>
+                                            @foreach($subcastelist as $subcaste)
+                                                @if($subcaste->id == $studentdetails->subcaste)
+                                                    <input type="text" class="form-control" value="{{$subcaste->subcaste}}" readonly/>
+                                                @endif
+                                            @endforeach
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="category">Category</label> <small class="req"> *</small>
@@ -184,7 +170,7 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="dob">Date of Birth</label> <small class="req"> *</small>
-                                            <input type="text" id="dob" name="dob" class="form-control" value="{{$studentdetails->dob}}" required readonly/>
+                                            <input type="text" class="form-control" value="{{$studentdetails->dob}}" required readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="lastclass">Last attended class</label> <small class="req"> *</small>
@@ -192,16 +178,14 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="schoolname">Last attended school</label> <small class="req"> *</small>
-                                            <select id="schoolname" name="schoolname" class="form-control select2" required readonly>
-                                                <option value="">Select</option>
-                                                <?php
-                                                $schools = \App\OtherSchoolLists::orderBy('schoolname','asc')->get();
-                                                ?>
-                                                @foreach($schools as $school)
-                                                    <option value="{{$school->id}}" @if($school->id == $studentdetails->schoolname) selected @endif>{{$school->schoolname}}</option>
-                                                @endforeach
-                                                <option value="Other" @if('Other' == $studentdetails->schoolname) selected @endif>Other</option>
-                                            </select>
+                                            <?php
+                                            $schools = \App\OtherSchoolLists::orderBy('schoolname','asc')->get();
+                                            ?>
+                                            @foreach($schools as $school)
+                                                @if($school->id == $studentdetails->schoolname)
+                                                    <input type="text" class="form-control" value="{{$school->schoolname}}" readonly/>
+                                                @endif
+                                            @endforeach
                                         </div>
                                         <div class="form-group col-md-3" id="lastschooldiv" style="@if('Other' != $studentdetails->schoolname) display: none; @endif">
                                             <label for="lastschool">Name of school/ college</label> <small class="req"> *</small>
@@ -217,28 +201,15 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="admissiontype">Admission Type</label> <small class="req"> *</small>
-                                            <select id="admissiontype" name="admissiontype" class="form-control select2" required readonly>
-                                                <option value="">Select</option>
-                                                <option value="Fresher" @if('Fresher' == $studentdetails->admissiontype) selected @endif>Fresher</option>
-                                                <option value="Repeater" @if('Repeater' == $studentdetails->admissiontype) selected @endif>Repeater</option>
-                                                <option value="One time failed" @if('One time failed' == $studentdetails->admissiontype) selected @endif>One time failed</option>
-                                            </select>
+                                            <input type="text" class="form-control" value="{{$studentdetails->admissiontype}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="lateadmission">Late Admission</label> <small class="req"> *</small>
-                                            <select id="lateadmission" name="lateadmission" class="form-control select2" required readonly>
-                                                <option value="">Select</option>
-                                                <option value="No" @if('No' == $studentdetails->lateadmission) selected @endif>No</option>
-                                                <option value="Yes" @if('Yes' == $studentdetails->lateadmission) selected @endif>Yes</option>
-                                            </select>
+                                            <input type="text" class="form-control" value="{{$studentdetails->lateadmission}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="hostelrequired">Hostel required</label> <small class="req"> *</small>
-                                            <select id="hostelrequired" name="hostelrequired" class="form-control select2" required readonly>
-                                                <option value="">Select</option>
-                                                <option value="No" @if('No' == $studentdetails->hostelrequired) selected @endif>No</option>
-                                                <option value="Yes" @if('Yes' == $studentdetails->hostelrequired) selected @endif>Yes</option>
-                                            </select>
+                                            <input type="text" class="form-control" value="{{$studentdetails->hostelrequired}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="mobile">Mobile</label>
@@ -250,7 +221,7 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="admission_date">Admission date</label> <small class="req"> *</small>
-                                            <input type="text" id="admission_date" name="admission_date" class="form-control" value="{{$studentdetails->admission_date}}" required readonly/>
+                                            <input type="text" class="form-control" value="{{$studentdetails->admission_date}}" required readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="roll_no">Roll Number</label>
@@ -258,11 +229,7 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="ispwd">Person with Disability</label> <small class="req"> *</small>
-                                            <select id="ispwd" name="ispwd" class="form-control select2" required readonly>
-                                                <option value="">Select</option>
-                                                <option value="Yes" @if($studentdetails->pwd != 'No') selected @endif>Yes</option>
-                                                <option value="No" @if($studentdetails->pwd == 'No') selected @endif>No</option>
-                                            </select>
+                                            <input type="text" class="form-control" value="{{$studentdetails->pwd}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-6" id="pwddiv" style="@if($studentdetails->pwd == 'No') display: none; @endif">
                                             <label for="pwd">Name of Disability</label> <small class="req"> *</small>
@@ -284,11 +251,7 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="citytype">City Type</label> <small class="req"> *</small>
-                                            <select id="citytype" name="citytype" class="form-control" required readonly>
-                                                <option value="">Select</option>
-                                                <option value="Rural" @if('Rural' == $studentdetails->citytype) selected @endif>Rural</option>
-                                                <option value="Urban" @if('Urban' == $studentdetails->citytype) selected @endif>Urban</option>
-                                            </select>
+                                            <input type="text" class="form-control" value="{{$studentdetails->citytype}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="familyincome">Family income (Annual)</label>
@@ -296,11 +259,7 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="isminor">Minority</label> <small class="req"> *</small>
-                                            <select id="isminor" name="isminor" class="form-control select2" required>
-                                                <option value="">Select</option>
-                                                <option value="Yes" @if('Yes' == $studentdetails->isminor) selected @endif>Yes</option>
-                                                <option value="No" @if('No' == $studentdetails->isminor) selected @endif>No</option>
-                                            </select>
+                                            <input type="text" class="form-control" value="{{$studentdetails->isminor}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3" id="imagephoto" @if(!$studentdetails->studentphoto) hidden @endif>
                                             <label for="studentphoto">Student Photo</label><br>

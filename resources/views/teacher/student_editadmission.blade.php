@@ -61,7 +61,6 @@
                                         <div class="form-group col-md-3">
                                             <label for="admission_year">Admission year</label> <small class="req"> *</small>
                                             <input type="text" id="admission_year" name="admission_year" class="form-control" value="{{$studentdetails->admission_year}}" required readonly/>
-
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="registerfor">Register for</label> <small class="req"> *</small>
@@ -88,14 +87,22 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="division">Division</label>
-                                            <select id="division" name="division" class="form-control select2" readonly>
-                                                @if(isset($divisionlist))
-                                                    <option value="">Select</option>
-                                                    @foreach($divisionlist as $division)
-                                                        <option value="{{$division}}" @if($division == $studentdetails->division) selected @endif>{{$division}}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
+                                            <?php
+                                            $classteacher = \App\ClassTeacherDetails::where('academicyear',\Illuminate\Support\Facades\Session::get('academicyear'))
+                                                ->where('classname',$studentdetails->classname)->where('division',$studentdetails->division)->value('teacherid');
+                                            ?>
+                                            @if(\Illuminate\Support\Facades\Auth::user()->userid == $classteacher)
+                                                <select id="division" name="division" class="form-control select2" readonly>
+                                                    @if(isset($divisionlist))
+                                                        <option value="">Select</option>
+                                                        @foreach($divisionlist as $division)
+                                                            <option value="{{$division}}" @if($division == $studentdetails->division) selected @endif>{{$division}}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            @else
+                                                <input type="text" id="division" name="division" class="form-control" value="{{$studentdetails->division}}" required readonly/>
+                                            @endif
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="registerno">Register No.</label> <small class="req"> *</small>
@@ -289,7 +296,7 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="isminor">Minority</label> <small class="req"> *</small>
-                                            <select id="isminor" name="isminor" class="form-control select2" required>
+                                            <select id="isminor" name="isminor" class="form-control select2" required readonly>
                                                 <option value="">Select</option>
                                                 <option value="Yes" @if('Yes' == $studentdetails->isminor) selected @endif>Yes</option>
                                                 <option value="No" @if('No' == $studentdetails->isminor) selected @endif>No</option>

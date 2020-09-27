@@ -51,7 +51,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/LSVMWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LSVMWeb.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/AttendanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/AttendanceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/ExaminationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/ExaminationController.php" afterDir="false" />
@@ -392,7 +391,7 @@
       <workItem from="1600712414636" duration="2718000" />
       <workItem from="1601048864154" duration="14350000" />
       <workItem from="1601134004930" duration="7906000" />
-      <workItem from="1601195662709" duration="407000" />
+      <workItem from="1601195662709" duration="686000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1596732254126</created>
@@ -464,7 +463,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599725379089</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Student Termination Commit">
+      <created>1601196118542</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1601196118542</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -492,7 +498,8 @@
     <MESSAGE value="Examination commit" />
     <MESSAGE value="Temp Commit" />
     <MESSAGE value="Scholarship Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Scholarship Commit" />
+    <MESSAGE value="Student Termination Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Student Termination Commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="25" key="#Deployment" timestamp="1601050120642">
@@ -507,6 +514,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="121" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1601136097524" />
+    <state x="321" y="0" key="CommitChangelistDialog2" timestamp="1601196104269">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="321" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1601196104269" />
     <state x="463" y="121" key="FileChooserDialogImpl" timestamp="1601049658571">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -515,6 +526,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="512" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1601144317685" />
+    <state x="275" y="99" key="Vcs.Push.Dialog.v2" timestamp="1601196326197">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="99" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1601196326197" />
   </component>
   <component name="masterDetails">
     <states>

@@ -27,7 +27,7 @@
                         <li><a href="{{route('subjects')}}"><i class="fa fa-angle-double-right"></i>Subjects</a></li>
                         <li><a href="{{route('assignsubjects')}}"><i class="fa fa-angle-double-right"></i>Assign Subjects</a></li>
                         <li><a href="{{route('assignclassteacher')}}"><i class="fa fa-angle-double-right"></i>Assign Class Teacher</a></li>
-                        
+
                         <li><a href="{{route('classtimetable')}}"><i class="fa fa-angle-double-right"></i>Class Timetable</a></li>
                         <li><a href="{{route('scholarship')}}"><i class="fa fa-angle-double-right"></i>Scholarships</a></li>
                         <li><a href="{{route('event')}}"><i class="fa fa-angle-double-right"></i>Events</a></li>
@@ -101,6 +101,7 @@
                         <li><a href="{{route('exam')}}"><i class="fa fa-angle-double-right"></i>Examination</a></li>
                         <li><a href="{{route('promotestudents')}}"><i class="fa fa-angle-double-right"></i>Promote Students</a></li>
                         <li><a href="{{route('demotestudents')}}"><i class="fa fa-angle-double-right"></i>Demote Students</a></li>
+                        <li><a href="{{route('terminatestudentlist')}}"><i class="fa fa-angle-double-right"></i>Terminate Student List</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -244,6 +245,7 @@
             </ul>
         </section>
     </aside>
+
 @elseif(\Illuminate\Support\Facades\Auth::user()->role == 'operator')
     <aside class="main-sidebar">
         <section class="sidebar">
@@ -321,7 +323,7 @@
                         <li><a href="{{route('studentscholarshipapply')}}"><i class="fa fa-angle-double-right"></i>Student scholarship apply</a></li>
                     </ul>
                 </li>
-                <li class="treeview">
+                {{--<li class="treeview">
                     <a href="{{''}}">
                         <i class="fa fa-download"></i> <span>Certificates</span>
                         <span class="pull-right-container">
@@ -333,7 +335,7 @@
                         <li><a href="{{route('leavingcertificate')}}"><i class="fa fa-angle-double-right"></i>Leaving Certificate</a></li>
                         <li><a href="{{route('form17lc')}}"><i class="fa fa-angle-double-right"></i>Form 17 Leaving Certificate</a></li>
                     </ul>
-                </li>
+                </li>--}}
                 <li class="treeview">
                     <a href="{{''}}">
                         <i class="fa fa-download"></i> <span>Reports</span>
@@ -450,15 +452,23 @@
                 </li>
                 <li class="treeview">
                     <a href="{{''}}">
+                        <i class="fa fa-ioxhost"></i> <span>School Setup</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('classtimetable')}}"><i class="fa fa-angle-double-right"></i>Class Timetable</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="{{''}}">
                         <i class="fa fa-ioxhost"></i> <span>Front office</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('visitorbook')}}"><i class="fa fa-angle-double-right"></i>Visitor book</a></li>
-                        <li><a href="{{route('inwards')}}"><i class="fa fa-angle-double-right"></i>Inwards</a></li>
-                        <li><a href="{{route('outwards')}}"><i class="fa fa-angle-double-right"></i>Outwards</a></li>
                         <li><a href="{{route('complaints')}}"><i class="fa fa-angle-double-right"></i>Complaints</a></li>
                         <li><a href="{{route('circular')}}"><i class="fa fa-angle-double-right"></i>Circulars</a></li>
                     </ul>
@@ -498,6 +508,7 @@
                         <li><a href="{{route('exam')}}"><i class="fa fa-angle-double-right"></i>Examination</a></li>
                         <li><a href="{{route('promotestudents')}}"><i class="fa fa-angle-double-right"></i>Promote Students</a></li>
                         <li><a href="{{route('demotestudents')}}"><i class="fa fa-angle-double-right"></i>Demote Students</a></li>
+                        <li><a href="{{route('terminatestudentlist')}}"><i class="fa fa-angle-double-right"></i>Terminate Student List</a></li>
                     </ul>
                 </li>
                 <li class="treeview">

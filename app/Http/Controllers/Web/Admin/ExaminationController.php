@@ -8,9 +8,12 @@ use App\ExamEvaluationDetails;
 use App\ExamList;
 use App\ExamScheduleList;
 use App\Http\Controllers\Controller;
+use App\LeavingCertificateDetails;
 use App\SchoolExamination;
 use App\StudentDetails;
 use App\StudentEducationalDetails;
+use App\TerminateStudentDetails;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -245,5 +248,62 @@ class ExaminationController extends Controller
         }
         ExamEvaluationDetails::insert($inputdata);
         return Redirect::route('exam');
+    }
+
+    public function terminatestudentlist()
+    {
+        $studentlist = DB::table('terminate_student_details')
+            ->join('student_details','terminate_student_details.userid','=','student_details.userid')
+            ->select('terminate_student_details.id','terminate_student_details.remarks','student_details.registerfor',
+                'student_details.userid','student_details.registerno','student_details.fname','student_details.mname',
+                'student_details.lname','student_details.classname','student_details.division','terminate_student_details.dateofterminate')
+            ->get();
+        return view(auth()->user()->role.'/terminatestudentlist')->with('studentlist',$studentlist);
+    }
+
+    public function student_terminate()
+    {
+        return view(auth()->user()->role.'/student_terminate');
+    }
+
+    public function student_terminate_submit(Request $request)
+    {
+        $data = $request->all();
+        foreach($data['to'] as $studentid) {
+            $terminatedata['userid'] = $studentid;
+            $terminatedata['dateofterminate'] = date('d-m-Y');
+            $terminatedata['remarks'] = $data['remarks'];
+            TerminateStudentDetails::create($terminatedata);
+        }
+        return Redirect::route('terminatestudentlist')->with('success','Student termination needs admin approval.');
+    }
+
+    public function student_terminate_approve(Request $request)
+    {
+        $lcdata['academicyear'] = StudentDetails::where('userid',$request->userid)->value('academicyear');
+        $lcdata['studentid'] = $request->userid;
+        $lcdata['progress'] = $request->progress;
+        $lcdata['conduct'] = $request->conduct;
+        $lcdata['dateofleaving'] = $request->dateofleaving;
+        $lcdata['reasonofleaving'] = $request->reasonofleaving;
+        $lcdata['remarks'] = $request->remarks;
+        $lcdata['studyinginclass'] = $request->studyinginclass;
+        $lcdata['issuedate'] = date('d-m-Y');
+        LeavingCertificateDetails::create($lcdata);
+
+        $accessdata['hasaccess'] = '0';
+        User::where('userid',$request->userid)->update($accessdata);
+        StudentDetails::where('userid',$request->userid)->update($accessdata);
+
+        TerminateStudentDetails::where('userid',$request->userid)->delete();
+
+        return back()->with('success','Student termination approved successfully.');
+    }
+
+    public function student_terminate_reject($id)
+    {
+        $userid = decrypt($id);
+        TerminateStudentDetails::where('userid',$userid)->delete();
+        return back()->with('success','Student termination rejected successfully.');
     }
 }

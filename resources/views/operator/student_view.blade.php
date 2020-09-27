@@ -83,6 +83,7 @@
                             <li><a href="#tab_address" data-toggle="tab"> Address details</a></li>
                             <li><a href="#tab_guardian" data-toggle="tab"> Guardian details</a></li>
                             <li><a href="#tab_bank" data-toggle="tab"> Bank details</a></li>
+                            <li><a href="#tab_education" data-toggle="tab"> Educational Record</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_profile">
@@ -259,6 +260,33 @@
                                                             <td>Bank MICR Code</td>
                                                             <td>{{$studentdetails->bankmicrcode}}</td>
                                                         </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab_education">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="box box-warning">
+                                            <div class="box-header with-border bg-gray">
+                                                <h2 class="box-title">Educational Details</h2>
+                                            </div>
+                                            <div class="box-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover cuspad">
+                                                        <tr>
+                                                            <th class="col-md-3">Academic year</th>
+                                                            <th>Class</th>
+                                                        </tr>
+                                                        @foreach($educationaldetails as $education)
+                                                            <tr>
+                                                                <td class="col-md-3">{{$education->academicyear}}</td>
+                                                                <td>{{$education->classname}}</td>
+                                                            </tr>
+                                                        @endforeach
                                                     </table>
                                                 </div>
                                             </div>

@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
@@ -31,5 +32,10 @@ class AuthController extends Controller
         {
             return redirect()->route('login')->with('error','User does not exists');
         }
+    }
+
+    public function downloadapp()
+    {
+        return response()->download(public_path('other/LoksevaApp.apk'));
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Admin;
 
 use App\CasteCategoryList;
 use App\CategoryLists;
+use App\CircularDetails;
 use App\ClassLists;
 use App\ClassSubjectDetails;
 use App\ClassTeacherDetails;
@@ -14,8 +15,10 @@ use App\LeavingCertificateDetails;
 use App\OtherSchoolLists;
 use App\Rules\MatchOldPassword;
 use App\ScholarshipLists;
+use App\StaffDetails;
 use App\StudentDetails;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -342,9 +345,9 @@ class OtherController extends Controller
 
     public function migrate()
     {
-        $classsubject = \App\ClassSubjectDetails::where('academicyear',\Illuminate\Support\Facades\Session::get('academicyear'))
-            ->where('teachername',\Illuminate\Support\Facades\Auth::user()->userid)->get();
+        $data = CircularDetails::where('availablefor','Staff')
+            ->where('circulardate','>',Carbon::now()->subDays(7)->format('d-m-Y'))->get();
 
-        return $classsubject;
+        return $data;
     }
 }

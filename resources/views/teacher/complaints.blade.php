@@ -94,7 +94,7 @@
                                     <th>Assigned</th>
                                     <th>Action taken</th>
                                     <th>Status</th>
-                                    <th>Action</th>
+{{--                                    <th>Action</th>--}}
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -110,10 +110,10 @@
                                             <td>{{$complaint->assigned}}</td>
                                             <td>{{$complaint->actiontaken}}</td>
                                             <td>{{$complaint->complaintstatus}}</td>
-                                            <td>
-                                                <a href="{{url('/complaints/edit/'.encrypt($complaint->id))}}"><button class=" btn btn-success" title="Edit complaint"><i class="fa fa-pencil"></i></button></a>
+{{--                                            <td>--}}
+{{--                                                <a href="{{url('/complaints/edit/'.encrypt($complaint->id))}}"><button class=" btn btn-success" title="Edit complaint"><i class="fa fa-pencil"></i></button></a>--}}
 {{--                                                <a href="{{url('/complaints/delete/'.encrypt($complaint->id))}}"><button class=" btn btn-warning" title="Delete complaint" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button></a>--}}
-                                            </td>
+{{--                                            </td>--}}
                                         </tr>
                                     @endforeach
                                 @endif

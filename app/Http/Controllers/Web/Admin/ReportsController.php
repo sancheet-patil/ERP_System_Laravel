@@ -19,6 +19,7 @@ use App\StaffDetails;
 use App\StudentAttendanceInfo;
 use App\StudentDetails;
 use App\VisitorBookDetails;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -1276,7 +1277,7 @@ class ReportsController extends Controller
 
         $otherdata['classname'] = $request->classname;
         $otherdata['division'] = $request->division;
-        $otherdata['month'] = date('F', $time);
+        $otherdata['month'] = date('F', $time-50000);
         $otherdata['year'] = $request->year;
         $otherdata['academicyear'] = Session::get('academicyear');
         $teacherid = ClassTeacherDetails::where('classname',$request->classname)->where('division',$request->division)->first()->teacherid;
@@ -1496,7 +1497,7 @@ class ReportsController extends Controller
 
         $otherdata['classname'] = $request->classname;
         $otherdata['division'] = $request->division;
-        $otherdata['month'] = date('F', $time);
+        $otherdata['month'] = date('F', $time-50000);
         $otherdata['year'] = $request->year;
         $teacherid = ClassTeacherDetails::where('classname',$request->classname)->where('division',$request->division)->first()->teacherid;
         $teacherdetails = StaffDetails::where('userid',$teacherid)->first();
@@ -1874,7 +1875,7 @@ class ReportsController extends Controller
 
         $otherdata['classname'] = $request->classname;
         $otherdata['division'] = $request->division;
-        $otherdata['month'] = date('F', $time);
+        $otherdata['month'] = date('F', $time-50000);
         $otherdata['year'] = $request->year;
         $otherdata['academicyear'] = Session::get('academicyear');
         $teacherid = ClassTeacherDetails::where('classname',$request->classname)->where('division',$request->division)->first()->teacherid;

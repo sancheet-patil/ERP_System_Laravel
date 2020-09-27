@@ -102,7 +102,9 @@ class AttendanceController extends Controller
                 ->where('student_attendance_infos.academicyear',Session::get('academicyear'))
                 ->where('student_attendance_infos.classname',$request->classname)
                 ->where('student_attendance_infos.division',$request->division)
-                ->where('student_attendance_infos.attendancedate',$request->attendancedate)->get();
+                ->where('student_attendance_infos.attendancedate',$request->attendancedate)
+                ->where('student_details.hasaccess','1')
+                ->get();
             return response()->json($data);
         }
         $data = [];

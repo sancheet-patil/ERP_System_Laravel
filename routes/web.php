@@ -11,9 +11,24 @@
 |
 */
 
+
 Route::get('/', function () {
-    return Redirect::route('login');
+    return view('web/index');
 })->name('/');
+Route::get('/gallery', function () {
+    return view('web/gallery');
+})->name('gallery');
+Route::get('/contact', function () {
+    return view('web/contact');
+})->name('contact');
+Route::get('/teacher', function () {
+    return view('web/teacher');
+})->name('teacher');
+Route::get('/download', 'Auth\AuthController@downloadapp')->name('download');
+
+/*Route::get('/', function () {
+    return Redirect::route('login');
+})->name('/');*/
 
 Auth::routes([
     'verify' => true,
