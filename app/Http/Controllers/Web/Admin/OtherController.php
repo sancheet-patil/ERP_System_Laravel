@@ -13,6 +13,7 @@ use App\Form17LcDetails;
 use App\Http\Middleware\Student;
 use App\LeavingCertificateDetails;
 use App\OtherSchoolLists;
+use App\ReligionLists;
 use App\Rules\MatchOldPassword;
 use App\ScholarshipLists;
 use App\StaffDetails;
@@ -341,6 +342,47 @@ class OtherController extends Controller
         return $inputdata;
 //        return $studentlist;
 //        $scholarship['applicablefor'] = implode(',',$data);
+    }
+
+    public function studentbyaadhar(Request $request)
+    {
+        $student = DB::table('student_details')
+            ->join('student_other_details','student_details.userid','=','student_other_details.userid')
+            ->where('student_details.aadhar','=',$request->checkstudentaadhar)
+            ->orderBy('student_details.id','desc')
+            ->get();
+        return response()->json($student[0]);
+    }
+
+    public function subcastealldetails(Request $request)
+    {
+        $subcaste = CasteCategoryList::where('id',$request->subcaste)->first();
+        $details['religion'] = ReligionLists::where('id',$subcaste->religion)->value('religion');
+        $details['castename'] = $subcaste->castename;
+        $details['subcaste'] = $subcaste->subcaste;
+        $details['category'] = CategoryLists::where('id',$subcaste->category)->value('category');
+
+        return $details;
+    }
+
+    public function aadhardetails(Request $request)
+    {
+        $user = User::where('aadhar',$request->aadhar)->first();
+        return $user;
+    }
+
+    public function resetadminpass(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'aadhar' => 'required',
+            'newpass' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->first());
+        }
+        $check = User::where('aadhar',$request->aadhar)->update(['password'=>bcrypt($request->newpass)]);
+
+        return $check;
     }
 
     public function migrate()

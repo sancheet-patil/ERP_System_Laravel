@@ -258,6 +258,31 @@
                                             <input type="number" id="familyincome" name="familyincome" min="1" placeholder="" class="form-control" value="{{$studentdetails->familyincome}}"/>
                                         </div>
                                         <div class="form-group col-md-3">
+                                            <label for="isbpl">Below Poverty Level</label>
+                                            <select id="isbpl" name="isbpl" class="form-control select2">
+                                                <option value="">Select</option>
+                                                <option value="Yes" @if($studentdetails->bpl != 'No') selected @endif>Yes</option>
+                                                <option value="No" @if($studentdetails->bpl == 'No') selected @endif>No</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-3" id="bpldiv"style="@if($studentdetails->bpl == 'No') display: none; @endif">
+                                            <label for="bpl">BPL number</label>
+                                            <input type="text" id="bpl" name="bpl" class="form-control" value="No"/>
+                                        </div>
+                                        <script>
+                                            $('#isbpl').change(function () {
+                                                var isbpl = $('#isbpl').val();
+                                                if(isbpl === 'Yes') {
+                                                    $('#bpl').val("");
+                                                    document.getElementById("bpldiv").style.display = "block";
+                                                }
+                                                else {
+                                                    $('#bpl').val(isbpl);
+                                                    document.getElementById("bpldiv").style.display = "none";
+                                                }
+                                            });
+                                        </script>
+                                        <div class="form-group col-md-3">
                                             <label for="isminor">Minority</label> <small class="req"> *</small>
                                             <input type="text" class="form-control" value="{{$studentdetails->isminor}}" readonly/>
                                         </div>
@@ -296,7 +321,7 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="mothername">Mother Name</label>
-                                            <input type="text" id="mothername" name="mothername" class="form-control" value="{{$studentdetails->mothername}}"/>
+                                            <input type="text" id="mothername" name="mothername" class="form-control" value="{{$studentdetails->mothername}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="motherphone">Mother Phone</label>

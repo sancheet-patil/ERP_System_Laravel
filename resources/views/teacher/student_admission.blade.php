@@ -53,11 +53,11 @@
                                     </div>
                                     <div class="box-body">
                                         <div class="form-group col-md-3">
-                                            <label for="academicyear">Academic year</label> <small class="req"> *</small>
+                                            <label for="academicyear">Admission year</label> <small class="req"> *</small>
                                             <select id="academicyear" name="academicyear" class="form-control select2" required>
                                                 <option value="">Select</option>
                                                 <?php
-                                                    $academicyears = \App\AcademicYearList::orderBy('academicyear','desc')->get();
+                                                $academicyears = \App\AcademicYearList::orderBy('academicyear','desc')->get();
                                                 ?>
                                                 @foreach($academicyears as $academicyear)
                                                     <option value="{{$academicyear->academicyear}}" @if($academicyear->academicyear == old('academicyear')) selected @endif>{{$academicyear->academicyear}}</option>
@@ -92,7 +92,7 @@
                                             <select id="classname" name="classname" class="form-control select2" required>
                                                 <option value="">Select</option>
                                                 <?php
-                                                    $classlist = \App\ClassLists::orderBy('classname','asc')->get();
+                                                $classlist = \App\ClassLists::orderBy('classname','asc')->get();
                                                 ?>
                                                 @foreach($classlist as $class)
                                                     <option value="{{$class->classname}}" @if($class->classname == old('classname')) selected @endif>{{$class->classname}}</option>
@@ -142,7 +142,7 @@
                                             <select id="religion" name="religion" class="form-control select2" >
                                                 <option value="">Select</option>
                                                 <?php
-                                                    $religions = \App\ReligionLists::orderBy('religion','asc')->get();
+                                                $religions = \App\ReligionLists::orderBy('religion','asc')->get();
                                                 ?>
                                                 @foreach($religions as $religion)
                                                     <option value="{{$religion->id}}" @if($religion->id == old('religion')) selected @endif>{{$religion->religion}}</option>
@@ -180,7 +180,7 @@
                                             <select id="schoolname" name="schoolname" class="form-control select2" required>
                                                 <option value="">Select</option>
                                                 <?php
-                                                    $schools = \App\OtherSchoolLists::orderBy('schoolname','asc')->get();
+                                                $schools = \App\OtherSchoolLists::orderBy('schoolname','asc')->get();
                                                 ?>
                                                 @foreach($schools as $school)
                                                     <option value="{{$school->id}}" @if($school->id == old('schoolname')) selected @endif>{{$school->schoolname}}</option>
@@ -287,6 +287,31 @@
                                                 <option value="No" selected>No</option>
                                             </select>
                                         </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="isbpl">Below Poverty Level</label>
+                                            <select id="isbpl" name="isbpl" class="form-control select2">
+                                                <option value="">Select</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No" selected>No</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-3" id="bpldiv" style="display: none;">
+                                            <label for="bpl">BPL number</label>
+                                            <input type="text" id="bpl" name="bpl" class="form-control" value="No"/>
+                                        </div>
+                                        <script>
+                                            $('#isbpl').change(function () {
+                                                var isbpl = $('#isbpl').val();
+                                                if(isbpl === 'Yes') {
+                                                    $('#bpl').val("");
+                                                    document.getElementById("bpldiv").style.display = "block";
+                                                }
+                                                else {
+                                                    $('#bpl').val(isbpl);
+                                                    document.getElementById("bpldiv").style.display = "none";
+                                                }
+                                            });
+                                        </script>
                                         <div class="form-group col-md-3" id="imagephoto" hidden>
                                             <label for="studentphoto">Student Photo</label><br>
                                             <img id="studentphotopreview" src="" height="120px" width="100px" alt="Select Photo" onclick="studentphotomodify()"/><br>
@@ -610,7 +635,7 @@
                                                 <a href="{{route('student.report',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Print form"><i class="fa fa-print"></i></a>
                                                 <a href="{{route('student.view',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Show"><i class="fa fa-eye"></i></a>
                                                 <a href="{{route('student.editadmission',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></a>
-                                                <a href="{{route('student.delete',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" onclick="return confirmDelete()" title="Delete"><i class="fa fa-trash"></i></a>
+{{--                                                <a href="{{route('student.delete',encrypt($student->userid))}}" class="btn btn-default btn-xs" data-toggle="tooltip" onclick="return confirmDelete()" title="Delete"><i class="fa fa-trash"></i></a>--}}
                                             </td>
                                         </tr>
                                     @endforeach

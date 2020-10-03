@@ -89,4 +89,8 @@ Route::group(['middleware' => ['auth','disablemoveback']], function() {
     Route::get('/otherschools/edit/{id}', 'Web\Admin\SchoolSetupController@otherschools_edit')->name('otherschools.edit');
     Route::post('/otherschools/editschool', 'Web\Admin\SchoolSetupController@otherschools_editschool')->name('otherschools.editschool');
     Route::get('/otherschools/delete/{id}', 'Web\Admin\SchoolSetupController@otherschools_delete')->name('otherschools.delete');
+
+    Route::get('/resetpassword', 'Web\Admin\SchoolSetupController@resetpassword')->name('resetpassword');
+    Route::post('/resetpassword/reset', 'Web\Admin\SchoolSetupController@resetpassword_reset')->name('resetpassword.reset');
+
 });

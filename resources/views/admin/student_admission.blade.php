@@ -287,6 +287,18 @@
                                                 <option value="No" selected>No</option>
                                             </select>
                                         </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="isbpl">Below Poverty Level</label>
+                                            <select id="isbpl" name="isbpl" class="form-control select2">
+                                                <option value="">Select</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No" selected>No</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-3" id="bpldiv" style="display: none;">
+                                            <label for="bpl">BPL number</label>
+                                            <input type="text" id="bpl" name="bpl" class="form-control" value="No"/>
+                                        </div>
                                         <div class="form-group col-md-3" id="imagephoto" hidden>
                                             <label for="studentphoto">Student Photo</label><br>
                                             <img id="studentphotopreview" src="" height="120px" width="100px" alt="Select Photo" onclick="studentphotomodify()"/><br>
@@ -788,6 +800,18 @@
         else {
             $('#pwd').val(ispwd);
             document.getElementById("pwddiv").style.display = "none";
+        }
+    });
+
+    $('#isbpl').change(function () {
+        var isbpl = $('#isbpl').val();
+        if(isbpl === 'Yes') {
+            $('#bpl').val("");
+            document.getElementById("bpldiv").style.display = "block";
+        }
+        else {
+            $('#bpl').val(isbpl);
+            document.getElementById("bpldiv").style.display = "none";
         }
     });
 

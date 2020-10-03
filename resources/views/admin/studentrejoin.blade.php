@@ -31,9 +31,9 @@
                 <div class="col-md-12">
                     <div class="box box-warning">
                         <div class="box-header with-border bg-gray-light">
-                            <h3 class="box-title">Admission Information</h3>
+                            <h3 class="box-title">Student Re-Admission Information</h3>
                         </div>
-                        <form action="{{route('student.admission.add')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('studentrejoin.add')}}" method="post" enctype="multipart/form-data">
                             <div class="box-body">
                                 @if($message = Session::get('success'))
                                     <span id="result"><div class="alert alert-success">{{$message}}</div></span>
@@ -47,6 +47,20 @@
                                         </ul>
                                     </div>
                                 @endif
+                                <div class="box box-default">
+                                    <div class="box-header with-border bg-gray-light">
+                                        <h3 class="box-title">Search Student Details</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="form-group col-md-3">
+                                            <label for="checkstudentaadhar">Check Student AADHAR</label> <small class="req"> *</small>
+                                            <input type="text" id="checkstudentaadhar" name="checkstudentaadhar" class="form-control" required />
+                                        </div>
+                                    </div>
+                                    <div class="box-footer">
+                                        <button id="btnstudentsearch" class="btn btn-primary pull-right">Search</button>
+                                    </div>
+                                </div>
                                 <div class="box box-default">
                                     <div class="box-header with-border bg-gray-light">
                                         <h3 class="box-title">Student Details</h3>
@@ -106,70 +120,59 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="saralid">Saral ID</label>
-                                            <input type="text" id="saralid" name="saralid" class="form-control" value="{{old('saralid')}}"/>
+                                            <input type="text" id="saralid" name="saralid" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="aadhar">AADHAR</label> <small class="req"> *</small>
-                                            <input type="text" id="aadhar" name="aadhar" class="form-control" required value="{{old('aadhar')}}"/>
+                                            <input type="text" id="aadhar" name="aadhar" class="form-control" required value="{{old('aadhar')}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="lname">Last name</label> <small class="req"> *</small>
-                                            <input type="text" id="lname" name="lname" class="form-control" required value="{{old('lname')}}"/>
+                                            <input type="text" id="lname" name="lname" class="form-control" required value="{{old('lname')}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="fname">First name</label> <small class="req"> *</small>
-                                            <input type="text" id="fname" name="fname" class="form-control" required value="{{old('fname')}}"/>
+                                            <input type="text" id="fname" name="fname" class="form-control" required value="{{old('fname')}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="mname">Middle name</label>
-                                            <input type="text" id="mname" name="mname" class="form-control" value="{{old('mname')}}"/>
+                                            <input type="text" id="mname" name="mname" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="gender">Gender</label> <small class="req"> *</small>
-                                            <select id="gender" name="gender" class="form-control select2" required>
-                                                <option value="">Select</option>
-                                                <option value="Male" @if('Male' == old('gender')) selected @endif>Male</option>
-                                                <option value="Female" @if('Female' == old('gender')) selected @endif>Female</option>
-                                                <option value="Other" @if('Other' == old('gender')) selected @endif>Other</option>
-                                            </select>
+                                            <input type="text" id="gender" name="gender" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="mothertongue">Mother tongue</label> <small class="req"> *</small>
-                                            <input type="text" id="mothertongue" name="mothertongue" class="form-control" value="{{old('mothertongue')}}" required/>
+                                            <input type="text" id="mothertongue" name="mothertongue" class="form-control" value="{{old('mothertongue')}}" required readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="religion">Religion</label><small class="req"> *</small>
-                                            <select id="religion" name="religion" class="form-control select2" >
-                                                <option value="">Select</option>
-                                                <?php
-                                                    $religions = \App\ReligionLists::orderBy('religion','asc')->get();
-                                                ?>
-                                                @foreach($religions as $religion)
-                                                    <option value="{{$religion->id}}" @if($religion->id == old('religion')) selected @endif>{{$religion->religion}}</option>
-                                                @endforeach
-                                            </select>
+                                            <input type="text" id="religion" name="religion" class="form-control" readonly style="display:none;"/>
+                                            <input type="text" id="religion1" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="castename">Caste</label><small class="req"> *</small>
-                                            <select id="castename" name="castename" class="form-control select2" required>
-                                            </select>
+                                            <input type="text" id="castename" name="castename" class="form-control" readonly style="display:none;"/>
+                                            <input type="text" id="castename1" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="subcaste">Sub Caste</label><small class="req"> *</small>
-                                            <select id="subcaste" name="subcaste" class="form-control select2" required>
-                                            </select>
+                                            <input type="text" id="subcaste" name="subcaste" class="form-control" readonly style="display:none;"/>
+                                            <input type="text" id="subcaste1" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="category">Category</label> <small class="req"> *</small>
-                                            <input type="text" id="category" name="category" class="form-control" required value="{{old('category')}}" readonly/>
+                                            <input type="text" id="category" name="category" class="form-control" required readonly style="display:none;"/>
+                                            <input type="text" id="category1" class="form-control" required readonly/>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="placeob">Place of birth</label> <small class="req"> *</small>
-                                            <input type="text" id="placeob" name="placeob" class="form-control" required value="{{old('placeob')}}"/>
+                                            <input type="text" id="placeob" name="placeob" class="form-control" required value="{{old('placeob')}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="dob">Date of Birth</label> <small class="req"> *</small>
-                                            <input type="text" id="dob" name="dob" class="form-control" placeholder="dd-mm-yyyy" required />
+                                            <input type="text" id="dob" name="dob" class="form-control" placeholder="dd-mm-yyyy" required readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="lastclass">Last attended class</label> <small class="req"> *</small>
@@ -227,11 +230,11 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="mobile">Mobile</label>
-                                            <input type="text" id="mobile" name="mobile" class="form-control" value="{{old('mobile')}}" />
+                                            <input type="text" id="mobile" name="mobile" class="form-control" value="{{old('mobile')}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="email">Email</label>
-                                            <input type="email" id="email" name="email" class="form-control" value="{{old('email')}}"/>
+                                            <input type="email" id="email" name="email" class="form-control" value="{{old('email')}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="admission_date">Admission date</label> <small class="req"> *</small>
@@ -255,37 +258,44 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="bloodgroup">Blood group</label>
-                                            <select id="bloodgroup" name="bloodgroup" class="form-control select2" >
-                                                <option value="">Select</option>
-                                                <option value="A+" @if('A+' == old('bloodgroup')) selected @endif>A+</option>
-                                                <option value="A-" @if('A-' == old('bloodgroup')) selected @endif>A-</option>
-                                                <option value="B+" @if('B+' == old('bloodgroup')) selected @endif>B+</option>
-                                                <option value="B-" @if('B-' == old('bloodgroup')) selected @endif>B-</option>
-                                                <option value="AB+" @if('AB+' == old('bloodgroup')) selected @endif>AB+</option>
-                                                <option value="AB-" @if('AB-' == old('bloodgroup')) selected @endif>AB-</option>
-                                                <option value="O+" @if('O+' == old('bloodgroup')) selected @endif>O+</option>
-                                                <option value="O-" @if('O-' == old('bloodgroup')) selected @endif>O-</option>
-                                            </select>
+                                            <input type="text" id="bloodgroup" name="bloodgroup" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="citytype">City Type</label> <small class="req"> *</small>
-                                            <select id="citytype" name="citytype" class="form-control" required>
-                                                <option value="">Select</option>
-                                                <option value="Rural">Rural</option>
-                                                <option value="Urban">Urban</option>
-                                            </select>
+                                            <input type="text" id="citytype" name="citytype" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="familyincome">Family income (Annual)</label>
-                                            <input type="number" id="familyincome" name="familyincome" min="1" placeholder="" class="form-control" value="{{old('familyincome')}}"/>
+                                            <input type="number" id="familyincome" name="familyincome" min="1" placeholder="" class="form-control" value="{{old('familyincome')}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label for="isminor">Minority</label> <small class="req"> *</small>
-                                            <select id="isminor" name="isminor" class="form-control select2" required>
+                                            <label for="isbpl">Below Poverty Level</label>
+                                            <select id="isbpl" name="isbpl" class="form-control select2">
                                                 <option value="">Select</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No" selected>No</option>
                                             </select>
+                                        </div>
+                                        <div class="form-group col-md-3" id="bpldiv" style="display: none;">
+                                            <label for="bpl">BPL number</label>
+                                            <input type="text" id="bpl" name="bpl" class="form-control" value="No"/>
+                                        </div>
+                                        <script>
+                                            $('#isbpl').change(function () {
+                                                var isbpl = $('#isbpl').val();
+                                                if(isbpl === 'Yes') {
+                                                    $('#bpl').val("");
+                                                    document.getElementById("bpldiv").style.display = "block";
+                                                }
+                                                else {
+                                                    $('#bpl').val(isbpl);
+                                                    document.getElementById("bpldiv").style.display = "none";
+                                                }
+                                            });
+                                        </script>
+                                        <div class="form-group col-md-3">
+                                            <label for="isminor">Minority</label> <small class="req"> *</small>
+                                            <input type="text" id="isminor" name="isminor" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-3" id="imagephoto" hidden>
                                             <label for="studentphoto">Student Photo</label><br>
@@ -310,53 +320,53 @@
                                     <div class="box-body">
                                         <div class="form-group col-md-4">
                                             <label for="fathername">Father Name</label>
-                                            <input type="text" id="fathername" name="fathername" class="form-control" value="{{old('fathername')}}"/>
+                                            <input type="text" id="fathername" name="fathername" class="form-control" value="{{old('fathername')}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="fatherphone">Father Phone</label>
-                                            <input type="number" id="fatherphone" name="fatherphone" class="form-control" value="{{old('fatherphone')}}" />
+                                            <input type="number" id="fatherphone" name="fatherphone" class="form-control" value="{{old('fatherphone')}}"  readonly/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="fatheroccupation">Father Occupation</label>
-                                            <input type="text" id="fatheroccupation" name="fatheroccupation" class="form-control" value="{{old('fatheroccupation')}}" />
+                                            <input type="text" id="fatheroccupation" name="fatheroccupation" class="form-control" value="{{old('fatheroccupation')}}" readonly />
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="mothername">Mother Name</label>
-                                            <input type="text" id="mothername" name="mothername" class="form-control" value="{{old('mothername')}}" />
+                                            <input type="text" id="mothername" name="mothername" class="form-control" value="{{old('mothername')}}" readonly />
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="motherphone">Mother Phone</label>
-                                            <input type="number" id="motherphone" name="motherphone" class="form-control" value="{{old('motherphone')}}" />
+                                            <input type="number" id="motherphone" name="motherphone" class="form-control" value="{{old('motherphone')}}" readonly />
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="motheroccupation">Mother Occupation</label>
-                                            <input type="text" id="motheroccupation" name="motheroccupation" class="form-control" value="{{old('motheroccupation')}}" />
+                                            <input type="text" id="motheroccupation" name="motheroccupation" class="form-control" value="{{old('motheroccupation')}}" readonly />
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="guardianis">Guardian is</label><small class="req"> *</small>
-                                            <label class="radio-inline"><input type="radio" id="guardianis" name="guardianis" value="Father" required @if('Father' == old('guardianis')) checked @endif>Father</label>
-                                            <label class="radio-inline"><input type="radio" id="guardianis" name="guardianis" value="Mother" required @if('Mother' == old('guardianis')) checked @endif>Mother</label>
-                                            <label class="radio-inline"><input type="radio" id="guardianis" name="guardianis" value="Other" required @if('Other' == old('guardianis')) checked @endif>Other</label>
+                                            <label class="radio-inline"><input type="radio" id="guardianis" name="guardianis" value="Father"  @if('Father' == old('guardianis')) checked @endif>Father</label>
+                                            <label class="radio-inline"><input type="radio" id="guardianis" name="guardianis" value="Mother"  @if('Mother' == old('guardianis')) checked @endif>Mother</label>
+                                            <label class="radio-inline"><input type="radio" id="guardianis" name="guardianis" value="Other"  @if('Other' == old('guardianis')) checked @endif>Other</label>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="guardianname">Guardian Name</label><small class="req"> *</small>
-                                            <input type="text" id="guardianname" name="guardianname" class="form-control" required value="{{old('guardianname')}}"/>
+                                            <input type="text" id="guardianname" name="guardianname" class="form-control" required value="{{old('guardianname')}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="guardianphone">Guardian Phone</label><small class="req"> *</small>
-                                            <input type="number" id="guardianphone" name="guardianphone" class="form-control" required value="{{old('guardianphone')}}"/>
+                                            <input type="number" id="guardianphone" name="guardianphone" class="form-control" required value="{{old('guardianphone')}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="guardianrelation">Guardian Relation</label><small class="req"> *</small>
-                                            <input type="text" id="guardianrelation" name="guardianrelation" class="form-control" required value="{{old('guardianrelation')}}"/>
+                                            <input type="text" id="guardianrelation" name="guardianrelation" class="form-control" required value="{{old('guardianrelation')}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="guardianoccupation">Guardian Occupation</label><small class="req"> *</small>
-                                            <input type="text" id="guardianoccupation" name="guardianoccupation" class="form-control" required value="{{old('guardianoccupation')}}"/>
+                                            <input type="text" id="guardianoccupation" name="guardianoccupation" class="form-control" required value="{{old('guardianoccupation')}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="guardianaddress">Guardian Address</label><small class="req"> *</small>
-                                            <input type="text" id="guardianaddress" name="guardianaddress" class="form-control" required value="{{old('guardianaddress')}}"/>
+                                            <input type="text" id="guardianaddress" name="guardianaddress" class="form-control" required value="{{old('guardianaddress')}}" readonly/>
                                         </div>
                                     </div>
                                 </div>
@@ -379,7 +389,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="currentaddress">Current Address</label>
-                                                <input type="text" id="currentaddress" name="currentaddress" class="form-control" value="{{old('currentaddress')}}" />
+                                                <input type="text" id="currentaddress" name="currentaddress" class="form-control" value="{{old('currentaddress')}}" readonly/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -391,7 +401,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="permanentaddress">Permanent Address</label>
-                                                <input type="text" id="permanentaddress" name="permanentaddress" class="form-control" value="{{old('permanentaddress')}}" />
+                                                <input type="text" id="permanentaddress" name="permanentaddress" class="form-control" value="{{old('permanentaddress')}}" readonly/>
                                             </div>
                                         </div>
                                     </div>
@@ -408,27 +418,27 @@
                                     <div class="box-body">
                                         <div class="form-group col-md-4">
                                             <label for="accounttitle">Account Title</label>
-                                            <input type="text" id="accounttitle" name="accounttitle" class="form-control" />
+                                            <input type="text" id="accounttitle" name="accounttitle" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="accountno">Account No.</label>
-                                            <input type="number" id="accountno" name="accountno" class="form-control" />
+                                            <input type="number" id="accountno" name="accountno" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="bankifsccode">IFSC code</label>
-                                            <input type="text" id="bankifsccode" name="bankifsccode" class="form-control" />
+                                            <input type="text" id="bankifsccode" name="bankifsccode" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="bankname">Bank Name</label>
-                                            <input type="text" id="bankname" name="bankname" class="form-control" />
+                                            <input type="text" id="bankname" name="bankname" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="bankbranchname">Branch Name</label>
-                                            <input type="text" id="bankbranchname" name="bankbranchname" class="form-control" />
+                                            <input type="text" id="bankbranchname" name="bankbranchname" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="bankmicrcode">Bank MICR code</label>
-                                            <input type="text" id="bankmicrcode" name="bankmicrcode" class="form-control" />
+                                            <input type="text" id="bankmicrcode" name="bankmicrcode" class="form-control" readonly/>
                                         </div>
                                     </div>
                                 </div>
@@ -801,6 +811,71 @@
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
     }
+
+    $('#btnstudentsearch').click(function () {
+        $.ajax({
+            type: "GET",
+            url: "{{url('/studentbyaadhar')}}?checkstudentaadhar="+$('#checkstudentaadhar').val(),
+            beforeSend: function () {
+            },
+            success: function (data) {
+                $('#aadhar').val(data.aadhar);
+                $('#saralid').val(data.saralid);
+                $('#lname').val(data.lname);
+                $('#fname').val(data.fname);
+                $('#mname').val(data.mname);
+                $('#gender').val(data.gender);
+                $('#mothertongue').val(data.mothertongue);
+                $('#placeob').val(data.placeob);
+                $('#religion').val(data.religion);
+                $('#category').val(data.category);
+                $('#castename').val(data.castename);
+                $('#subcaste').val(data.subcaste);
+                $('#dob').val(data.dob);
+                $('#mobile').val(data.mobile);
+                $('#email').val(data.email);
+                $('#bloodgroup').val(data.bloodgroup);
+                $('#citytype').val(data.citytype);
+                $('#familyincome').val(data.familyincome);
+                $('#isminor').val(data.isminor);
+
+                $('#fathername').val(data.fathername);
+                $('#fatherphone').val(data.fatherphone);
+                $('#fatheroccupation').val(data.fatheroccupation);
+                $('#mothername').val(data.mothername);
+                $('#motherphone').val(data.motherphone);
+                $('#motheroccupation').val(data.motheroccupation);
+                $('#guardianname').val(data.guardianname);
+                $('#guardianphone').val(data.guardianphone);
+                $('#guardianoccupation').val(data.guardianoccupation);
+                $('#guardianrelation').val(data.guardianrelation);
+                $('#guardianaddress').val(data.guardianaddress);
+
+                $('#currentaddress').val(data.currentaddress);
+                $('#permanentaddress').val(data.permanentaddress);
+
+                $('#accounttitle').val(data.accounttitle);
+                $('#accountno').val(data.accountno);
+                $('#bankifsccode').val(data.bankifsccode);
+                $('#bankname').val(data.bankname);
+                $('#bankbranchname').val(data.bankbranchname);
+                $('#bankmicrcode').val(data.bankmicrcode);
+
+                $.ajax({
+                    type: "GET",
+                    url: "{{url('/subcastealldetails')}}?subcaste=" + data.subcaste,
+                    beforeSend: function () {
+                    },
+                    success: function (data) {
+                        $('#religion1').val(data.religion);
+                        $('#category1').val(data.category);
+                        $('#castename1').val(data.castename);
+                        $('#subcaste1').val(data.subcaste);
+                    }
+                });
+            }
+        });
+    });
 </script>
 </body>
 </html>

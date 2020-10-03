@@ -478,7 +478,7 @@ class ReportsController extends Controller
         return view(auth()->user()->role.'/student_report')->with('studentlist',$studentlist)
             ->with('academicyear','')->with('registerfor','')->with('classname','')->with('division','')->with('faculty','')
             ->with('gender','')->with('category','')->with('religion','')->with('castename','')->with('subcaste','')
-            ->with('fname','')->with('mname','')->with('lname','');
+            ->with('fname','')->with('mname','')->with('lname','')->with('ispwd','')->with('isminor','')->with('isbpl','');
     }
 
     public function studentreport_post(Request $request)
@@ -586,6 +586,46 @@ class ReportsController extends Controller
             $view = $view->with('lname','');
         }
 
+        if($request->ispwd) {
+            if($request->ispwd == 'Yes'){
+                $studentlist = $studentlist->where('pwd','!=','No');
+                $view = $view->with('ispwd','Yes');
+            }
+            else{
+                $studentlist = $studentlist->where('pwd','=','No');
+                $view = $view->with('ispwd','No');
+            }
+        }
+        else {
+            $view = $view->with('ispwd','');
+        }
+        if($request->isminor) {
+            if($request->isminor == 'Yes'){
+                $studentlist = $studentlist->where('isminor','Yes');
+                $view = $view->with('isminor','Yes');
+            }
+            else{
+                $studentlist = $studentlist->where('isminor','No');
+                $view = $view->with('isminor','No');
+            }
+        }
+        else {
+            $view = $view->with('isminor','');
+        }
+        if($request->isbpl) {
+            if($request->isbpl == 'Yes'){
+                $studentlist = $studentlist->where('bpl','!=','No');
+                $view = $view->with('isbpl','Yes');
+            }
+            else{
+                $studentlist = $studentlist->where('bpl','=','No');
+                $view = $view->with('isbpl','No');
+            }
+        }
+        else {
+            $view = $view->with('isbpl','');
+        }
+
         $studentlist = $studentlist->orderBy('student_details.id','desc')->get();
 
         return $view->with('studentlist',$studentlist);
@@ -635,6 +675,30 @@ class ReportsController extends Controller
         if($request->lname) {
             $studentlist = $studentlist->where('lname',$request->lname);
         }
+        if($request->ispwd) {
+            if($request->ispwd == 'Yes'){
+                $studentlist = $studentlist->where('pwd','!=','No');
+            }
+            else{
+                $studentlist = $studentlist->where('pwd','=','No');
+            }
+        }
+        if($request->isminor) {
+            if($request->isminor == 'Yes'){
+                $studentlist = $studentlist->where('isminor','Yes');
+            }
+            else{
+                $studentlist = $studentlist->where('isminor','No');
+            }
+        }
+        if($request->isbpl) {
+            if($request->isbpl == 'Yes'){
+                $studentlist = $studentlist->where('bpl','!=','No');
+            }
+            else{
+                $studentlist = $studentlist->where('bpl','=','No');
+            }
+        }
 
         $students = $studentlist->orderBy('student_details.id','desc')->get();
 
@@ -661,7 +725,8 @@ class ReportsController extends Controller
                 'current class' => $student->classname, 'division' => $student->division, 'aadhar' => $student->aadhar,
                 'saralid' => $student->saralid, 'place of birth' => $student->placeob, 'mothertongue' => $student->mothertongue,
                 'date of birth' => $student->dob, 'religion' => $religion, 'category' => $category,'castename' => $castename,
-                'subcaste' => $subcaste, 'lastschool' => $lastschool,'current address' => $student->currentaddress,
+                'subcaste' => $subcaste,'PwD' => $student->pwd,'Family income' => $student->familyincome,'bpl' => $student->bpl,
+                'isminor' => $student->isminor,'lastschool' => $lastschool,'current address' => $student->currentaddress,
                 'permanent address' => $student->permanentaddress,'bank account title' => $student->accounttitle,
                 'account no' => $student->accountno, 'IFSC code' => $student->bankifsccode,'bank name' => $student->bankname,
                 'bank branch name' => $student->bankbranchname, 'MICR code' => $student->bankmicrcode,
@@ -675,7 +740,7 @@ class ReportsController extends Controller
         return Excel::create('Student list', function($excel) use ($downloadable,$reportdata) {
             $excel->sheet('Sheet1', function($sheet) use ($downloadable,$reportdata)
             {
-                $sheet->mergeCells("A1:AA1")->setCellValue("A1","Student Details Report");
+                $sheet->mergeCells("A1:AD1")->setCellValue("A1","Student Details Report");
                 $sheet->cells("A1", function ($cells) {
                     $cells->setFont(array(
                         'name' => 'Times New Roman',
@@ -686,7 +751,127 @@ class ReportsController extends Controller
                     $cells->setValignment('center');
                 });
 
-                $sheet->cells("A3:AA3", function ($cells) {
+                $sheet->cells("A3:AD3", function ($cells) {
+                    $cells->setFont(array(
+                        'bold' => true
+                    ));
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+                });
+
+                $sheet->fromArray($downloadable,null,'A3',false);
+            });
+        })->download('xlsx');
+    }
+
+    public function studentcustomreportexcel(Request $request)
+    {
+        $studentlist = DB::table('student_details')
+            ->join('student_other_details','student_details.userid','=','student_other_details.userid');
+
+        if($request->academicyear) {
+            $studentlist = $studentlist->where('academicyear',$request->academicyear);
+        }
+        if($request->registerfor) {
+            $studentlist = $studentlist->where('registerfor',$request->registerfor);
+        }
+        if($request->classname) {
+            $studentlist = $studentlist->where('classname',$request->classname);
+        }
+        if($request->division) {
+            $studentlist = $studentlist->where('division',$request->division);
+        }
+        if($request->faculty) {
+            $studentlist = $studentlist->where('faculty',$request->faculty);
+        }
+        if($request->gender) {
+            $studentlist = $studentlist->where('gender',$request->gender);
+        }
+        if($request->category) {
+            $studentlist = $studentlist->where('category',$request->category);
+        }
+        if($request->religion) {
+            $studentlist = $studentlist->where('religion',$request->religion);
+        }
+        if($request->castename) {
+            $studentlist = $studentlist->where('castename',$request->castename);
+        }
+        if($request->subcaste) {
+            $studentlist = $studentlist->where('subcaste',$request->subcaste);
+        }
+        if($request->fname) {
+            $studentlist = $studentlist->where('fname',$request->fname);
+        }
+        if($request->mname) {
+            $studentlist = $studentlist->where('mname',$request->mname);
+        }
+        if($request->lname) {
+            $studentlist = $studentlist->where('lname',$request->lname);
+        }
+        if($request->ispwd) {
+            if($request->ispwd == 'Yes'){
+                $studentlist = $studentlist->where('pwd','!=','No');
+            }
+            else{
+                $studentlist = $studentlist->where('pwd','=','No');
+            }
+        }
+        if($request->isminor) {
+            if($request->isminor == 'Yes'){
+                $studentlist = $studentlist->where('isminor','Yes');
+            }
+            else{
+                $studentlist = $studentlist->where('isminor','No');
+            }
+        }
+        if($request->isbpl) {
+            if($request->isbpl == 'Yes'){
+                $studentlist = $studentlist->where('bpl','!=','No');
+            }
+            else{
+                $studentlist = $studentlist->where('bpl','=','No');
+            }
+        }
+
+        $students = $studentlist->orderBy('student_details.id','desc')->get();
+
+        foreach($students as $student)
+        {
+            $castecategory = CasteCategoryList::where('id',$student->subcaste)->first();
+            $religion = ReligionLists::where('id',$castecategory['religion'])->value('religion');
+            $category = CategoryLists::where('id',$castecategory['category'])->value('category');
+            $castename = $castecategory['castename'];
+            $subcaste = $castecategory['subcaste'];
+
+            $downloadable[] = [
+                'academicyear year' => $student->academicyear, 'registerno' => $student->registerno, 'registerfor' => $student->registerfor,
+                'current class' => $student->classname, 'division' => $student->division,'first name' => $student->fname,
+                'father name' => $student->mname, 'last name' => $student->lname, 'mothername' => $student->mothername,
+                'gender' => $student->gender,
+                'religion' => $religion, 'category' => $category,'castename' => $castename,'subcaste' => $subcaste,
+                'PwD' => $student->pwd,'BPL' => $student->bpl,'isminor' => $student->isminor,
+            ];
+        }
+
+        $reportdata['religion'] = ReligionLists::where('id',$request->religion)->value('religion');
+        $reportdata['castename'] = CasteCategoryList::where('id',$request->subcaste)->value('castename');
+        $reportdata['subcaste'] = CasteCategoryList::where('id',$request->subcaste)->value('subcaste');
+
+        return Excel::create('Student list', function($excel) use ($downloadable,$reportdata) {
+            $excel->sheet('Sheet1', function($sheet) use ($downloadable,$reportdata)
+            {
+                $sheet->mergeCells("A1:Q1")->setCellValue("A1","Student Details Report");
+                $sheet->cells("A1", function ($cells) {
+                    $cells->setFont(array(
+                        'name' => 'Times New Roman',
+                        'size' => 20,
+                        'bold' => true
+                    ));
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+                });
+
+                $sheet->cells("A3:Q3", function ($cells) {
                     $cells->setFont(array(
                         'bold' => true
                     ));

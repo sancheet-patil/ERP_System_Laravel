@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth','disablemoveback']], function() {
     Route::get('/studentreport', 'Web\Admin\ReportsController@studentreport')->name('studentreport');
     Route::post('/studentreport', 'Web\Admin\ReportsController@studentreport_post')->name('studentreport.post');
     Route::get('/studentreportexcel', 'Web\Admin\ReportsController@studentreportexcel')->name('studentreportexcel');
+    Route::get('/studentcustomreportexcel', 'Web\Admin\ReportsController@studentcustomreportexcel')->name('studentcustomreportexcel');
 
     Route::get('/form17studentreport', 'Web\Admin\ReportsController@form17studentreport')->name('form17studentreport');
     Route::post('/form17studentreport', 'Web\Admin\ReportsController@form17studentreport_post')->name('form17studentreport.post');

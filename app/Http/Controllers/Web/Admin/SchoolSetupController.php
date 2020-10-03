@@ -20,6 +20,7 @@ use App\ScholarshipLists;
 use App\SchoolInfos;
 use App\StaffDetails;
 use App\SubjectLists;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -765,5 +766,20 @@ class SchoolSetupController extends Controller
     {
         OtherSchoolLists::where('id',decrypt($id))->delete();
         return back()->with('success','School deleted');
+    }
+
+    public function resetpassword()
+    {
+        return view(auth()->user()->role.'/resetpassword');
+    }
+
+    public function resetpassword_reset(Request $request)
+    {
+        if(!$request->name)
+        {
+            return back()->with('success','AADHAR not found');
+        }
+        User::where('aadhar',$request->aadhar)->update(['password'=>bcrypt($request->password)]);
+        return back()->with('success','Password Reset Successfully');
     }
 }

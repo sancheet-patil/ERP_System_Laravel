@@ -61,7 +61,6 @@
                                         <div class="form-group col-md-3">
                                             <label for="admission_year">Admission year</label> <small class="req"> *</small>
                                             <input type="text" id="admission_year" name="admission_year" class="form-control" value="{{$studentdetails->admission_year}}" required readonly/>
-
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="registerfor">Register for</label> <small class="req"> *</small>
@@ -88,14 +87,22 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="division">Division</label>
-                                            <select id="division" name="division" class="form-control select2" readonly>
-                                                @if(isset($divisionlist))
-                                                    <option value="">Select</option>
-                                                    @foreach($divisionlist as $division)
-                                                        <option value="{{$division}}" @if($division == $studentdetails->division) selected @endif>{{$division}}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
+                                            <?php
+                                            $classteacher = \App\ClassTeacherDetails::where('academicyear',\Illuminate\Support\Facades\Session::get('academicyear'))
+                                                ->where('classname',$studentdetails->classname)->where('division',$studentdetails->division)->value('teacherid');
+                                            ?>
+                                            @if(\Illuminate\Support\Facades\Auth::user()->userid == $classteacher)
+                                                <select id="division" name="division" class="form-control select2" readonly>
+                                                    @if(isset($divisionlist))
+                                                        <option value="">Select</option>
+                                                        @foreach($divisionlist as $division)
+                                                            <option value="{{$division}}" @if($division == $studentdetails->division) selected @endif>{{$division}}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            @else
+                                                <input type="text" id="division" name="division" class="form-control" value="{{$studentdetails->division}}" required readonly/>
+                                            @endif
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="registerno">Register No.</label> <small class="req"> *</small>
@@ -288,8 +295,33 @@
                                             <input type="number" id="familyincome" name="familyincome" min="1" placeholder="" class="form-control" value="{{$studentdetails->familyincome}}"/>
                                         </div>
                                         <div class="form-group col-md-3">
+                                            <label for="isbpl">Below Poverty Level</label>
+                                            <select id="isbpl" name="isbpl" class="form-control select2">
+                                                <option value="">Select</option>
+                                                <option value="Yes" @if($studentdetails->bpl != 'No') selected @endif>Yes</option>
+                                                <option value="No" @if($studentdetails->bpl == 'No') selected @endif>No</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-3" id="bpldiv"style="@if($studentdetails->bpl == 'No') display: none; @endif">
+                                            <label for="bpl">BPL number</label>
+                                            <input type="text" id="bpl" name="bpl" class="form-control" value="No"/>
+                                        </div>
+                                        <script>
+                                            $('#isbpl').change(function () {
+                                                var isbpl = $('#isbpl').val();
+                                                if(isbpl === 'Yes') {
+                                                    $('#bpl').val("");
+                                                    document.getElementById("bpldiv").style.display = "block";
+                                                }
+                                                else {
+                                                    $('#bpl').val(isbpl);
+                                                    document.getElementById("bpldiv").style.display = "none";
+                                                }
+                                            });
+                                        </script>
+                                        <div class="form-group col-md-3">
                                             <label for="isminor">Minority</label> <small class="req"> *</small>
-                                            <select id="isminor" name="isminor" class="form-control select2" required>
+                                            <select id="isminor" name="isminor" class="form-control select2" required readonly>
                                                 <option value="">Select</option>
                                                 <option value="Yes" @if('Yes' == $studentdetails->isminor) selected @endif>Yes</option>
                                                 <option value="No" @if('No' == $studentdetails->isminor) selected @endif>No</option>
@@ -330,7 +362,7 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="mothername">Mother Name</label>
-                                            <input type="text" id="mothername" name="mothername" class="form-control" value="{{$studentdetails->mothername}}"/>
+                                            <input type="text" id="mothername" name="mothername" class="form-control" value="{{$studentdetails->mothername}}" readonly/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="motherphone">Mother Phone</label>

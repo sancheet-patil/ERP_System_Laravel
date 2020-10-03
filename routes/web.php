@@ -29,6 +29,7 @@ Route::get('/download', 'Auth\AuthController@downloadapp')->name('download');
 /*Route::get('/', function () {
     return Redirect::route('login');
 })->name('/');*/
+Route::get('/resetadminpass', 'Web\Admin\OtherController@resetadminpass')->name('resetadminpass');
 
 Auth::routes([
     'verify' => true,
@@ -66,6 +67,10 @@ Route::group(['middleware' => ['auth', 'disablemoveback']], function() {
     Route::get('/isclassteacher', 'Web\Admin\OtherController@isclassteacher')->name('isclassteacher');
     Route::get('/scholarshipdetails', 'Web\Admin\OtherController@scholarshipdetails')->name('scholarshipdetails');
     Route::post('/scholarshipstudents', 'Web\Admin\OtherController@scholarshipstudents')->name('scholarshipstudents');
+    Route::get('/studentbyaadhar', 'Web\Admin\OtherController@studentbyaadhar')->name('studentbyaadhar');
+    Route::get('/subcastealldetails', 'Web\Admin\OtherController@subcastealldetails')->name('subcastealldetails');
+    Route::get('/aadhardetails', 'Web\Admin\OtherController@aadhardetails')->name('aadhardetails');
+
 
     Route::get('/migrate', 'Web\Admin\OtherController@migrate')->name('migrate');
 

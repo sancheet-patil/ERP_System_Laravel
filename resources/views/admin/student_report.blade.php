@@ -156,6 +156,30 @@
                                     <label for="lname">Last name</label>
                                     <input type="text" id="lname" name="lname" class="form-control" value="{{$lname}}"/>
                                 </div>
+                                <div class="form-group col-md-3">
+                                    <label for="ispwd">Person with Disability</label>
+                                    <select id="ispwd" name="ispwd" class="form-control select2">
+                                        <option value="">Select</option>
+                                        <option value="Yes" @if($ispwd == 'Yes') selected @endif>Yes</option>
+                                        <option value="No" @if($ispwd == 'No') selected @endif>No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="isminor">Minority</label>
+                                    <select id="isminor" name="isminor" class="form-control select2">
+                                        <option value="">Select</option>
+                                        <option value="Yes" @if($isminor == 'Yes') selected @endif>Yes</option>
+                                        <option value="No" @if($isminor == 'No') selected @endif>No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="isbpl">Below Poverty Level</label>
+                                    <select id="isbpl" name="isbpl" class="form-control select2">
+                                        <option value="">Select</option>
+                                        <option value="Yes" @if($isbpl == 'Yes') selected @endif>Yes</option>
+                                        <option value="No" @if($isbpl == 'No') selected @endif>No</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="box-footer">
                                 @csrf
@@ -256,7 +280,10 @@
                         </div>
                         <div class="box-footer">
                             @if($studentlist != '[]')
-                                <a href="{{url('studentreportexcel')}}?academicyear={{$academicyear}}&registerfor={{$registerfor}}&classname={{$classname}}&faculty={{$faculty}}&division={{$division}}&gender={{$gender}}&category={{$category}}&religion={{$religion}}&castename={{$castename}}&subcaste={{$subcaste}}&fname={{$fname}}&mname={{$mname}}&lname={{$lname}}" class="btn btn-primary pull-right"><i class="fa fa-print"></i> Report Print</a>
+                                <span class="pull-right">
+                                    <a href="{{url('studentcustomreportexcel')}}?academicyear={{$academicyear}}&registerfor={{$registerfor}}&classname={{$classname}}&faculty={{$faculty}}&division={{$division}}&gender={{$gender}}&category={{$category}}&religion={{$religion}}&castename={{$castename}}&subcaste={{$subcaste}}&fname={{$fname}}&mname={{$mname}}&lname={{$lname}}&ispwd={{$ispwd}}&isminor={{$isminor}}&isbpl={{$isbpl}}" class="btn btn-primary"><i class="fa fa-print"></i> Custom Report Print</a>
+                                    <a href="{{url('studentreportexcel')}}?academicyear={{$academicyear}}&registerfor={{$registerfor}}&classname={{$classname}}&faculty={{$faculty}}&division={{$division}}&gender={{$gender}}&category={{$category}}&religion={{$religion}}&castename={{$castename}}&subcaste={{$subcaste}}&fname={{$fname}}&mname={{$mname}}&lname={{$lname}}&ispwd={{$ispwd}}&isminor={{$isminor}}&isbpl={{$isbpl}}" class="btn btn-primary"><i class="fa fa-print"></i> Report Print</a>
+                                </span>
                             @endif
                         </div>
                     </div>

@@ -37,5 +37,6 @@ Route::group(['middleware' => ['auth','disablemoveback']], function() {
     Route::get('/deletescholarshipstudent/{id}', 'Web\Admin\StudentInformationController@deletescholarshipstudent')->name('deletescholarshipstudent');
 
     Route::get('/studentrejoin', 'Web\Admin\StudentInformationController@studentrejoin')->name('studentrejoin');
+    Route::post('/studentrejoin/add', 'Web\Admin\StudentInformationController@studentrejoin_add')->name('studentrejoin.add');
 
 });

@@ -2,74 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4fee716d-4e93-4d5f-bda3-a356e522fe95" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/TerminateStudentDetails.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_09_25_225919_create_terminate_student_details_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/mystyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/android-icon-48x48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/apple-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/artTop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/artTop2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/artTop3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/comTop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/comTop2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/comTop3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/g1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/g10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/g11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/g2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/g3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/g4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/g5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/g6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/g7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/g8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/g9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/keymember1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/keymember2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/keymember3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/keymember4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/sciTop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/sciTop2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/sciTop3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/slide1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/slide2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/slide3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/sscTop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/sscTop2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/sscTop3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/sscTop4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/other/LoksevaApp.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/student_terminate.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/terminatestudentlist.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/teacher/student_terminate.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/teacher/terminatestudentlist.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/web/contact.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/web/gallery.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/web/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/web/teacher.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LSVMWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LSVMWeb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/AttendanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/AttendanceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/ExaminationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/ExaminationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/resetpassword.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/operator/studentrejoin.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/teacher/studentrejoin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/OtherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/OtherController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/ReportsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/ReportsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/SchoolSetupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/SchoolSetupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/StudentInformationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/Admin/StudentInformationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/StudentDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/StudentDetails.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_19_033437_create_student_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_19_033437_create_student_details_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/operator/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/operator/student_view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/student_view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/classtimetable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/classtimetable.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/complaints.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/complaints.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/student_admission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/student_admission.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/student_editadmission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/student_editadmission.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/student_editsearch.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/student_editsearch.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/student_report.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/student_report.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/studentrejoin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/studentrejoin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/operator/student_admission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/student_admission.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/operator/student_editadmission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/student_editadmission.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/operator/student_editsearch.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator/student_editsearch.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/student_admission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/student_admission.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/teacher/student_editadmission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/student_editadmission.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/teacher/student_editsearch.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/student_editsearch.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/student_view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/student_view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web/examination.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/examination.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/backups/db_200902235702.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web/reports.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/reports.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web/schoolsetup.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/schoolsetup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web/studentinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/studentinfo.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +70,9 @@
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -243,7 +205,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/teacher" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -258,11 +220,11 @@
       <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\teacher" />
       <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\admin" />
+      <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\operator" />
+      <recent name="C:\xampp\htdocs\LSVMWeb\resources\views\teacher" />
       <recent name="C:\xampp\htdocs\LSVMWeb\public\other" />
       <recent name="C:\xampp\htdocs\LSVMWeb\public" />
-      <recent name="C:\xampp\htdocs\LSVMWeb\public\css" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.School">
@@ -391,7 +353,12 @@
       <workItem from="1600712414636" duration="2718000" />
       <workItem from="1601048864154" duration="14350000" />
       <workItem from="1601134004930" duration="7906000" />
-      <workItem from="1601195662709" duration="686000" />
+      <workItem from="1601195662709" duration="13652000" />
+      <workItem from="1601222809045" duration="4173000" />
+      <workItem from="1601359433560" duration="1767000" />
+      <workItem from="1601398786556" duration="1377000" />
+      <workItem from="1601638655023" duration="5440000" />
+      <workItem from="1601716008078" duration="981000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1596732254126</created>
@@ -470,7 +437,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601196118542</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Student Termination Commit">
+      <created>1601196454647</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1601196454647</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -487,6 +461,19 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -514,22 +501,34 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="121" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1601136097524" />
-    <state x="321" y="0" key="CommitChangelistDialog2" timestamp="1601196104269">
+    <state x="321" y="0" key="CommitChangelistDialog2" timestamp="1601196446632">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="321" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1601196104269" />
+    <state x="321" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1601196446632" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1601215775237">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1601215775237" />
     <state x="463" y="121" key="FileChooserDialogImpl" timestamp="1601049658571">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="121" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1601049658571" />
-    <state width="512" height="446" key="SwitcherDM" timestamp="1601144317685">
+    <state width="512" height="477" key="SwitcherDM" timestamp="1601716747467">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="512" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1601144317685" />
-    <state x="275" y="99" key="Vcs.Push.Dialog.v2" timestamp="1601196326197">
+    <state width="512" height="477" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1601716747467" />
+    <state x="275" y="99" key="Vcs.Push.Dialog.v2" timestamp="1601196463213">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="99" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1601196326197" />
+    <state x="275" y="99" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1601196463213" />
+    <state x="494" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601230507132">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="494" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1601230507132" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1601647371051">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1601647371051" />
   </component>
   <component name="masterDetails">
     <states>

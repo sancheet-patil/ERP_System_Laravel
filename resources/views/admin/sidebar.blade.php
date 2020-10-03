@@ -30,9 +30,10 @@
 
                         <li><a href="{{route('classtimetable')}}"><i class="fa fa-angle-double-right"></i>Class Timetable</a></li>
                         <li><a href="{{route('scholarship')}}"><i class="fa fa-angle-double-right"></i>Scholarships</a></li>
-                        <li><a href="{{route('event')}}"><i class="fa fa-angle-double-right"></i>Events</a></li>
+{{--                        <li><a href="{{route('event')}}"><i class="fa fa-angle-double-right"></i>Events</a></li>--}}
                         <li><a href="{{route('holiday')}}"><i class="fa fa-angle-double-right"></i>Holidays</a></li>
                         <li><a href="{{route('otherschools')}}"><i class="fa fa-angle-double-right"></i>Other schools</a></li>
+                        <li><a href="{{route('resetpassword')}}"><i class="fa fa-angle-double-right"></i>Reset User Password</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -58,10 +59,12 @@
                             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('student.admission')}}"><i class="fa fa-angle-double-right"></i>Student admission</a></li>
-                        <li><a href="{{route('student.search')}}"><i class="fa fa-angle-double-right"></i>Student details search</a></li>
+                        <li><a href="{{route('student.admission')}}"><i class="fa fa-angle-double-right"></i>Student Admission</a></li>
+                        <li><a href="{{route('studentrejoin')}}"><i class="fa fa-angle-double-right"></i>Student Rejoin</a></li>
+                        <li><a href="{{route('student.search')}}"><i class="fa fa-angle-double-right"></i>Student Details Search</a></li>
                         <li><a href="{{route('bulkdivisionassign')}}"><i class="fa fa-angle-double-right"></i>Bulk Division Assign</a></li>
                         <li><a href="{{route('studentidgenerate')}}"><i class="fa fa-angle-double-right"></i>Student ID Generate</a></li>
+                        <li><a href="{{route('terminatestudentlist')}}"><i class="fa fa-angle-double-right"></i>Terminate Student</a></li>
     {{--                    <li><a href="{{route('studentscholarshipapply')}}"><i class="fa fa-angle-double-right"></i>Student Scholarship Apply</a></li>--}}
                     </ul>
                 </li>
@@ -101,7 +104,6 @@
                         <li><a href="{{route('exam')}}"><i class="fa fa-angle-double-right"></i>Examination</a></li>
                         <li><a href="{{route('promotestudents')}}"><i class="fa fa-angle-double-right"></i>Promote Students</a></li>
                         <li><a href="{{route('demotestudents')}}"><i class="fa fa-angle-double-right"></i>Demote Students</a></li>
-                        <li><a href="{{route('terminatestudentlist')}}"><i class="fa fa-angle-double-right"></i>Terminate Student List</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -268,7 +270,7 @@
                         <li><a href="{{route('category')}}"><i class="fa fa-angle-double-right"></i>Caste Category</a></li>
                         <li><a href="{{route('castecategories')}}"><i class="fa fa-angle-double-right"></i>Add Caste & subcaste</a></li>
                         <li><a href="{{route('scholarship')}}"><i class="fa fa-angle-double-right"></i>Scholarships</a></li>
-                        <li><a href="{{route('event')}}"><i class="fa fa-angle-double-right"></i>Events</a></li>
+{{--                        <li><a href="{{route('event')}}"><i class="fa fa-angle-double-right"></i>Events</a></li>--}}
                         <li><a href="{{route('holiday')}}"><i class="fa fa-angle-double-right"></i>Holidays</a></li>
                         <li><a href="{{route('otherschools')}}"><i class="fa fa-angle-double-right"></i>Other schools</a></li>
                     </ul>
@@ -296,7 +298,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('student.admission')}}"><i class="fa fa-angle-double-right"></i>Student admission</a></li>
+                        <li><a href="{{route('student.admission')}}"><i class="fa fa-angle-double-right"></i>Student Admission</a></li>
+                        <li><a href="{{route('studentrejoin')}}"><i class="fa fa-angle-double-right"></i>Student Rejoin</a></li>
                         <li><a href="{{route('student.search')}}"><i class="fa fa-angle-double-right"></i>Student details search</a></li>
                         <li><a href="{{route('studentidgenerate')}}"><i class="fa fa-angle-double-right"></i>Student ID Generate</a></li>
                     </ul>
@@ -484,6 +487,7 @@
                         <li><a href="{{route('student.search')}}"><i class="fa fa-angle-double-right"></i>Student details search</a></li>
                         <li><a href="{{route('bulkdivisionassign')}}"><i class="fa fa-angle-double-right"></i>Bulk Division Assign</a></li>
                         <li><a href="{{route('studentidgenerate')}}"><i class="fa fa-angle-double-right"></i>Student ID Generate</a></li>
+                        <li><a href="{{route('terminatestudentlist')}}"><i class="fa fa-angle-double-right"></i>Terminate Student</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -508,7 +512,6 @@
                         <li><a href="{{route('exam')}}"><i class="fa fa-angle-double-right"></i>Examination</a></li>
                         <li><a href="{{route('promotestudents')}}"><i class="fa fa-angle-double-right"></i>Promote Students</a></li>
                         <li><a href="{{route('demotestudents')}}"><i class="fa fa-angle-double-right"></i>Demote Students</a></li>
-                        <li><a href="{{route('terminatestudentlist')}}"><i class="fa fa-angle-double-right"></i>Terminate Student List</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
