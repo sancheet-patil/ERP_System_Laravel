@@ -637,13 +637,18 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    
                                     </tbody>
+                                    
                                 </table>
                             </div>
+                            {{ $studentlist->links() }}
                         </div>
                     </div>
                 </div>
+                
             </div>
+            
         </section>
     </div>
     @include('admin.footer')
@@ -907,18 +912,13 @@
         }
     }
 
-    $(document).ready(function(){
+    /*$(document).ready(function(){
         $('#student_table').DataTable({
             "scrollX"		: true,
-            'paging'		: true,
-            "processing"	: true,
             'searching'   : true,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false,
             'aaSorting'     : [],
         });
-    });
+    });*/
 
     function studentphotomodify() {
         $('#studentphoto').trigger('click');

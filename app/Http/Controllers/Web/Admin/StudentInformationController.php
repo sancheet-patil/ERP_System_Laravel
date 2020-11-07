@@ -28,7 +28,7 @@ class StudentInformationController extends Controller
             ->join('student_other_details','student_details.userid','=','student_other_details.userid')
             ->where('student_details.academicyear',Session::get('academicyear'))
             ->where('student_details.registerfor',Session::get('registerfor'))
-            ->orderBy('student_details.id','desc')->get();
+            ->orderBy('student_details.id','desc')->paginate(10);
 //        return $studentlist;
         return view(auth()->user()->role.'/student_admission')->with('studentlist',$studentlist);
     }
