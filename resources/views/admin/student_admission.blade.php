@@ -912,7 +912,7 @@
         }
     }
 
-    /*$(document).ready(function(){
+   /* $(document).ready(function(){
         $('#student_table').DataTable({
             "scrollX"		: true,
             'searching'   : true,
