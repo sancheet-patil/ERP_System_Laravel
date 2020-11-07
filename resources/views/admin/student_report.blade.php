@@ -209,8 +209,8 @@
                                         <th>Roll No.</th>
                                         <th>Student name</th>
                                         <th>Gender</th>
-                                        <th>Date of Birth</th>
-                                        <th>Religion</th>
+					<th>Date of Birth</th>
+					<th>Religion</th>
                                         <th>Category</th>
                                         <th>Caste</th>
                                         <th>Subcaste</th>
@@ -240,13 +240,24 @@
                                             <td>{{$student->fname.' '.$student->mname.' '.$student->lname}}</td>
                                             <td>{{$student->gender}}</td>
                                             <td>{{$student->dob}}</td>
-                                            <?php
-                                            $castecategory = \App\CasteCategoryList::where('id',$student->subcaste)->first();
-                                            $studentreligion = \App\ReligionLists::where('id',$castecategory['religion'])->value('religion');
-                                            $studentcategory = \App\CategoryLists::where('id',$castecategory['category'])->value('category');
-                                            ?>
-                                            <td>{{$studentreligion}}</td>
-                                            <td>{{$studentcategory}}</td>
+				             <?php
+						$castecategory = \App\CasteCategoryList::where('id',$student->subcaste)->first();
+						
+						if($castecategory!=null)
+						{
+                                           		 $religion = \App\ReligionLists::where('id',$castecategory['religion'])->value('religion');
+                                           		 $category = \App\CategoryLists::where('id',$castecategory['category'])->value('category');
+						}
+						else
+						{
+							$castecategory['castename']='-';
+							$castecategory['subcaste']='-';
+							$category='-';
+							$religion='-';
+						}
+					    ?>
+					    <td>{{$religion}}</td>
+                                            <td>{{$category}}</td>
                                             <td>{{$castecategory['castename']}}</td>
                                             <td>{{$castecategory['subcaste']}}</td>
                                             <td>{{$student->mobile}}</td>

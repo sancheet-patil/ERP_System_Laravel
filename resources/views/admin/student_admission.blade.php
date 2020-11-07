@@ -592,9 +592,20 @@
                                             <td>{{$student->gender}}</td>
                                             <td>{{$student->dob}}</td>
                                             <?php
-                                            $castecategory = \App\CasteCategoryList::where('id',$student->subcaste)->first();
-                                            $religion = \App\ReligionLists::where('id',$castecategory['religion'])->value('religion');
-                                            $category = \App\CategoryLists::where('id',$castecategory['category'])->value('category');
+						    $castecategory = \App\CasteCategoryList::where('id',$student->subcaste)->first();
+						     if($castecategory!=null)
+                                                {
+                                                         $religion = \App\ReligionLists::where('id',$castecategory['religion'])->value('religion');
+                                                         $category = \App\CategoryLists::where('id',$castecategory['category'])->value('category');
+                                                }
+                                                else
+                                                {
+                                                        $castecategory['castename']='-';
+                                                        $castecategory['subcaste']='-';
+                                                        $category='-';
+                                                        $religion='-';
+                                                }
+
                                             ?>
                                             <td>{{$religion}}</td>
                                             <td>{{$category}}</td>

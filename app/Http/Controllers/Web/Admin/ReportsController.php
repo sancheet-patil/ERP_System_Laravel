@@ -474,7 +474,7 @@ class ReportsController extends Controller
             ->join('student_other_details','student_details.userid','=','student_other_details.userid')
             ->where('student_details.academicyear',Session::get('academicyear'))
             ->where('student_details.registerfor',Session::get('registerfor'))
-            ->orderBy('student_details.id','desc')->get();
+	    ->orderBy('student_details.id','desc')->get();
         return view(auth()->user()->role.'/student_report')->with('studentlist',$studentlist)
             ->with('academicyear','')->with('registerfor','')->with('classname','')->with('division','')->with('faculty','')
             ->with('gender','')->with('category','')->with('religion','')->with('castename','')->with('subcaste','')
